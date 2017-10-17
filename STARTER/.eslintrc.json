@@ -1,0 +1,6 @@
+{
+  "extends": "bc-default",
+  "rules": {
+    "no-mutable-exports": 0
+  }
+}

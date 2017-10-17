@@ -1,0 +1,39 @@
+{# Main #}
+{% block main %}
+  <div class="page-header" style="background-color: #f7f7f9; margin-top: -15px;">
+    <div class="container">
+    <br />
+    <br />
+      ICON: <i class="fi-heart style3"></i>
+    </div>
+  </div>
+
+  <div role="main" class="main-container container">
+    <div class="row">
+      {# Content #}
+      <section{{ content_attributes.addClass('col-sm-12') }}>
+
+        {# Action Links #}
+        {% if action_links %}
+          {% block action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
+          {% endblock %}
+        {% endif %}
+
+        {# Content #}
+        {% block content %}
+          <a id="main-content"></a>
+          {{ page.highlighted }}
+          {{ page.content }}
+        {% endblock %}
+      </section>
+    </div>
+  </div>
+{% endblock %}
+
+<footer class="footer container text-center" role="contentinfo">
+  <small class="text-muted">
+    Demo site for the <a href="https://www.drupal.org/project/ui_patterns" target="_blank">UI Patterns</a> module.
+    Brought to you by <a href="http://nuvole.org" target="_blank">Nuvole</a> and a team of <a href="https://github.com/nuvoleweb/ui_patterns/graphs/contributors" target="_blank">wonderful contributors</a>.
+  </small>
+</footer>

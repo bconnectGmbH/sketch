@@ -1,0 +1,12 @@
+name: [[STARTER]]
+type: theme
+description: A subtheme of sketch
+package: Appearance
+core: 8.x
+libraries:
+  - sketch/global-styling
+
+base theme: stable
+
+regions:
+  content: Content

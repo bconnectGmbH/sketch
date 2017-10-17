@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-config-bc-default",
+  "rules": {
+    "at-rule-no-unknown": null,
+    "number-leading-zero": null
+  }
+}

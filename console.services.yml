@@ -1,0 +1,12 @@
+services:
+  sketch.sketch_create:
+    class: Drupal\sketch\Command\CreateCommand
+    arguments: ['@theme_handler', '@file_system']
+    tags:
+      - { name: drupal.command }
+
+  sketch.sketch_update:
+    class: Drupal\sketch\Command\UpdateCommand
+    arguments: ['@theme_handler', '@file_system']
+    tags:
+      - { name: drupal.command }
