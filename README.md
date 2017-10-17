@@ -6,3 +6,15 @@
 /_______  /____|__ \/_______  /  |____|    \______  /\___|_  /
         \/        \/        \/                    \/       \/
 ```
+
+# Generate a subtheme
+
+```
+drupal sketch:generate
+```
+
+# Update a subtheme
+
+```
+drupal sketch:update <theme_name>
+```
