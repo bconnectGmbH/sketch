@@ -39,6 +39,13 @@ trait SketchCommandTrait {
         file_put_contents($file, json_encode($content, JSON_PRETTY_PRINT));
     }
 
+    public function getAllSubThemes() {
+        $themes = \Drupal::service('theme_handler')->listInfo();
+        return array_filter($themes, function($v, $k) {
+            return in_array('sketch', array_keys($v->base_themes));
+        }, ARRAY_FILTER_USE_BOTH);
+    }
+
     public function renameYmlFiles($directory) {
         $finder = new Finder();
         $finder->name('/\.yml\.txt/');
