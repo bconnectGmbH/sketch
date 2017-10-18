@@ -4,5 +4,4 @@ module.exports = function(env, config) {
     config.plugins.push(
         new UglifyJSPlugin()
     );
-    return config;
 }

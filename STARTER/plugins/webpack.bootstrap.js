@@ -19,5 +19,4 @@ module.exports = function(env, config) {
             Util: "exports-loader?Util!bootstrap/js/dist/util",
           })
         );
-    return config;
 }

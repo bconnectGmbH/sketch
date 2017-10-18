@@ -33,5 +33,7 @@ module.exports = function(env, config) {
         })
     });
     config.entry.push(path.resolve(__dirname, '../scss/styles.scss'));
-    return config;
+    config.plugins.push(
+        new ExtractTextPlugin({filename: 'css/styles.css', disable: false, allChunks: true}),
+    );
 }

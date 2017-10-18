@@ -7,5 +7,4 @@ module.exports = function(env, config) {
             loader: "eslint-loader",
         }
     );
-    return config;
 }
