@@ -1,0 +1,14 @@
+{
+    "name": "drupal/sketch",
+    "description": "A dynamic theme",
+    "type": "drupal-theme",
+    "require": {
+        "webmozart/glob": "^4.1"
+    },
+    "authors": [
+        {
+            "name": "Erik Seifert",
+            "email": "erik.seifert@b-connect.de"
+        }
+    ]
+}

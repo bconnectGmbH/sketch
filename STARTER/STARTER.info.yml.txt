@@ -4,7 +4,7 @@ description: A subtheme of sketch
 package: Appearance
 core: 8.x
 libraries:
-  - sketch/global-styling
+  - [[STARTER]]/global-styling
 
 base theme: sketch
 

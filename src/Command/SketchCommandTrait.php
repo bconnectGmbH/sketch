@@ -6,6 +6,8 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Drupal\Component\Serialization\Json;
+use Webmozart\Glob\Glob;
+use Webmozart\PathUtil\Path;
 
 trait SketchCommandTrait {
 
@@ -20,14 +22,22 @@ trait SketchCommandTrait {
         return $finder->files()->in($directory);
     }
 
-    public function copyDir($source, $target) {
+    public function copyDir($source, $target, $excludes = ['node_modules']) {
         $directoryIterator = new \RecursiveDirectoryIterator($source);
         $iterator = new \RecursiveIteratorIterator($directoryIterator, \RecursiveIteratorIterator::SELF_FIRST);
         $fileSystem = new Filesystem();
+        $themePath = DRUPAL_ROOT . '/' . \Drupal::service('theme_handler')->getTheme('sketch')->getPath();
 
         foreach ($iterator as $item) {
-            if (in_array($iterator->getSubPathName(), $excludes)) {
-                print_r('Exclude', $iterator->getSubPathName());
+            $exclude = false;
+            foreach ( $excludes as $ex ) {
+                $test = explode('/', $iterator->getSubPathName());
+                if ($test[0] == $ex) {
+                    $exclude = true;
+                    break;
+                }
+            }
+            if ($exclude) {
                 continue;
             }
             if ($item->isDir()) {
@@ -81,10 +91,6 @@ trait SketchCommandTrait {
         $this->renameYmlFiles($target);
         $this->renameStarterFiles($target, $machine_name);
         $this->replace($target, $machine_name);
-        $this->writePackageJson($target . '/package.json', $machine_name, [[
-            'bootstrap',
-            '^4.0'
-        ]]);
     }
 
     protected function getTmpFolder() {

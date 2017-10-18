@@ -19,4 +19,20 @@ module.exports = function(env, config) {
             Util: "exports-loader?Util!bootstrap/js/dist/util",
           })
         );
+
+    config.module.rules.push({
+        test: /\index.js$/,
+        loader: 'webpack-append',
+        query: "import 'bootstrap/js/dist/alert';\n"
+             + "import 'bootstrap/js/dist/button';\n"
+             + "import 'bootstrap/js/dist/carousel'\n;"
+             + "import 'bootstrap/js/dist/collapse'\n;"
+             + "import 'bootstrap/js/dist/dropdown'\n;"
+             + "import 'bootstrap/js/dist/modal';\n"
+             + "import 'bootstrap/js/dist/popover';\n"
+             + "import 'bootstrap/js/dist/scrollspy';\n"
+             + "import 'bootstrap/js/dist/tab';\n"
+             + "import 'bootstrap/js/dist/tooltip';\n"
+             + "import 'bootstrap/js/dist/util';\n"
+    });
 }

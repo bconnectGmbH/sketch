@@ -2,7 +2,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 
 module.exports = function(env, config) {
-    env.test = "---- MY TEST ----";
     let cssOptions = {
         minimize: (env.NODE_ENV === 'dev') ? false : true
     }
