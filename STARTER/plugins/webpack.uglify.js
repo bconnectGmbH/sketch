@@ -1,8 +1,8 @@
-const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function(env, config) {
     config.plugins.push(
-        new webpack.ProvidePlugin({})
+        new UglifyJSPlugin()
     );
     return config;
 }

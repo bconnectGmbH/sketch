@@ -9,8 +9,12 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "config": {
+    "plugins": [
+      "livereload"
+    ]
   },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^7.1.5",
     "clean-webpack-plugin": "^0.1.17",
@@ -40,6 +44,7 @@
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "url-loader": "^0.6.2",
     "webpack": "^3.7.1",
+    "webpack-append": "^0.1.2",
     "webpack-livereload-plugin": "^1.0.0",
     "webpack-notifier": "^1.5.0"
   }

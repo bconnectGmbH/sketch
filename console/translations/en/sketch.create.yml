@@ -3,3 +3,6 @@ options: {}
 arguments: {}
 messages:
     success: 'I am a new generated command.'
+    machine_name_error: 'Not a valid machinable name.'
+    question_name: 'Name of the subtheme'
+    question_machine_name: 'Please enter the machineable name of the sub theme (@machine_name):'

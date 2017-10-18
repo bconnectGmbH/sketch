@@ -9,6 +9,12 @@ use Drupal\Component\Serialization\Json;
 
 trait SketchCommandTrait {
 
+    public static function getExcludes() {
+        return [
+
+        ];
+    }
+
     public function getAllFiles($directory) {
         $finder = new Finder();
         return $finder->files()->in($directory);
@@ -20,6 +26,10 @@ trait SketchCommandTrait {
         $fileSystem = new Filesystem();
 
         foreach ($iterator as $item) {
+            if (in_array($iterator->getSubPathName(), $excludes)) {
+                print_r('Exclude', $iterator->getSubPathName());
+                continue;
+            }
             if ($item->isDir()) {
                 $fileSystem->mkdir($target . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
                 continue;

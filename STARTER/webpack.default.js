@@ -2,13 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const WebpackNotifierPlugin = require('webpack-notifier');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const WatchLiveReloadPlugin = require('webpack-livereload-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const NpmInstallPlugin = require("npm-install-webpack-plugin");
 
-const url = '192.168.20.109';
+const url = 'shaque.docksal';
 
 module.exports = function(env) {
   if (!env.NODE_ENV) {
@@ -19,10 +15,8 @@ module.exports = function(env) {
   }
 
   let plugins = [
-    new CleanWebpackPlugin(['./vendor']),
     new ExtractTextPlugin({filename: 'css/styles.css', disable: false, allChunks: true}),
     new WebpackNotifierPlugin({title: 'Theme build', alwaysNotify: true}),
-    new StyleLintPlugin(),
     new WatchLiveReloadPlugin({
       hostname: url
     })
@@ -101,14 +95,8 @@ module.exports = function(env) {
           name: "imgs/[name]-[hash].[ext]"
         }
       }, {
-        test: /\.js$/,
-        exclude: [/node_modules/],
-        use: [{
-            loader: "eslint-loader",
-          }, {
-            loader: "import-glob",
-          }
-        ]
+        test: /\.js/,
+        loader: 'import-glob'
       }
     ]
   }

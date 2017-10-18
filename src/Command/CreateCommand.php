@@ -77,27 +77,24 @@ class CreateCommand extends Command {
     $io->info($this->getBasePath());
     $this->tmpFolder = $this->getTmpFolder();
     $helper = $this->getHelper('question');
-    $question = new Question('Please enter the name of the sub theme:', 'sub_sketch');
+    $question = new Question($this->trans('commands.sketch.create.messages.question_name'), 'sub_sketch');
     $name = $helper->ask($input, $output, $question);
 
     $tmp_machine_name = 'sub_sketch';
 
-    $question = new Question('Please enter the machineable name of the sub theme (' . $tmp_machine_name . '):', $tmp_machine_name);
+    $question = new Question($this->trans('commands.sketch.create.messages.question_machine_name', ['machine_name' => $tmp_machine_name]), $tmp_machine_name);
     while (!$this->machine_name) {
       $machine_name = $helper->ask($input, $output, $question);
       if (preg_match(self::MACHINE_NAME, $machine_name)) {
         $this->machine_name = $machine_name;
         continue;
       }
-      $io->error('Not a correct machine name.');
+      $io->error($this->trans('commands.sketch.create.messages.machine_name_error'));
     }
 
     $source = $this->getStarterPath();
-
     $this->prepare($source, $this->tmpFolder, $this->machine_name);
-
     $this->copyDir($this->tmpFolder, DRUPAL_ROOT . '/themes/custom/' . $machine_name);
-
     $io->info($this->trans('commands.sketch.create.messages.success'));
   }
 
