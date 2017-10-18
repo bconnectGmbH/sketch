@@ -10,46 +10,16 @@ module.exports = function(env) {
   if (!env.NODE_ENV) {
     env.NODE_ENV = 'dev';
   }
-  let cssOptions = {
-    minimize: (env.NODE_ENV === 'dev') ? false : true
-  }
+  env.hostname = 'localhost';
 
   let plugins = [
     new ExtractTextPlugin({filename: 'css/styles.css', disable: false, allChunks: true}),
-    new WebpackNotifierPlugin({title: 'Theme build', alwaysNotify: true}),
-    new WatchLiveReloadPlugin({
-      hostname: url
-    })
+    new WebpackNotifierPlugin({title: 'Theme build', alwaysNotify: true})
   ];
 
   let rules = {
     rules: [
       {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: cssOptions
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                plugins: function () { // post css plugins, can be exported to postcss.config.js
-                  return [
-                    require('precss'),
-                    require('autoprefixer'),
-                    require('postcss-font-grabber')({dirPath : './tmp'})
-                  ];
-                }
-              }
-            }, {
-              loader: 'sass-loader',
-            }, {
-              loader: 'import-glob'
-            }
-          ]
-        })
-      }, {
         test: /\.(jpe?g|png|gif)$/i,
         loader: "file-loader",
         options: {
@@ -105,7 +75,6 @@ module.exports = function(env) {
     module: rules,
     entry:  [
       path.resolve(__dirname, 'js/index.js'),
-      path.resolve(__dirname, 'scss/styles.scss')
     ],
     output: {
       path: path.resolve(__dirname, 'vendor'),

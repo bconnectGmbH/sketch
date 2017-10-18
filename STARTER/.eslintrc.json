@@ -1,6 +1,7 @@
 {
   "extends": "bc-default",
   "rules": {
-    "no-mutable-exports": 0
+    "no-mutable-exports": 0,
+    "semi-spacing": 1
   }
 }
