@@ -6,7 +6,7 @@ core: 8.x
 libraries:
   - sketch/global-styling
 
-base theme: stable
+base theme: sketch
 
 regions:
   content: Content
