@@ -2,10 +2,9 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = function(env, config) {
     config.plugins.push(
-        new LiveReloadPlugin({
-            hostname: env.hostname
-        })
+        new LiveReloadPlugin(env.config.livereload)
     );
+
     config.module.rules.push({
         test: /\index.js$/,
         loader: 'webpack-append',

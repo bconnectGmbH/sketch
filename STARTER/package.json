@@ -11,12 +11,18 @@
   "license": "ISC",
   "config": {
     "plugins": [
+      "notify",
       "fonts",
       "scss",
       "eslint",
       "stylelint",
       "livereload"
-    ]
+    ],
+    "livereload": {
+      "protocol": "http",
+      "port": 35729,
+      "hostname": "localhost"
+    }
   },
   "dependencies": {},
   "devDependencies": {
