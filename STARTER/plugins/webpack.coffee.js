@@ -10,7 +10,5 @@ module.exports = function (env, config) {
   if (config.coffee) {
     pkgConfig = extend(pkgConfig, config.coffee);
   }
-
   config.module.rules.push(pkgConfig);
-
 }

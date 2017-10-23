@@ -1,20 +1,30 @@
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = function (env, config) {
+  let pkgConfig = {
+    limit: 100000,
+    publicPath: '../',
+    loader: 'url-loader',
+  };
+
+  if (config.image) {
+    pkgConfig = extend(pkgConfig, config.image);
+  }
+
   config.module.rules.push({
     test: /\.(jpe?g|png|gif)$/i,
-    loader: "file-loader",
+    loader: pkgConfig.loader,
     options: {
       name: "imgs/[name]-[hash].[ext]",
-      limit: 100000,
-      publicPath: '../'
+      limit: pkgConfig.limit,
+      publicPath: pkgConfig.publicPath
     }
   }, {
     test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: "url-loader",
     options: {
       mimetype: "application/image/svg+xml",
-      limit: 100000,
+      limit: pkgConfig.limit,
       name: "imgs/[name]-[hash].[ext]"
     }
   });
