@@ -2,7 +2,7 @@
 carousel:
   label: 'Carousel'
   description: 'A slideshow component for cycling through elements, like a carousel.'
-  use: '@[[STARTER]]_tpl/templates/patter-carouse.twig'
+  use: '@[[STARTER]]_tpl/templates/pattern-carousel.html.twig'
   settings:
     modifier:
       type: textfield
@@ -41,6 +41,7 @@ carousel:
 jumbotron:
   label: 'Jumbotron'
   description: 'A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.'
+  use: '@[[STARTER]]_tpl/templates/pattern-jumbotron.html.twig'
   fields:
     title:
       type: 'text'
@@ -66,6 +67,7 @@ jumbotron:
 modal:
   label: 'Modal'
   description: 'Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.'
+  use: '@[[STARTER]]_tpl/templates/pattern-modal.html.twig'
   fields:
     title:
       type: 'text'
@@ -81,6 +83,7 @@ modal:
 card:
   label: 'Card'
   description: 'A card component.'
+  use: '@[[STARTER]]_tpl/templates/pattern-card.html.twig'
   settings:
     modifier:
       type: textfield
@@ -130,8 +133,21 @@ card:
 image:
   label: 'Image'
   description: 'A simple image with caption.'
+  use: '@[[STARTER]]_tpl/templates/pattern-image.html.twig'
   settings:
-    caption:
+    caption_override:
+      type: token
+      label: Override caption here
+      description: Add modifier here
+    image_override:
+      type: token
+      label: Override caption here
+      description: Add modifier here
+    link_override:
+      type: token
+      label: Override caption here
+      description: Add modifier here
+    link_title_override:
       type: token
       label: Override caption here
       description: Add modifier here
@@ -143,8 +159,43 @@ image:
       preview:
         theme: 'image'
         uri: 'http://lorempixel.com/350/250/nature/1'
-    caption_text:
+    caption:
       type: 'text'
       label: 'Caption'
       description: 'The image caption.'
       preview: '&copy; 2017 John Smith photography'
+    link:
+      type: 'text'
+      label: 'Caption'
+      description: 'The image caption.'
+      preview: '&copy; 2017 John Smith photography'
+    link_title:
+      type: 'text'
+      label: 'Caption'
+      description: 'The image caption.'
+      preview: '&copy; 2017 John Smith photography'
+
+
+button:
+  label: Button
+  description: A simple button.
+  settings:
+    title_override:
+      type: token
+      label: Override caption here
+      description: Add modifier here
+    url_override:
+      type: token
+      label: Override caption here
+      description: Add modifier here
+  fields:
+    title:
+      type: text
+      label: Label
+      description: The button label
+      preview: Submit
+    url:
+      type: text
+      label: URL
+      description: The button URL
+      preview: http://example.com

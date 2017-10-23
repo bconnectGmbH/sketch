@@ -1,1 +1,6 @@
 <?php
+
+
+function [[STARTER]]_preprocess_pattern(&$variables) {
+
+}
