@@ -2,34 +2,8 @@ const pkgConfig = require('./package.json').config;
 const path = require('path');
 
 module.exports = function (env) {
-    let config = {
-        context: __dirname + "/js",
-        module: {
-            rules: []
-        },
-        resolve: {
-            alias: {
-                scripts : path.resolve('js/scripts'),
-                scss : path.resolve('scss')
-            }
-        },
-        entry:  [
-            path.resolve(__dirname, 'js/index.js'),
-        ],
-        output: {
-            path: path.resolve(__dirname, 'vendor'),
-            filename: 'js/scripts.js',
-        },
-        plugins: [],
-        watchOptions: {
-            poll: true
-        }
-    }
-    if ((env.NODE_ENV === 'dev')) {
-       config.devtool = 'inline-source-map';
-    }
-
     env.config = pkgConfig;
+    let config = {};
 
     pkgConfig.plugins.forEach((plugin) => {
         console.info(`Loading: ./plugins/webpack.${plugin}.js`);
