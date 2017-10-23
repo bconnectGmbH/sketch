@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Thumbnail pattern.
+ */
+#}
+<div class="card">
+  {% if image %}
+  <div class="card-img-top">
+    {{ image }}
+  </div>
+  {% endif %}
+  <div class="card-body">
+    <h4 class="card-title">
+      {{ title }}
+    </h4>
+    <div class="card-text">
+      {{ text }}
+    </div>
+  </div>
+  {% if footer|render %}
+  <div class="card-footer">
+    <div>{{ footer }}</div>
+  </div>
+  {% endif %}
+</div>

@@ -2,6 +2,7 @@
 carousel:
   label: 'Carousel'
   description: 'A slideshow component for cycling through elements, like a carousel.'
+  use: '@[[STARTER]]_tpl/templates/patter-carouse.twig'
   settings:
     modifier:
       type: textfield

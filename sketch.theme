@@ -143,3 +143,11 @@ function sketch_theme_suggestions_details_alter(array &$suggestions, array $vari
 function sketch_preprocess_menu_local_task(array &$variables) {
   //$variables['element']['#link']['url']->setOption('attributes', ['class'=>'rounded']);
 }
+
+function sketch_library_info_alter(&$libraries, $extension) {
+  dsm($extension, 'EXT');
+  if ($extension !== 'sub_sketch') {
+    return;
+  }
+  dsm($libraries);
+}

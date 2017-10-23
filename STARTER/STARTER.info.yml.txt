@@ -10,3 +10,8 @@ base theme: sketch
 
 regions:
   content: Content
+
+component-libraries:
+  sketch_tpl:
+    paths:
+      - templates/patterns
