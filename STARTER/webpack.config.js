@@ -3,8 +3,15 @@ const path = require('path');
 
 module.exports = function (env) {
     let config = {
+        context: __dirname + "/js",
         module: {
             rules: []
+        },
+        resolve: {
+            alias: {
+                scripts : path.resolve('js/scripts'),
+                scss : path.resolve('scss')
+            }
         },
         entry:  [
             path.resolve(__dirname, 'js/index.js'),

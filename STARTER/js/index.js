@@ -1,5 +1,4 @@
-function test() {
-  document.write('Here');
-}
+'use strict';
 
-test();
+// import './scripts/examples/example.bable';
+// import './scripts/examples/example.coffee';
