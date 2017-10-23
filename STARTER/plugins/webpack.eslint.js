@@ -1,11 +1,10 @@
 const extend = require('util')._extend;
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = function (env, config) {
   let pkgConfig = {
     test: /\.js$/,
     exclude: /(node_modules)/,
-    use: ['es-loader']
+    use: ['eslint-loader']
   };
 
   if (config.eslint) {
