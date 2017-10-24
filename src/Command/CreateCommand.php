@@ -74,22 +74,21 @@ class CreateCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $io = new DrupalStyle($input, $output);
-    $io->info($this->getBasePath());
     $this->tmpFolder = $this->getTmpFolder();
     $helper = $this->getHelper('question');
-    $question = new Question($this->trans('commands.sketch.create.messages.question_name'), 'sub_sketch');
+    $question = new Question('<info>' . $this->trans('commands.sketch.create.messages.question_name') . '</>', 'sub_sketch');
     $name = $helper->ask($input, $output, $question);
 
     $tmp_machine_name = 'sub_sketch';
 
-    $question = new Question($this->trans('commands.sketch.create.messages.question_machine_name', ['machine_name' => $tmp_machine_name]), $tmp_machine_name);
+    $question = new Question('<info>' . $this->trans('commands.sketch.create.messages.question_machine_name', ['machine_name' => $tmp_machine_name]) . '</>', $tmp_machine_name);
     while (!$this->machine_name) {
       $machine_name = $helper->ask($input, $output, $question);
       if (preg_match(self::MACHINE_NAME, $machine_name)) {
         $this->machine_name = $machine_name;
         continue;
       }
-      $io->error($this->trans('commands.sketch.create.messages.machine_name_error'));
+      $io->error('<error>' . $this->trans('commands.sketch.create.messages.machine_name_error') . '</error>');
     }
 
     $source = $this->getStarterPath();
