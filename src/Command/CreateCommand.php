@@ -97,12 +97,4 @@ class CreateCommand extends Command {
     $io->info($this->trans('commands.sketch.create.messages.success'));
   }
 
- /**
-  * {@inheritdoc}
-  */
- protected function interact(InputInterface $input, OutputInterface $output) {
-   $io = new DrupalStyle($input, $output);
-
- }
-
 }
