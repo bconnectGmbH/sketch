@@ -11,6 +11,7 @@ use Drupal\Core\Extension\ThemeHandler;
 use Drupal\Core\File\FileSystemInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Console\Question\Question;
+use Symfony\Component\Console\Question\ChoiceQuestion;
 
 /**
  * Class CreateCommand.
@@ -91,9 +92,26 @@ class CreateCommand extends Command {
       $io->error('<error>' . $this->trans('commands.sketch.create.messages.machine_name_error') . '</error>');
     }
 
+    $question = new ChoiceQuestion('<info>' . $this->trans('commands.sketch.create.messages.npm_install') . '</>', ['Y' => 'Yes install all packages.', 'n' => 'No leave it to me'],'Y');
+    $install = $helper->ask($input, $output, $question);
+
     $source = $this->getStarterPath();
     $this->prepare($source, $this->tmpFolder, $this->machine_name);
     $this->copyDir($this->tmpFolder, DRUPAL_ROOT . '/themes/custom/' . $machine_name);
+    if ($install == 'Y') {
+      $outputLines = [];
+      $success = 0;
+      $cmd = 'cd '.DRUPAL_ROOT . '/themes/custom/' . $machine_name.' && npm install';
+      escapeshellcmd($cmd);
+      exec($cmd, $outputLines, $success);
+      if ($success == 0) {
+        $io->info('Installed packages per npm.');
+        $io->info(array_pop($outputLines));
+      } else {
+        $io->error($outputLines);
+        $io->error('NPM installation failed');
+      }
+    };
     $io->info($this->trans('commands.sketch.create.messages.success'));
   }
 
