@@ -1,11 +1,11 @@
 ```
-   _____ _        _       _     
-  / ____| |      | |     | |    
- | (___ | | _____| |_ ___| |__  
-  \___ \| |/ / _ \ __/ __| '_ \ 
+   _____ _        _       _
+  / ____| |      | |     | |
+ | (___ | | _____| |_ ___| |__
+  \___ \| |/ / _ \ __/ __| '_ \
   ____) |   <  __/ || (__| | | |
  |_____/|_|\_\___|\__\___|_| |_|
-                                                            
+
 ```
 
 # Generate a subtheme
@@ -19,7 +19,6 @@ drupal sketch:generate
 ```
 drupal sketch:update <theme_name>
 ```
-<<<<<<< HEAD
 
 # Drupal console problems with theme commands
 
@@ -36,5 +35,3 @@ Add in your composer file under ```extras```
   }
 
 ```
-=======
->>>>>>> 1588150f48106076b0373a5461b8fda79a5f9ffa
