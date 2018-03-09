@@ -6,3 +6,4 @@ messages:
     machine_name_error: 'Not a valid machinable name.'
     question_name: 'Name of the subtheme:'
     question_machine_name: 'Please enter the machineable name of the sub theme (@machine_name):'
+    commands.sketch.create.messages.npm_install: 'Should i run npm install.'

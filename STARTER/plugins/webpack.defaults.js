@@ -1,5 +1,6 @@
 const pkgConfig = require('../package.json').config;
 const path = require('path');
+const ProvidePlugin = require('webpack').ProvidePlugin;
 
 module.exports = function (env, config) {
   config.context = path.resolve(__dirname, "../js");
@@ -17,11 +18,19 @@ module.exports = function (env, config) {
   config.entry = [
     path.resolve(__dirname, '../js/index.js'),
   ];
+
   config.output = {
     path: path.resolve(__dirname, '../vendor'),
     filename: 'js/scripts.js',
   };
-  config.plugins = [];
+  config.plugins.push(
+    new ProvidePlugin({
+      $: "jQuery",
+    })
+  );
+
+  config.externals['$'] = 'jQuery';
+
   config.watchOptions = {
     poll: true
   }
