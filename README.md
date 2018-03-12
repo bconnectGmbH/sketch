@@ -11,7 +11,7 @@
 # Generate a subtheme
 
 ```
-drupal sketch:generate
+drupal sketch:create
 ```
 
 # Update a subtheme

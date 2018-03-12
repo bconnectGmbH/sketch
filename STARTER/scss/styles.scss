@@ -1,1 +1,5 @@
-@import 'styles/*.scss';
+@import "00-vars";
+@import "10-base";
+@import "20-layout";
+@import "30-components";
+@import "40-pages";

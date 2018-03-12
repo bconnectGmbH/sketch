@@ -1,5 +1,5 @@
 {
-  "extends": "bc-default",
+  "extends": "airbnb",
   "rules": {
     "no-mutable-exports": 0,
     "semi-spacing": 1
