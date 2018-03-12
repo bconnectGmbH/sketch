@@ -6,7 +6,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --env.NODE_ENV=dev",
     "build:prod": "webpack --env.NODE_ENV=prod",
-    "watch": "webpack --watch --env.NODE_ENV=dev"
+    "watch": "webpack --watch --env.NODE_ENV=dev",
+    "lint": "stylelint \"scss/**/*.scss\"",
+    "lint:fix": "stylelint \"scss/**/*.scss\" --fix",
+    "lintjs": "stylelint \"js/**/*.js\"",
+    "lintjs:fix": "stylelint \"js/**/*.js\" --fix"
   },
   "author": "",
   "license": "ISC",
