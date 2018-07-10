@@ -1,0 +1,47 @@
+{#
+ /**
+ * Picture
+ *
+ * Internet Explorer 9 doesn't recognise source elements that are wrapped in picture tags. See http://scottjehl.github.io/picturefill/#ie9
+ *
+ * @param array $sources Liste an Bildquellen
+ *
+ * @example
+ * {% set sources = {
+ *   'i0': {'mediaquery': '(min-width: 1024px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1200.png'},
+ *   'i1': {'mediaquery': '(min-width: 640px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1024.png'},
+ *   'i2': {'mediaquery': '(min-width: 0px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image640.png'},
+ * } %}
+ * {% include "@atoms/06-images/01-pictures.twig" with {
+ *   picture_img_srcset: sources,
+ *   picture_img_alt: faker('text', 30),
+ *   picture_img_title: faker('text', 30),
+ *   picture_img_src: '../../../../images/b-connect/Development_Slide_Image1200.png'
+ * } %}
+ * <h6>Mit Link</h6>
+ * {% include "@atoms/06-images/01-pictures.twig" with {
+ *   picture_img_srcset: sources,
+ *   picture_img_alt: faker('text', 30),
+ *   picture_img_title: faker('text', 30),
+ *   picture_img_src: '../../../../images/b-connect/Development_Slide_Image1200.png',
+ *   picture_img_url: '#'
+ * } %}
+ */
+#}
+
+{% if picture_img_url %}
+  <a {% for attribute,value in link_attributes %} {{ attribute }}="{{ value }}" {% endfor %} href="{{ picture_img_url }}">
+{% endif %}
+  <picture>
+    {% if picture_img_srcset %}<!--[if IE 9]><video style="display: none;"><![endif]--> {% for source in picture_img_srcset %}<source media="{{source.mediaquery}}" srcset="{{source.srcset}}"/>{% endfor %}<!--[if IE 9]></video><![endif]-->{% endif %}
+    {% include "@atoms/06-images/00-image.twig" with {
+      img_src: picture_img_src,
+      img_alt: picture_img_alt,
+      img_title: picture_img_title,
+      img_url: '',
+    } %}
+  </picture>
+{% if picture_img_url %}
+  </a>
+{% endif %}
+

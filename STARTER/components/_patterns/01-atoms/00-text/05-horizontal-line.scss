@@ -1,0 +1,69 @@
+@mixin hr($style) {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  text-align: inherit;
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid $support2;
+
+  @if $style == 'default' {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    text-align: inherit;
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid $support2;
+  } @else if $style == 'short' {
+    border: 0;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 100px;
+      max-width: 100%;
+      vertical-align: top;
+      border-top: 1px solid $support2;
+    }
+  } @else if $style == 'icon' {
+    position: relative;
+    height: 20px;
+    background-image: url($hr-icon);
+    background-repeat: no-repeat;
+    background-position: 50% -2%;
+    border: 0;
+    background-size: contain;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      max-width: calc(50% - (50px / 2));
+      border-bottom: 1px solid $support2;
+      top: 50%;
+    }
+
+    &::before {
+      right: calc(50% + (50px / 2));
+      width: 100%;
+    }
+
+    &::after {
+      left: calc(50% + (50px / 2));
+      width: 100%;
+    }
+  }
+}
+
+hr {
+  @include hr('default');
+
+  &.short {
+    @include hr('short');
+  }
+
+  &.with-icon {
+    @include hr('icon');
+  }
+}

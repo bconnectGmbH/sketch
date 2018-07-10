@@ -1,0 +1,31 @@
+{#
+ /**
+ * Video
+ *
+ * Available blocks:
+ * - video_content - used to replace the content of the video with something other than the typical iframe
+ *   for example: to insert an html5 video component
+ *
+ * @param string $video_content Liste an Bildquellen the content of the video (typically an iframe)
+ * the "|raw" filter is applied so that the iframe is rendered instead
+ * of simply passing the iframe as plain text.
+ * @param strin $video_modifiers Klasse für Bildformat
+ *
+ * @example
+ * <h6>Default Format</h6>
+ * {% include "@atoms/07-video/video.twig" with {
+ *   video_content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/rF1X12PE6PY" sandbox="allow-same-origin allow-scripts allow-presentation" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+ * } %}
+ * <h6>Full Format</h6>
+ * {% include "@atoms/07-video/video.twig" with {
+ *   video_modifiers: 'full',
+ *   video_content: '<iframe width="560" height="315" src="https://www.youtube.com/embed/rF1X12PE6PY" sandbox="allow-same-origin allow-scripts allow-presentation" frameborder="0" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+ * } %}
+ */
+#}
+
+<div class="video {{video_modifiers}}">
+  {% block video_content %}
+    {{ video_content|raw }}
+  {% endblock %}
+</div>

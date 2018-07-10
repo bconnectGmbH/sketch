@@ -1,0 +1,59 @@
+.pager {
+  ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: $pager-border-radius;
+    justify-content: center;
+
+    li {
+      list-style: none;
+      padding: 0;
+
+      a,
+      .ellipsis {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        padding: $pager-link-padding;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: $pager-link-color;
+        background-color: $pager-link-bg-color;
+        border: 1px solid $pager-link-border-color;
+
+        .visually-hidden {
+          display: none;
+        }
+      }
+
+      &:first-child {
+        a {
+          margin-left: 0;
+          border-top-left-radius: $pager-border-radius;
+          border-bottom-left-radius: $pager-border-radius;
+        }
+      }
+
+      &:last-child {
+        a {
+          margin-left: 0;
+          border-top-right-radius: $pager-border-radius;
+          border-bottom-right-radius: $pager-border-radius;
+          border-left: 0;
+        }
+      }
+
+      &.is-active,
+      &:hover {
+        a {
+          background-color: $pager-hover-link-bg-color;
+          border-color: $pager-hover-link-bg-color;
+          color: $pager-hover-link-color;
+          margin-left: -1px;
+          line-height: 1.25;
+        }
+      }
+    }
+  }
+}

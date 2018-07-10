@@ -1,0 +1,30 @@
+{#
+/**
+ * Select
+ *
+ * @param string $form_label Label für die Formelemente
+ * @param string $form_help_text Hilfstext für die Formelemente
+ * @param array $items Array mit allen Elementen
+ *
+ * @example
+ * {% set items = {0: faker('text', 50), 1: faker('text', 50), 2: faker('text', 50), 3: faker('text', 50), 4: faker('text', 50)} %}
+ * {% include "@atoms/04-forms/02-select.twig" with {
+ *   items: items,
+ *   form_label: 'Select Feld',
+ *   form_help_text: faker('text', 100),
+ *   select_id: 'edit-select3',
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-select form-item-select">
+  <label class="label" for="edit-select">{{form_label}}</label>
+  <select id="{{select_id}}" name="select" class="form-select" {% if form_required %} required aria-required="true" {% endif %}>
+    {% for item in items %}
+      <option value="{{item|lower|replace(' ', '-')}}">{{item}}</option>
+    {% endfor %}
+  </select>
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

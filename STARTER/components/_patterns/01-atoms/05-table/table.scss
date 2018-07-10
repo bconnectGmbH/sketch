@@ -1,0 +1,124 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  display: block;
+
+  @include breakpoint(medium) {
+    display: table;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  tbody {
+    display: block;
+
+    @include breakpoint(medium) {
+      display: table-row-group;
+    }
+  }
+
+  th {
+    @include font($base-font, 'regular');
+
+    padding: 16px 12px;
+    text-align: left;
+    color: $support2;
+    text-transform: uppercase;
+    display: block;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+
+    @include breakpoint(medium) {
+      display: table-cell;
+      vertical-align: bottom;
+    }
+  }
+
+  td {
+    padding: 16px 12px;
+    display: block;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+
+    & > :last-child {
+      margin-bottom: 0;
+      vertical-align: top;
+    }
+
+    @include breakpoint(medium) {
+      display: table-cell;
+    }
+  }
+
+  tr {
+    transition: background-color .1s linear;
+    display: block;
+
+    @include breakpoint(medium) {
+      display: table-row;
+    }
+  }
+
+  > tr {
+    &:not(:first-child) {
+      border-top: 1px solid $support3;
+    }
+  }
+
+  > :not(:first-child) {
+    > tr {
+      border-top: 1px solid $support3;
+    }
+  }
+
+  > :first-child {
+    > tr:not(:first-child) {
+      border-top: 1px solid $support3;
+    }
+  }
+
+  > tr:nth-of-type(odd),
+  > tbody tr:nth-of-type(odd) {
+    background: $support3;
+    border-top: 1px solid $support3;
+    border-bottom: 1px solid $support3;
+  }
+
+  thead {
+    display: none;
+
+    @include breakpoint(medium) {
+      display: table-header-group;
+    }
+  }
+
+  tfoot {
+    font-size: 14px;
+  }
+
+  caption {
+    font-size: 14px;
+    text-align: left;
+    color: $support2;
+  }
+
+  &.middle {
+    vertical-align: middle !important;
+
+    td {
+      vertical-align: middle !important;
+    }
+  }
+}
+
+* + table {
+  margin-top: 20px;
+}

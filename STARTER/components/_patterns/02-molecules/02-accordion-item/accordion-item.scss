@@ -1,0 +1,53 @@
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease;
+}
+
+.accordion-item {
+  background-color: $acc-item-background;
+  border: $acc-item-border-width solid $acc-item-border-color;
+  border-radius: $acc-item-border-radius;
+
+  .card-body {
+    padding: $acc-item-body-padding;
+  }
+
+  .card-header {
+    padding: $acc-item-header-padding;
+    background-color: $acc-item-header-background-color;
+    border-bottom: $acc-item-header-border;
+
+    a {
+      font-size: $global-font-size;
+      color: $acc-item-header-link-color;
+      @include font($base-font, 'bold');
+    }
+
+    &:first-child {
+      border-radius: calc(#{$acc-item-border-radius} - 1px) calc(#{$acc-item-border-radius} - 1px) 0 0;
+    }
+  }
+
+  .card-footer {
+    padding: $acc-item-footer-padding;
+    background-color: $acc-item-footer-background-color;
+    border-top: $acc-item-footer-border;
+
+    a {
+      font-size: $global-font-size;
+      @include font($base-font, 'bold');
+
+      color: $acc-item-footer-link-color;
+    }
+
+    &:last-child {
+      border-radius: 0 0 calc(#{$acc-item-border-radius} - 1px) calc(#{$acc-item-border-radius} - 1px);
+    }
+  }
+}

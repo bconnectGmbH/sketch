@@ -1,10 +1,13 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 const extend = require('util')._extend;
+const globImporter = require('node-sass-glob-importer');
+const ExtraneousFileCleanupPlugin = require('webpack-extraneous-file-cleanup-plugin');
 
 module.exports = function (env, config) {
   let cssOptions = {
-    minimize: (env.NODE_ENV === 'dev') ? false : true
+    minimize: (env.NODE_ENV === 'dev') ? false : true,
+    importLoaders: false
   }
   config.module.rules.push({
     test: /\.scss$/,
@@ -27,17 +30,22 @@ module.exports = function (env, config) {
         }
       }, {
         loader: 'sass-loader',
-      }, {
-        loader: 'import-glob'
+        options: {
+          importer: globImporter(),
+          importLoaders: false
+        }
       }]
     })
   });
-  config.entry.push(path.resolve(__dirname, '../scss/styles.scss'));
+  config.entry.styles = path.resolve(__dirname, '../scss/styles.scss');
   config.plugins.push(
     new ExtractTextPlugin({
       filename: 'css/styles.css',
       disable: false,
       allChunks: true
     }),
+    new ExtraneousFileCleanupPlugin({
+      extensions: ['.js']
+    })
   );
 }

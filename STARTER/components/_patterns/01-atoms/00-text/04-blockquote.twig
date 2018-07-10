@@ -1,0 +1,30 @@
+{#
+/**
+ * Blockquote with / without Source
+ *
+ * Zitat mit oder ohne Quellenangabe
+ *
+ * @param string $blockquote_content Das ist das Zitat
+ * @param string $blockquote_source Das ist die Quellenangabe vom Zitat
+ *
+ * @example
+ * <div class="sg-quote">
+ *   <h6>With Source</h6>
+ *   {% include "@atoms/00-text/04-blockquote.twig" with {
+ *     blockquote_content: faker('text', 500),
+ *     blockquote_source: faker('text', 150)
+ *   } %}
+ *   <h6>Without Source</h6>
+ *   {% include "@atoms/00-text/04-blockquote.twig" with {
+ *     blockquote_content: faker('text', 500)
+ *   } %}
+ * </div>
+ */
+#}
+
+<blockquote>
+  <p>{{blockquote_content}}></p>
+  {% if blockquote_source %}
+    <small>{{blockquote_source}}</small>
+  {% endif %}
+</blockquote>

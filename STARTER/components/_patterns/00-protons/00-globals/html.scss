@@ -1,0 +1,40 @@
+html {
+  @include font($base-font, 'regular');
+
+  -webkit-text-size-adjust: 100%;
+  background: $white;
+  color: $primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  direction: $global-text-direction;
+}
+
+body {
+  margin: 0 auto;
+  max-width: $global-width;
+}
+
+main {
+  padding: 0 1rem;
+  margin: 1rem 0;
+
+  @include breakpoint(large) {
+    margin: 2rem 0;
+  }
+}
+
+body, html {
+	height: 100%
+}
+
+a {
+  -webkit-text-decoration-skip: objects;
+}
+
+.hyphen {
+  hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+}

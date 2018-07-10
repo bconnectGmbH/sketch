@@ -1,0 +1,77 @@
+@mixin list($style) {
+  @if $style == 'default' {
+    li {
+      padding-left: 10px;
+    }
+  } @else if $style == 'stripped' {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 5px;
+
+      &:nth-of-type(even) {
+        background-color: $support3;
+      }
+    }
+  } @else if $style == 'lined' {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 5px;
+      border-bottom: 1px solid $support2;
+
+      &:first-of-type {
+        border-top: 1px solid $support2;
+      }
+    }
+  } @else if $style == 'space' {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 10px 5px;
+    }
+  } @else if $style == 'nice' {
+    list-style: none;
+    padding-left: 10px;
+
+    li {
+      &::before {
+        content: '•';
+        color: $secondary;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+dt {
+  @include font($base-font, 'bold');
+}
+
+dd {
+  margin-left: 0;
+}
+
+ol,
+ul {
+  @include list('default');
+
+  &.nice-list {
+    @include list('nice');
+  }
+
+  &.stripped-list {
+    @include list('stripped');
+  }
+
+  &.lined-list {
+    @include list('lined');
+  }
+
+  &.space-list {
+    @include list('space');
+  }
+}

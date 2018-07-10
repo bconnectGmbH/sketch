@@ -1,0 +1,29 @@
+{#
+/**
+ * Mansonry Grid 4
+ *
+ * @example
+ * <div class="preview masonry-layout">
+ *   <div class="masonry-grid grid-four">
+ *     {% for i in 1..20 %}
+ *       <div class="grid-item">
+ *         Grid {{i}}
+ *       </div>
+ *     {% endfor %}
+ *   </div>
+ * </div>
+ *
+ */
+#}
+
+<div class="masonry-layout">
+  <div class="masonry-grid grid-{{count}}">
+    {% for item in items %}
+      <div class="grid-item">
+        {% block content %}
+          {{ content }}
+        {% endblock %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

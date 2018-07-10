@@ -1,0 +1,56 @@
+{#
+/**
+ * UL List
+ *
+ * Ungeordnete Liste
+ *
+ * @param string $list_content Inhalt pro Zeile in einer Liste
+ * @param string $list_class um der Liste eine Klasse geben zu können
+ *
+ * @example
+ * {% set list_items = {
+ *   0: faker('text', 50),
+ *   1: faker('text', 100),
+ *   2: faker('text'),
+ *   3: faker('text'),
+ *   4: faker('text'),
+ *   5: faker('text'),
+ *   6: faker('text'),
+ *   7: faker('text')
+ * } %}
+ * <h6>Standard List</h6>
+ * <div class="sg-lists">
+ *   {% include "@atoms/02-lists/00-ul-lists.twig" with {
+ *     items: list_items
+ *   } %}
+ * </div>
+ * <h6>Nice List</h6>
+ *   {% include "@atoms/02-lists/00-ul-lists.twig" with {
+ *     list_class: 'nice-list',
+ *     items: list_items
+ *   } %}
+ * <h6>Stripped List</h6>
+ *   {% include "@atoms/02-lists/00-ul-lists.twig" with {
+ *     list_class: 'stripped-list',
+ *     items: list_items
+ *   } %}
+ * <h6>Lined List</h6>
+ *   {% include "@atoms/02-lists/00-ul-lists.twig" with {
+ *     list_class: 'lined-list',
+ *     items: list_items
+ *   } %}
+ * <h6>Space List</h6>
+ *   {% include "@atoms/02-lists/00-ul-lists.twig" with {
+ *     list_class: 'space-list',
+ *     items: list_items
+ *   } %}
+ */
+#}
+
+<ul {% if list_class %} class="{{list_class}}" {% endif %}>
+  {% for item in items %}
+    <li>
+      {{item}}
+    </li>
+  {% endfor %}
+</ul>

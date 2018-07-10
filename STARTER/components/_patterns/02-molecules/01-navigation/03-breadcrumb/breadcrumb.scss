@@ -1,0 +1,40 @@
+.breadcrumbs.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $breadcrumb-nav-padding;
+  list-style: none;
+
+  li {
+    padding: 0;
+
+    a {
+      color: $breadcrumb-item-color;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active,
+      &.active {
+        border-bottom: 1px solid $breadcrumb-item-hover-border-color;
+      }
+    }
+  }
+
+  li + li::before {
+    display: inline-block;
+    padding-right: $breadcrumb-space-between-items;
+    padding-left: $breadcrumb-space-between-items;
+    color: $breadcrumb-divider-color;
+    content: '/';
+  }
+
+  .current {
+    color: $breadcrumb-active-item;
+  }
+
+  h1 {
+    font-size: $global-font-size;
+    margin: 0;
+    display: inline-block;
+  }
+}

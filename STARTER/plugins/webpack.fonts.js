@@ -1,59 +1,74 @@
-module.exports = function (env, config) {
-
+module.exports = function fontPlugin(env, config) {
   let pkgConfig = {
-    limit: 100000,
-    outputPath: '../',
+    limit: 1,
+    outputPath: '../vendor/fonts',
     loader: 'url-loader',
+    publicPath: '../fonts',
   };
 
   if (config.fonts) {
-    pkgConfig = extend(pkgConfig, config.fonts);
+    pkgConfig = $.extend(pkgConfig, config.fonts);
   }
 
   config.module.rules.push({
     test: /\.woff?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: pkgConfig.loader,
     options: {
-      mimetype: "application/font-woff",
+      mimetype: 'application/font-woff',
       limit: pkgConfig.limit,
-      name: 'fonts/[name]-[hash].[ext]',
-      outputPath: pkgConfig.outputPath
-    }
+      name: 'fonts/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
   }, {
     test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: pkgConfig.loader,
     options: {
-      mimetype: "application/font-woff",
+      mimetype: 'application/font-woff',
       limit: pkgConfig.limit,
-      name: 'fonts/[name]-[hash].[ext]',
-      outputPath: pkgConfig.outputPath
-    }
+      name: 'fonts/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
   }, {
     test: /\.(ttf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: pkgConfig.loader,
     options: {
-      mimetype: "application/font-ttf",
+      mimetype: 'application/font-ttf',
       limit: pkgConfig.limit,
-      name: 'fonts/[name]-[hash].[ext]',
-      outputPath: pkgConfig.outputPath
-    }
+      name: 'fonts/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
+  }, {
+    test: /\.(otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loader: pkgConfig.loader,
+    options: {
+      mimetype: 'application/font-otf',
+      limit: pkgConfig.limit,
+      name: 'fonts/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
   }, {
     test: /\.(eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: pkgConfig.loader,
     options: {
-      mimetype: "application/font-eot",
+      mimetype: 'application/font-eot',
       limit: pkgConfig.limit,
-      name: 'fonts/[name]-[hash].[ext]',
-      outputPath: pkgConfig.outputPath
-    }
+      name: 'fonts/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
   }, {
     test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: pkgConfig.loader,
     options: {
-      mimetype: "application/image/svg+xml",
+      mimetype: 'application/image/svg+xml',
       limit: pkgConfig.limit,
-      name: "imgs/[name]-[hash].[ext]",
-      outputPath: pkgConfig.outputPath
-    }
+      name: 'imgs/[name].[ext]',
+      outputPath: pkgConfig.outputPath,
+      publicPath: pkgConfig.publicPath,
+    },
   });
-}
+};

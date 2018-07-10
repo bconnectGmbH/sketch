@@ -1,0 +1,72 @@
+{#
+/**
+ * Frontpage
+ *
+ * @example
+ * {% set sliderItems = {
+ *   0: {'hero_heading': 'Keine Raketenwissenschaft.', 'hero_heading_level': 2, 'hero_text': 'Einfach gut programmiert.', 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'img-left', 'hero_img_src': '../../../../images/b-connect/Development_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50)},
+ *   1: {'hero_heading': '20 Jahre  b-connect.', 'hero_heading_level': 2, 'hero_text': '13 Jahre Drupal.', 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'img-right', 'hero_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50)},
+ *   2: {'hero_heading': 'Vom Scheitel bis zur Sohle.', 'hero_heading_level': 2, 'hero_text': 'Perfekte Server Architektur.', 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'img-left', 'hero_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50)},
+ * } %}
+ * {% set cards = {
+ *   0: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/Development_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
+ *   1: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
+ *   2: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)}
+ * } %}
+ * {% set refimages = {
+ *   0: {'src': '../../../../images/b-connect/berliner_philharmoniker.png'}, 1: {'src': '../../../../images/b-connect/bitkom.png'}, 2: {'src': '../../../../images/b-connect/gema.png'}, 3: {'src': '../../../../images/b-connect/marburger_bund.png'},
+ *   4: {'src': '../../../../images/b-connect/mrs_sporty.png'}, 5: {'src': '../../../../images/b-connect/oxfam.png'}, 6: {'src': '../../../../images/b-connect/rohde_und_schwarz.png'}, 7: {'src': '../../../../images/b-connect/rtl.png'},
+ *   8: {'src': '../../../../images/b-connect/umwelt_bundesamt.png'}, 9: {'src': '../../../../images/b-connect/umweltministerium.png'}, 10: {'src': '../../../../images/b-connect/uni_zuerich.png'}, 11: {'src': '../../../../images/b-connect/zdf.png'}
+ * } %}
+ * {% include "@pages/frontpage.twig" with {
+ *   logo_img_alt: faker('text', 50),
+ *   logo_img_title: faker('text', 50),
+ *   logo_img_src_mobile: '../../../../images/logos/schriftzug.png',
+ *   logo_img_src: '../../../../images/logos/bc_logo_text.png',
+ *   logo_img_href: '/patterns/06-pages-00-intro/06-pages-00-intro.html',
+ *   content_class: 'front-page',
+ *   sliderItems: sliderItems,
+ *   frontpage_cards1: cards,
+ *   frontpage_cards2: cards,
+ *   heading_1: 'b-connect - Drupal Agentur',
+ *   heading_2: 'Kontaktieren Sie uns für Ihre Projektanfrage.',
+ *   heading_3: 'AUSZUG UNSERER REFERENZEN',
+ *   heading_class_extra: 'center section-title',
+ *   front_page_text_1: 'Profitieren Sie von unserer Leidenschaft für das Web, unserer langjährigen Erfahrung mit Drupal und unserer Professionalität im Umgang mit technischen Fragestellungen. Sprechen Sie uns an. Wir stehen Ihnen mit Ideen und Lösungen zur Seite und führen Ihre Projekte erfolgreich zum Ziel. Sprechen Sie uns an. Unser Support steht Ihnen jederzeit Rede und Antwort. Auf Wunsch rufen wir Sie gerne zurück. b-connect, Ihre Drupal Agentur aus Berlin<br><br>Geschäftszeiten: Montag bis Freitag, 09:00 - 18:00 Uhr<br>Telefon: +49 30 217 363-0<br>E-Mail: <strong><a href="/unternehmen/kontakt" target="_self">mail@b-connect.de</a></strong>',
+ * } %}
+ */
+#}
+
+{% embed '@templates/site-container.twig' %}
+  {% block site_content %}
+    <section>
+      {% include "@organisms/06-slider/slider_hero.twig" with {slider_id: 'slider_front'}%}
+    </section>
+    <section>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: heading_1, heading_class: heading_class_extra} %}
+      {% include "@organisms/04-card-grid/card-grid.twig" with {cards: frontpage_cards1, card_grid_key: "three"} %}
+    </section>
+    <section>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 3, heading: heading_2, heading_class: heading_class_extra} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: front_page_text_1} %}
+    </section>
+    <section>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: heading_3, heading_class: heading_class_extra} %}
+      {% include "@organisms/04-card-grid/card-grid.twig" with {cards: frontpage_cards2, card_grid_key: "three"} %}
+    </section>
+    <section>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: heading_3, heading_class: heading_class_extra} %}
+      <div class="reference-grid grid-six">
+          {% for img in refimages %}
+            <div>
+              {% include "@atoms/06-images/00-image.twig" with {
+                img_src: img.src,
+                img_alt: faker('text', 30),
+                img_title: faker('text', 30),
+              } %}
+            </div>
+          {% endfor %}
+      </div>
+    </section>
+  {% endblock %}
+{% endembed %}

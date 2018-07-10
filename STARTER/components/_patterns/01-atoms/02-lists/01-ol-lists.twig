@@ -1,0 +1,35 @@
+{#
+/**
+ * OL List
+ *
+ * Geordnete Liste
+ *
+ * @param string $list_content Inhalt pro Zeile in einer Liste
+ * @param string $list_class um der Liste eine Klasse geben zu können
+ *
+ * @example
+ * {% set list_items = {
+ *   0: faker('text', 50),
+ *   1: faker('text', 100),
+ *   2: faker('text'),
+ *   3: faker('text'),
+ *   4: faker('text'),
+ *   5: faker('text'),
+ *   6: faker('text'),
+ *   7: faker('text')
+ * } %}
+ * <div class="sg-lists">
+ *   {% include "@atoms/02-lists/01-ol-lists.twig" with {
+ *     items: list_items
+ *   } %}
+ * </div>
+ */
+#}
+
+<ol {% if list_class %} class="{{list_class}}" {% endif %}>
+  {% for item in items %}
+    <li>
+      {{item}}
+    </li>
+  {% endfor %}
+</ol>

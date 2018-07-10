@@ -1,0 +1,84 @@
+{#
+/**
+ * Main Menu
+ *
+ * @param array $items Array mit allen Menü Items
+ * @param array $url Link vom Menüpunkt
+ * @param array $title Title vom Menüpunkt
+ *
+ * @example
+ * <div style="padding: 20px;">
+ *   {% include "@molecules/01-navigation/00-main-menu/main-menu.twig" with {
+ *      menu_id: 'menu_id1',
+ *      items: mainmenu.items,
+ *      url: item.url,
+ *      title: item.title,
+ *      logo_img_alt: faker('text', 50),
+ *      logo_img_title: faker('text', 50),
+ *      logo_img_src: '../../../../images/logos/logo.png',
+ *      logo_img_src_mobile: '../../../../images/logos/schriftzug.png',
+ *      logo_img_href: '/?p=pages-intro',
+ *      mobile_search_submit_id: 'mobile_search_id',
+ *      mobile_search_text_input_id: 'mobile_search_text_id',
+ *      mobile_search_form_id: 'search_form_id3',
+ *      mobile_search_text_placeholder: 'Mobile Placeholder'
+ *   } %}
+ * </div>
+ */
+#}
+
+{% import _self as menus %}
+<nav class="navbar expand inline-nav" role="navigation" aria-labelledby="inline_navigation">
+  <div class="logo-wrapper-mobile">
+    {% include "@protons/02-logos/01-logo-schrift.twig" with {
+      img_alt: logo_img_alt,
+      img_title: logo_img_title,
+      img_src: logo_img_src,
+      img_src: logo_img_src_mobile,
+      img_href: logo_img_href,
+    } %}
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{menu_id}}" aria-controls="{{menu_id}}" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="{{menu_id}}">
+    {{ menus.menu_links(items, 0) }}
+    {% macro menu_links(items, menu_level) %}
+      {% import _self as menus %}
+      {% if items %}
+        {% if menu_level == 0 %}
+          <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav navbar-nav level-{{menu_level}}">
+        {% else %}
+          <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav sub level-{{menu_level}} dropdown-menu">
+        {% endif %}
+        {% for item in items %}
+          {% set list_classes = [
+              'item',
+              item.is_expanded ? 'dropdown',
+              item.below ? 'dropdown-submenu',
+              item.in_active_trail ? 'active-trail'
+          ] %}
+          <li itemprop="name" class="{{ list_classes|join(' ') }}">
+            <a itemprop="url" href="{{ item.url }}" {% if item.is_expanded and menu_level < 1 %} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ item.title }}</a>
+            {% if item.below %}
+              {{ menus.menu_links(item.below, menu_level + 1) }}
+            {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endmacro %}
+    <div class="search-wrapper-mobile">
+      {% include "@molecules/10-block/search-block.twig" with {
+        search_submit_value: search_submit_value,
+        search_submit_id: mobile_search_submit_id,
+        search_svg: search_svg,
+        search_text_placeholder: mobile_search_text_placeholder,
+        search_text_input_id: mobile_search_text_input_id,
+        search_data_drupal_selector_input: search_data_drupal_selector_input,
+        search_text_icon_position: search_text_icon_position,
+        search_form_id: mobile_search_form_id,
+      } %}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+{#
+/**
+ * Multiple Checkbox
+ *
+ * @param string $items Array mit Checkboxen
+ * @param string $form_label Title für Formelement
+ * @param string $form_help_text Hilfstext für die Formelemente
+ *
+ * @example
+ * {% set items = {
+ *   0: {'form_id': 'checkbox11', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   1: {'form_id': 'checkbox21', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   2: {'form_id': 'checkbox31', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   3: {'form_id': 'checkbox41', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)}
+ * } %}
+ * {% include "@atoms/04-forms/04-multiple-checkbox.twig" with {
+ *   items: items,
+ *   form_label: 'Multiple Checkbox',
+ * } %}
+ */
+#}
+
+ <div class="form-item form-type-checkboxes form-item-checkboxes">
+  <label class="label" for="edit-checkboxes">{{form_label}}</label>
+  <div id="edit-checkboxes" class="form-checkboxes">
+    <form>
+      {% for item in items %}
+        {% include "@atoms/04-forms/03-checkbox.twig" with {
+          form_id: item.form_id,
+          checkbox_group_name: item.checkbox_group_name,
+          checkbox_label: item.checkbox_label
+        } %}
+      {% endfor %}
+    </form>
+  </div>
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

@@ -1,0 +1,5 @@
+@import '../node_modules/animate.css/animate.min.css';
+
+@mixin fade {
+  transition: opacity .15s linear;
+}

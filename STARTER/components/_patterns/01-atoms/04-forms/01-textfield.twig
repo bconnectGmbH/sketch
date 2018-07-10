@@ -1,0 +1,88 @@
+{#
+/**
+ * Textfield
+ *
+ * @param string $text_placeholder Text für den Placeholder
+ * @param string $form_help_text Hilfstext für die Formelemente
+ * @param string $svg SVG oder IMG als vollständiges ELEMENT, wenn ein Icon angezeigt werden soll
+ * @param string $icon_link Link, wenn das Icon verlinkt werden soll
+ * @param string $text_input_id ID form element
+ * @param string $text_icon_position Position (left/right)
+ * @param string $autocorrect ON/OFF
+ * @param string $spellcheck true/false
+ * @param string $autofocus true/false
+ * @param string $autocomplete ON/OFF
+ * @param string type_input hidden, text, search, password, email
+ *
+ * @example
+ * <h6>TextField Standard</h6>
+ * {% include "@atoms/04-forms/01-textfield.twig" with {
+ *   text_label_for: faker('text', 15),
+ *   text_input_id: 'textfield1',
+ *   text_placeholder: 'Textfield',
+ *   type_input: 'text'
+ * } %}
+ * <h6>TextField Required</h6>
+ * {% include "@atoms/04-forms/01-textfield.twig" with {
+ *   text_label_for: faker('text', 15),
+ *   text_input_id: 'textfield2',
+ *   text_placeholder: 'Text Feld Required',
+ *   form_required: true,
+ *   type_input: 'text'
+ * } %}
+ * <h6>TextField Error</h6>
+ * {% include "@atoms/04-forms/01-textfield.twig" with {
+ *   text_label_for: faker('text', 15),
+ *   text_input_id: 'textfield3',
+ *   text_placeholder: 'Error Feld',
+ *   error: true,
+ *   type_input: 'text'
+ * } %}
+ * <h6>TextField with Icon</h6>
+ * {% include "@atoms/04-forms/01-textfield.twig" with {
+ *   text_label_for: faker('text', 15),
+ *   text_icon_position: 'left',
+ *   svg: '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <rect fill="none" stroke="#000" height="10" width="13" y="8.5" x="3.5"></rect> <path fill="none" stroke="#000" d="M6.5,8 L6.5,4.88 C6.5,3.01 8.07,1.5 10,1.5 C11.93,1.5 13.5,3.01 13.5,4.88 L13.5,8"></path></svg>',
+ *   text_input_id: 'textfield4',
+ *   text_placeholder: 'Text Feld mit Icon',
+ *   type_input: 'text'
+ * } %}
+ * <h6>TextField with Icon Link</h6>
+ * {% include "@atoms/04-forms/01-textfield.twig" with {
+ *   text_label_for: faker('text', 15),
+ *   text_icon_position: 'left',
+ *   icon_link: '#',
+ *   svg: '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <rect fill="none" stroke="#000" height="10" width="13" y="8.5" x="3.5"></rect> <path fill="none" stroke="#000" d="M6.5,8 L6.5,4.88 C6.5,3.01 8.07,1.5 10,1.5 C11.93,1.5 13.5,3.01 13.5,4.88 L13.5,8"></path></svg>',
+ *   text_input_id: 'textfield5',
+ *   text_placeholder: 'Text Feld mit Icon',
+ *   type_input: 'text'
+ * } %}
+ */
+#}
+
+{% if svg %}
+  <div class="form-item form-type-textfield form-item-textfield">
+    <label class="label" for="{{text_label_for}}">
+      <div class="icon {{text_icon_position}}">
+        {% if icon_link %}
+          <a href="{{icon_link}}" class="form-icon">{{svg|raw}}</a>
+        {% else %}
+          <span class="form-icon">{{svg|raw}}</span>
+        {% endif %}
+        <input type="{{type_input}}" {% if autocorrect %}autocorrect="{{autocorrect}}"{% endif %} {% if autocomplete %}autocomplete="{{autocomplete}}"{% endif %} {% if spellcheck %}spellcheck="{{spellcheck}}"{% endif %} {% if autofocus %}autofocus{% endif %} autocapitalize="off" id="{{text_input_id}}" {% if text_input_id %}data-drupal-selector="{{text_input_id}}"{% endif %} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{% if error %} error{% endif %}" {% if form_required %} required aria-required="true" {% endif %}>
+      </div>
+    </label>
+    {% if form_help_text %}
+      <div class="description">{{form_help_text}}</div>
+    {% endif %}
+  </div>
+{% else %}
+  <div class="form-item form-type-textfield form-item-textfield">
+    <label class="label" for="{{text_label_for}}">
+      <input type="{{type_input}}" {% if autocorrect %}autocorrect="{{autocorrect}}"{% endif %} {% if autocomplete %}autocomplete="{{autocomplete}}"{% endif %} {% if spellcheck %}spellcheck="{{spellcheck}}"{% endif %} {% if autofocus %}autofocus{% endif %} autocapitalize="off" id="{{text_input_id}}" {% if text_input_id %}data-drupal-selector="{{text_input_id}}"{% endif %} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{% if error %} error{% endif %}" {% if form_required %} required aria-required="true" {% endif %}>
+    </label>
+    {% if form_help_text %}
+      <div class="description">{{form_help_text}}</div>
+    {% endif %}
+  </div>
+{% endif %}

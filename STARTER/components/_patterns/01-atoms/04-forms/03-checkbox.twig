@@ -1,0 +1,27 @@
+{#
+/**
+ * Checkbox
+ *
+ * @param string $checkbox_label Label für die Checkbox
+ * @param string $form_help_text Hilfstext für die Formelemente
+ * @param bool $form_checked Ob die Checkbox standardmässig angehakt ist
+ *
+ * @example
+ * {% include "@atoms/04-forms/03-checkbox.twig" with {
+ *   form_label: 'Select Feld',
+ *   form_help_text: faker('text', 100),
+ *   form_id: 'edit-checkbox',
+ *   checkbox_group_name: 'checkbox',
+ *   checkbox_label: 'Checkbox'
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-checkbox form-item-checkbox-{{form_id}}">
+    <input type="checkbox" id="{{form_id}}" name="{{checkbox_group_name}}" value="{{checkbox_label|lower|replace(' ', '-')}}" class="form-checkbox" {% if form_checked %} checked {% endif %} {% if form_required %} required aria-required="true" {% endif %}>
+    <label class="option" for="{{form_id}}">{{checkbox_label}}</label>
+    {% if form_help_text %}
+        <div class="description">{{form_help_text}}</div>
+    {% endif %}
+</div>
+

@@ -1,0 +1,56 @@
+{#
+/**
+ * Slider Hero
+ *
+ * http://kenwheeler.github.io/slick/
+ *
+ * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
+ * @param bool $hero_img_as_background true / false
+ * @param string $hero_img_src Hero Bild Quelle
+ * @param string $hero_img_alt Hero Bild Alternativ Text
+ * @param string $hero_img_title Hero Bild Titel
+ * @param int $hero_img_height Height ohne Unit Angabe.
+ * @param string $hero_heading_level Headline Level
+ * @param string $hero_heading Headline Text
+ * @param string $hero_text Hero Text
+ * @param string $hero_button_url Button URL
+ * @param string $hero_button_class Button Extra Klasse siehe Button Pattern
+ * @param string $hero_button_text Button Text
+ * @param array $sliderItems Liste aller Heros die als Slider ausgegeben werden sollen
+ * @param string $slider_extra_class Extra Class falls mehre Slider auf einer Seite existieren
+ *
+ * @example
+ * {% set sliderItems = {
+ *   0: {'hero_heading': 'DEFAULT STYLE', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25)},
+ *   1: {'hero_heading': 'TEXT CENTER STYLE', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'text-center'},
+ *   2: {'hero_heading': 'DEFAULT STYLE WITH BACKGROUND', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50), 'hero_img_as_background': true},
+ *   3: {'hero_heading': 'TEXT CENTER STYLE  WITH BACKGROUND', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'text-center', 'hero_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50), 'hero_img_as_background': true},
+ *   4: {'hero_heading': 'IMAGE LEFT', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'img-left', 'hero_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50)},
+ *   5: {'hero_heading': 'IMAGE RIGHT', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_button_url': '#', 'hero_button_class': 'filled animated', 'hero_button_text': faker('text', 25), 'hero_style': 'img-right', 'hero_img_src': '../../../../images/b-connect/Service_Slide_Image.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50)},
+ * } %}
+ * <h6>Slick Slider</h6>
+ * {% include "@organisms/06-slider/slider_hero.twig" with {
+ *   sliderItems: sliderItems,
+ *   slider_extra_class: 'default'
+ * } %}
+ */
+#}
+
+<div id="{{slider_id}}" class="slider {{slider_extra_class}}">
+  {% for slide in sliderItems %}
+    {% include "@molecules/09-hero/hero.twig" with {
+      hero_heading: slide.hero_heading,
+      hero_heading_level: slide.hero_heading_level,
+      hero_text: slide.hero_text,
+      hero_style: slide.hero_style,
+      hero_img_src: slide.hero_img_src,
+      hero_img_title: slide.hero_img_title,
+      hero_img_alt: slide.hero_img_alt,
+      hero_button_url: slide.hero_button_url,
+      hero_button_class: slide.hero_button_class,
+      hero_button_text: slide.hero_button_text,
+      hero_img_as_background: slide.hero_img_as_background,
+      img_only: slide.img_only
+    } %}
+  {% endfor %}
+</div>

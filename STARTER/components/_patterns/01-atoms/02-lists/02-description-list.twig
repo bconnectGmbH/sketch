@@ -1,0 +1,37 @@
+{#
+/**
+ * Description List
+ *
+ * Description List
+ *
+ * @param string $content.dt Inhalt pro Zeile in einer Liste für DT
+ * @param string $content.dd Inhalt pro Zeile in einer Liste für DD
+ *
+ * @example
+ * {% set list_items = {
+ *   'item0': [{'dt': faker('word',1), 'dd': faker('text')}],
+ *   'item1': [{'dt': faker('word',1), 'dd': faker('text')}],
+ *   'item2': [{'dt': faker('word',1), 'dd': faker('text')}],
+ *   'item3': [{'dt': faker('word',1), 'dd': faker('text')}],
+ * } %}
+ * <div class="sg-lists">
+ *   {% include "@atoms/02-lists/02-description-list.twig" with {
+ *     items: list_items
+ *   } %}
+ * </div>
+ *
+ */
+#}
+
+<dl {% if list_class %} class="{{list_class}}" {% endif %}>
+    {% for item in items %}
+      {% for content in item %}
+        <dt>
+          {{content.dt}}
+        </dt>
+        <dd>
+          {{content.dd}}
+        </dd>
+      {% endfor %}
+    {% endfor %}
+</dl>

@@ -1,0 +1,27 @@
+{#
+/**
+ * Button Group
+ *
+ * Button Group
+ *
+ * @param string $button_url Link wohin der Button verlinkt wird
+ * @param string $button_extra_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
+ * @param string $button_text Buttontext
+ *
+ * @example
+ * {% set button_items = { '0': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}, '1': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}, '2': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}} %}
+ * {% include "@atoms/03-buttons/01-button-group.twig" with {
+ *   items: button_items
+ * } %}
+ */
+#}
+
+<div class="button-group">
+  {% for item in items %}
+    {% include "@atoms/03-buttons/00-button.twig" with {
+      button_url: item.button_url,
+      button_text: item.button_text,
+      button_extra_class: item.button_class
+    } %}
+  {% endfor %}
+</div>

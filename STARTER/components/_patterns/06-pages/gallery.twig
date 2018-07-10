@@ -1,0 +1,79 @@
+{#
+/**
+ * Gallery
+ *
+ * @example
+ * {% set items = {
+ *   0: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_4.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   1: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_2.jpg', 'img_title': 'Sofa am Meer', 'img_alt': 'Sofa am Meer'},
+ *   2: {'img_src': '../../../../images/isabel/isa_patternlab_hunter-gatti_querformat.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   3: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_kurz_schlank_2.2.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   4: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_4.jpg', 'img_title': 'Café in Oltimerlook', 'img_alt': 'Café in Oltimerlook'},
+ *   5: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_5.jpg', 'img_title': 'Aqua Diamanten Schmuck', 'img_alt': 'Aqua Diamanten Schmuck'},
+ *   6: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_kurz_schlank_2.3.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   7: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_kurz_schlank.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   8: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_kurz.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   9: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   10: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_2.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   11: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_kurz_schlank_2.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   12: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_3.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   13: {'img_src': '../../../../images/isabel/isa_patternlab_armin_hochformat_3.jpg', 'img_title': 'Uhrenwaage', 'img_alt': 'Uhrenwaage'},
+ *   14: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_5.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   15: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_kurz_schlank_2.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   16: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_kurz_schlank.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   17: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat_kurz.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   18: {'img_src': '../../../../images/isabel/isa_patternlab_armin_querformat.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ *   19: {'img_src': '../../../../images/isabel/isa_patternlab_hunter-gatti__hochformat.jpg', 'img_title': faker('text', 50), 'img_alt': faker('text', 50)},
+ * } %}
+ * {% set sliderImgs = {
+ *   0: {'img_src': '../../../../images/isabel/22_Sven_Jacobsen_Portait_Boxer_Wladimir_Klitschko_.jpg', 'img_alt': faker('text', 50), 'img_title': faker('text', 50)},
+ *   1: {'img_src': '../../../../images/isabel/9_Armin_Zogbaum_Interior_design_chairs_furniture_still_life_Photography.jpg', 'img_alt': faker('text', 50), 'img_title': faker('text', 50)},
+ *   2: {'img_src': '../../../../images/isabel/11_Armin_Zogbaum_Interior_design_kitchen_coffee_still_life_Photography.jpg', 'img_alt': faker('text', 50), 'img_title': faker('text', 50)},
+ *   3: {'img_src': '../../../../images/isabel/18_Armin_Zogbaum_Interior_design_furniture_still_life_Photography.jpg', 'img_alt': faker('text', 50), 'img_title': faker('text', 50)},
+ *   4: {'img_src': '../../../../images/isabel/20_Sven_Jacobsen_Nikon_Beauty_Queen_Dog.jpg', 'img_alt': faker('text', 50), 'img_title': faker('text', 50)},
+ * } %}
+ * {% include "@pages/gallery.twig" with {
+ *   content_class: 'gallery',
+ *   sliderItems: sliderImgs,
+ *   logo_img_alt: faker('text', 50),
+ *   logo_img_title: faker('text', 50),
+ *   logo_img_src_mobile: '../../../../images/logos/schriftzug.png',
+ *   logo_img_src: '../../../../images/logos/bc_logo_text.png',
+ *   logo_img_href: '/patterns/06-pages-00-intro/06-pages-00-intro.html',
+ * } %}
+ */
+#}
+
+{% embed '@templates/site-container.twig' %}
+  {% block site_content %}
+    <section>
+        {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: 'Bilder'} %}
+    </section>
+    <section>
+        {% include "@organisms/06-slider/slider_img.twig" with {slider_id: 'slider_gallery'} %}
+    </section>
+    <section>
+      {% embed "@layout/01-masonry/masonry.twig" with {
+        items: items,
+        count: 'three'
+      }%}
+        {% block content %}
+          {% include "@atoms/06-images/00-image.twig" with {
+            img_src: item.img_src,
+          } %}
+        {% endblock %}
+      {% endembed %}
+    </section>
+  {% endblock %}
+{% endembed %}
+
+
+
+
+
+
+
+
+
+
+

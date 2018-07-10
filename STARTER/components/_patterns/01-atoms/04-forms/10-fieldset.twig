@@ -1,0 +1,36 @@
+{#
+ /**
+ * Fieldset
+ *
+ * @param string $fieldset_legend Titel auf dem Feldset
+ * @param string $fieldset_description Der Beschreibungstext / Hilfstext
+ * @param string $form_elements Array mit Templates der Elemente
+ *
+ * @example
+ * {% set items1 = {0: faker('text', 50), 1: faker('text', 50), 2: faker('text', 50), 3: faker('text', 50), 4: faker('text', 50)} %}
+ * {% set items2 = {
+ *   0: {'form_id': 'checkbox1', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   1: {'form_id': 'checkbox2', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   2: {'form_id': 'checkbox3', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   3: {'form_id': 'checkbox4', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)}
+ * } %}
+ * {% embed '@atoms/04-forms/10-fieldset.twig' with {'fieldset_legend': 'FieldSet Legende'} %}
+ *   {% block fieldset_content %}
+ *     {% include '@atoms/04-forms/02-select.twig' with {'items': items1, 'form_label': 'Select Feld', form_help_text: faker('text', 100), select_id: 'edit-select2'} %}
+ *     {% include '@atoms/04-forms/04-multiple-checkbox.twig' with {'form_label': 'Multi Choice', 'items': items2} %}
+ *   {% endblock %}
+ * {% endembed %}
+ */
+#}
+
+<fieldset class="form-wrapper" id="edit-fieldset">
+  <legend><span class="fieldset-legend">{{fieldset_legend}}</span></legend>
+  <div class="fieldset-wrapper">
+    {% if form_help_text %}
+      <div class="fieldset-description">{{fieldset_description}}</div>
+    {% endif %}
+    {% block fieldset_content %}
+      {{fieldset_content}}
+    {% endblock %}
+  </div>
+</fieldset>

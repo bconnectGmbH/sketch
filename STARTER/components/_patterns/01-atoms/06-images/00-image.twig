@@ -1,0 +1,55 @@
+{#
+ /**
+ * Image
+ *
+ * Dieses Pattern erlaubt die neue Responsive Image Funktion.
+ * Es beginnt mit dem handelüblichen <img src="" alt="" title=""/>
+ * Zusätzlich können nun srcset="" und sizes="" eingetragen werden.
+ * Dokumention hier zu: https://blog.kulturbanause.de/2014/09/responsive-images-srcset-sizes-adaptive
+ *
+ * @param string $img_srcset Liste an Bildquellen
+ * @param string $img_sizes Darstellungsgröße der Bilder in Viewports
+ * @param string $img_src Pfad zum Bild
+ * @param string $img_alt Alttext
+ * @param string $img_title Titletext
+ *
+ * @example
+ * <h6> Ohne Sourceset</h6>
+ * {% include "@atoms/06-images/00-image.twig" with {
+ *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   img_alt: faker('text', 30),
+ *   img_title: faker('text', 30),
+ * } %}
+ * <h6> Bild verlinkt </h6>
+ * {% include "@atoms/06-images/00-image.twig" with {
+ *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
+ *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   img_alt: faker('text', 30),
+ *   img_title: faker('text', 30),
+ *   img_url: '#'
+ * } %}
+ * <h6> Mit Sourceset</h6>
+ * {% include "@atoms/06-images/00-image.twig" with {
+ *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
+ *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   img_alt: faker('text', 30),
+ *   img_title: faker('text', 30),
+ * } %}
+ * <h6> Mit Sourceset und Sizes</h6>
+ * {% include "@atoms/06-images/00-image.twig" with {
+ *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
+ *   img_sizes: '(min-width: 1200px) 33vw, (min-width: 1024px) 50vw, 100vw',
+ *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   img_alt: faker('text', 30),
+ *   img_title: faker('text', 30),
+ * } %}
+ */
+#}
+
+{% if img_url %}
+  <a {% for attribute,value in link_attributes %} {{ attribute }}="{{ value }}" {% endfor %} href="{{ img_url }}">
+{% endif %}
+  <img {% if img_alt %}alt="{{ img_alt }}"{% endif %} {% if img_title %}title="{{ img_title }}"{% endif %} src="{{ img_src }}" {% if img_srcset %}srcset="{{ img_srcset }}"{% endif %} {% if img_sizes %}sizes="{{ img_sizes }}"{% endif %}/>
+{% if img_url %}
+  </a>
+{% endif %}

@@ -1,0 +1,38 @@
+div[class*='-grid'] {
+  @include xy-grid;
+}
+
+@each $gridname, $grid in $grid-map {
+  div[class*='grid-#{$gridname}'] {
+    > div {
+
+      @if map-get($grid, small) {
+        @include xy-cell(map-get($grid, small));
+      }
+
+      @if map-get($grid, medium) {
+        @include breakpoint(medium) {
+          @include xy-cell(map-get($grid, medium));
+        }
+      }
+
+      @if map-get($grid, large) {
+        @include breakpoint(large) {
+          @include xy-cell(map-get($grid, large));
+        }
+      }
+
+      @if map-get($grid, xlarge) {
+        @include breakpoint(xlarge) {
+          @include xy-cell(map-get($grid, xlarge));
+        }
+      }
+    }
+  }
+}
+
+.masonry-layout {
+  div[class*='-grid'] {
+    align-items: baseline;
+  }
+}

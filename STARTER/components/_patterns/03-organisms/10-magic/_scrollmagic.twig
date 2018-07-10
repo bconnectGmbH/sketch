@@ -1,0 +1,9 @@
+<section class="content section-wipes">
+  <div id="pinContainer" class="scroll-container">
+    {% for content_item in content_array %}
+      <section class="panel {{content_item.class}}">
+        {{content_item.content|raw}}
+      </section>
+    {% endfor %}
+  </div></div>
+</section>

@@ -1,0 +1,37 @@
+{#
+ /**
+ * Radiobutton
+ *
+ * @param string $radio_label Label für die Radiobox
+ * @param string $form_label Title für Formelement
+ * @param string $form_help_text Hilfstext für die Formelemente
+ *
+ * @example
+ * {% set items = {
+ *   0: {'form_id': 'radio1', 'radio_label': faker('text', 25)},
+ *   1: {'form_id': 'radio2', 'radio_label': faker('text', 25)},
+ *   2: {'form_id': 'radio3', 'radio_label': faker('text', 25)},
+ *   3: {'form_id': 'radio4', 'radio_label': faker('text', 25)}
+ * } %}
+ * {% include "@atoms/04-forms/05-radiobutton.twig" with {
+ *   form_label: 'Radiobutton',
+ *   items: items,
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-radios form-item-radios">
+  <label class="label" for="edit-radios">{{form_label}}</label>
+  <div id="edit-radios" class="form-radios">
+    {% for item in items %}
+      <div class="form-item form-type-radio form-item-radios">
+        <input type="radio" id="edit-radios-{{item.radio_label|lower|replace(' ', '-')}}" name="radios" value="{{item.radio_label|lower|replace(' ', '-')}}}}" class="form-radio" {% if form_required %} required aria-required="true" {% endif %}>
+        <label class="option" for="edit-radios-{{item.radio_label|lower|replace(' ', '-')}}}}">{{item.radio_label}}</label>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

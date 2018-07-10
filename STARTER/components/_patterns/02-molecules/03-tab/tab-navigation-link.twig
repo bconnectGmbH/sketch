@@ -1,0 +1,29 @@
+{#
+/**
+ * Tab Navigation Link
+ *
+ * @param string $tab_url Link für den
+ * @param string $tab_title Titel für den Tab
+ *
+ * @example
+ * {% set tab_items = {
+ *   0: {'tab_url': 'tab1', 'tab_title': faker('text', 5), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   1: {'tab_url': 'tab2', 'tab_title': faker('text', 10), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   2: {'tab_url': 'tab3', 'tab_title': faker('text', 8), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   3: {'tab_url': 'tab4', 'tab_title': faker('text', 7), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ * } %}
+ * <ul class="nav tabs" role="tablist">
+ *   {% for key, tab_link in tab_items %}
+ *     {% include "@molecules/03-tab/tab-navigation-link.twig" with {
+ *       "tab_url": tab_link.tab_url,
+ *       "tab_title": tab_link.tab_title,
+ *       "key": key,
+ *     } %}
+ *   {% endfor %}
+ * </ul>
+ */
+#}
+
+<li class="item">
+  <a class="link {% if key == 0 %}active{% endif %}" data-toggle="tab" href="#{{tab_url}}">{{tab_title}}</a>
+</li>

@@ -1,0 +1,24 @@
+{#
+/**
+ * Inline Elements
+ *
+ * Inline Styles für Beispielweise Paragraphen/Absatz
+ *
+ * @example
+ * {% set items = {
+ * 'a': 'Link', 'em': 'kursiv geschriebener Text', 'strong': 'hervorgehobener Text', 'del': 'gelöschter Text', 'ins': 'neu hinzugefügter Text', 'mark': 'markierter Text',
+ * 'q': 'Zitat', 'abbr': 'Abkürzung', 'dfn': 'Ist ein Definition Begriff', 'small': 'Small Text ist 20% kleiner als der normale Text',
+ * } %}
+ * <div class="sg-inline">
+ *   <ul>
+ *   {% for key, item in items %}
+ *     <li>
+ *       <{{key}}>
+ *         {{item}}
+ *       </{{key}}>
+ *     </li>
+ *   {% endfor %}
+ *   </ul>
+ * </div>
+ */
+#}

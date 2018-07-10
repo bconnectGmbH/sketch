@@ -1,0 +1,143 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  li {
+    padding: 0;
+  }
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $navbar-padding;
+  background: $navbar-bg;
+
+  .logo {
+    display: inline-block;
+    padding-top: $navbar-logo-top-padding;
+    padding-bottom: $navbar-logo-bottom-padding;
+    margin-right: $navbar-logo-margin-right;
+    line-height: inherit;
+    white-space: nowrap;
+    max-height: 30px;
+    width: auto;
+    vertical-align: middle;
+
+    @include breakpoint(large) {
+      display: none;
+    }
+  }
+
+  .collapse:not(.show) {
+    display: none;
+  }
+
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    .show {
+      > .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        display: block;
+
+        @include breakpoint(large) {
+          position: absolute;
+          float: left;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      position: static;
+      float: none;
+
+      @include breakpoint(large) {
+        position: absolute;
+        float: left;
+      }
+    }
+
+    @include breakpoint(large) {
+      flex-direction: row;
+    }
+  }
+}
+
+.search-wrapper-mobile {
+  display: block;
+  margin-bottom: 1rem;
+
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: $navbar-toggler-color;
+
+  &::after {
+    @include fa-icon;
+    @include fa-icon-content($fa-var-bars);
+  }
+}
+
+.navbar-toggler {
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
+  line-height: 1;
+  background-color: transparent;
+  border: $navbar-toggler-border-width solid transparent;
+  border-radius: $navbar-toggler-border-radius;
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+}
+
+@include breakpoint(large) {
+  .navbar.expand {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+
+    .navbar-collapse {
+      display: flex !important;
+      flex-basis: auto;
+    }
+
+    .navbar-toggler {
+      display: none;
+    }
+  }
+}

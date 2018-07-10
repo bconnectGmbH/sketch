@@ -1,0 +1,60 @@
+{#
+ /**
+ * Figure
+ *
+ * Dieses Pattern erlaubt die neue Responsive Image Funktion.
+ * Es beginnt mit dem handelüblichen <img src="" alt="" title=""/>
+ * Zusätzlich können nun srcset="" und sizes="" eingetragen werden.
+ * Dokumention hier zu: https://blog.kulturbanause.de/2014/09/responsive-images-srcset-sizes-adaptive
+ *
+ * @param string $img_url Link fürs Bild
+ * @param array $link_attributes array e.g "link_attributes": { 'target': '_blank'}
+ * @param string $img_caption Bildunterschrift
+ *
+ * @example
+ * {% set sources = {
+ *   'i0': {'mediaquery': '(min-width: 1024px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1200.png'},
+ *   'i1': {'mediaquery': '(min-width: 640px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1024.png'},
+ *   'i2': {'mediaquery': '(min-width: 0px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image640.png'},
+ * } %}
+ * <h6>As Image</h6>
+ * {% include "@atoms/06-images/02-figure.twig" with {
+ *   figure_img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   figure_img_alt: faker('text', 30),
+ *   figure_img_title: faker('text', 30),
+ *   img_caption: faker('text', 150),
+ *   figure_img_url: '#',
+ *   figure_output_image_tag: true
+ * } %}
+ * <h6>As Picture</h6>
+ * {% include "@atoms/06-images/02-figure.twig" with {
+ *   figure_img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   figure_img_alt: faker('text', 30),
+ *   figure_img_title: faker('text', 30),
+ *   img_caption: faker('text', 150),
+ *   figure_img_url: '#',
+ *   figure_picture_img_srcset: sources
+ * } %}
+ */
+#}
+
+<figure>
+  {% block figure_content %}
+    {% include "@atoms/06-images/03-responsive-image.twig" with {
+      res_img_src: figure_img_src,
+      res_img_alt: figure_img_alt,
+      res_img_title: figure_img_title,
+      res_img_url: figure_img_url,
+      output_image_tag: figure_output_image_tag,
+      res_img_srcset: figure_img_srcset,
+      res_img_sizes: figure_img_sizes,
+      res_picture_img_srcset: figure_picture_img_srcset
+    } %}
+  {% endblock %}
+  {% if img_caption %}
+    <figcaption>
+      {{ img_caption }}
+    </figcaption>
+  {% endif %}
+</figure>
+

@@ -1,0 +1,84 @@
+{#
+/**
+ * Heading
+ *
+ * Headlines H1 - H6
+ * Alle Schriftgrößen werden ab dem Breakpoint "medium" = 640px und darunter mit skaliert in der Größe
+ *
+ * @param int $heading_level Es ist eine Zahl von 1 bis 6 um die h1-h6 zu steuern.
+ * @param string $heading Das ist der Titel (string) der anzeigt wird.
+ * @param string $link_url Das ist die URL, wenn die Variable leer ist, ist die Headline nicht verlinkt
+ * @param array $link_attributes array e.g "link_attributes": { 'target': '_blank'}
+ * @param bool $small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param bool $subtitle true/false Handel es sich um einen Subtitle
+ * @param string $heading_class Extra Klasse für Headlines
+ *
+ * @example
+ *  <div class="sg-header-styles">
+ *    <h6>Headline Standard</h6>
+ *    {% for i in 1..6 %}
+ *    <div class="sg-pattern pl-heading-examples-1">
+ *      {% include "@atoms/00-text/01-headings.twig" with {
+ *        heading_level: i,
+ *        heading: faker('text', 200),
+ *      } %}
+ *    </div>
+ *    {% endfor %}
+ *    <h6>Headline Standard Link</h6>
+ *    {% for i in 1..6 %}
+ *    <div class="sg-pattern pl-heading-examples-1">
+ *      {% include "@atoms/00-text/01-headings.twig" with {
+ *        heading_level: i,
+ *        link_url: '#',
+ *        heading: faker('text', 200),
+ *      } %}
+ *    </div>
+ *    {% endfor %}
+ *    <h6>Headline Subtitle</h6>
+ *    {% for i in 1..6 %}
+ *    <div class="sg-pattern pl-heading-examples-2">
+ *      {% include "@atoms/00-text/01-headings.twig" with {
+ *        heading_level: i,
+ *        subtitle: true,
+ *        heading: faker('text', 200),
+ *      } %}
+ *    </div>
+ *    {% endfor %}
+ *    <h6>Headline Small for Teasers</h6>
+ *    {% for i in 1..6 %}
+ *    <div class="sg-pattern pl-heading-examples-2">
+ *      {% include "@atoms/00-text/01-headings.twig" with {
+ *        heading_level: i,
+ *        small: true,
+ *        heading: faker('text', 200),
+ *      } %}
+ *    </div>
+ *    {% endfor %}
+ *  </div>
+ */
+#}
+
+<h{{ heading_level }} class="hyphen {% if subtitle or heading_class %}{% if subtitle %} subtitle{% endif %} {{heading_class}}{% endif %}">
+  {% if link_url %}
+    <a
+      {% for attribute,value in link_attributes %}
+        {{ attribute }}="{{ value }}"
+      {% endfor %}
+      href="{{ link_url }}"
+    >
+    {% block heading %}
+      {% if small %}
+        <small>{{ heading }}</small>
+      {% else %}
+        {{ heading }}
+      {% endif %}
+    {% endblock %}
+    </a>
+  {% else %}
+    {% if small %}
+      <small>{{ heading }}</small>
+    {% else %}
+      {{ heading }}
+    {% endif %}
+  {% endif %}
+</h{{ heading_level }}>

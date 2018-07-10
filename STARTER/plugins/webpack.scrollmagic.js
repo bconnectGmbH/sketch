@@ -1,0 +1,33 @@
+const pkgConfig = require('../package.json').config;
+const path = require('path');
+
+module.exports = function (env, config) {
+  config.resolve.alias.TweenLite = path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js');
+  config.resolve.alias.TweenMax = path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js');
+  config.resolve.alias.TimelineLite = path.resolve('node_modules', 'gsap/src/uncompressed/TimelineLite.js');
+  config.resolve.alias.TimelineMax = path.resolve('node_modules', 'gsap/src/uncompressed/TimelineMax.js');
+  config.resolve.alias.EasePack = path.resolve('node_modules', 'gsap/src/uncompressed/easing/EasePack.js');
+  config.resolve.alias.AttrPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/AttrPlugin.js');
+  config.resolve.alias.BezierPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/BezierPlugin.js');
+  config.resolve.alias.ColorPropsPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ColorPropsPlugin.js');
+  config.resolve.alias.CSSPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/CSSPlugin.js');
+  config.resolve.alias.CSSRulePlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/CSSRulePlugin.js');
+  config.resolve.alias.DirectionalRotationPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/DirectionalRotationPlugin.js');
+  config.resolve.alias.EaselPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/EaselPlugin.js');
+  config.resolve.alias.EndArrayPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/EndArrayPlugin.js');
+  config.resolve.alias.ModifiersPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ModifiersPlugin.js');
+  config.resolve.alias.MorphSVGPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/MorphSVGPlugin.js');
+  config.resolve.alias.Physics2DPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/Physics2DPlugin.js');
+  config.resolve.alias.PhysicsPropsPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/PhysicsPropsPlugin.js');
+  config.resolve.alias.RaphaelPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/RaphaelPlugin.js');
+  config.resolve.alias.RoundPropsPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/RoundPropsPlugin.js');
+  config.resolve.alias.ScrambleTextPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrambleTextPlugin.js');
+  config.resolve.alias.ScrollToPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrollToPlugin.js');
+  config.resolve.alias.TEMPLATE_Plugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/TEMPLATE_Plugin.js');
+  config.resolve.alias.TextPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/TextPlugin.js');
+  config.resolve.alias.ThrowPropsPlugin = path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ThrowPropsPlugin.js');
+  config.resolve.alias.ScrollMagic = path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js');
+  config.resolve.alias['animation.gsap'] = path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js');
+  config.resolve.alias['debug.addIndicators'] = path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js');
+  config.resolve.alias['animation.velocity'] = path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.velocity.js');
+};

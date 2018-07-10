@@ -1,1 +1,5 @@
-@import 'styles/*.scss';
+//Styles Base
+@import '../components/_patterns/styles.scss';
+//Overrides
+@import '00-protons/00-protons.scss';
+@import '10-atoms/10-atoms.scss';

@@ -1,0 +1,34 @@
+header {
+  background: white;
+
+  .logo {
+    max-height: 30px;
+    width: auto;
+    vertical-align: middle;
+
+    @include breakpoint(large) {
+      max-height: 110px;
+      width: auto;
+    }
+  }
+
+  .logo-wrapper {
+    align-self: center;
+    flex: 0 0 30%;
+  }
+
+  .search-wrapper {
+    align-self: center;
+    flex: 0 0 30%;
+  }
+
+  .site-info {
+    display: none;
+    justify-content: space-between;
+    margin: 1em 2rem;
+
+    @include breakpoint(large) {
+      display: flex;
+    }
+  }
+}

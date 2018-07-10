@@ -1,0 +1,85 @@
+<h6>Font</h6>
+Dieses Mixin stellt die Fonts dar. Man muss den Font übergeben und den Schriftstil alles andere wird automatisch gesteuert.<br />
+Mögliche Stile sind: regular, italic, bold, bolditalic
+<pre>
+  <code>
+    @include font($fontname, $fontstyle);
+  </code>
+</pre>
+<br /><br />
+Dieses Mixin ermöglicht es die Schriftgröße am dem Breakpoint Medium mit skalieren zu lassen.<br />
+<pre>
+  <code>
+    @include vw($size);
+  </code>
+</pre>
+
+<h6>Icons</h6>
+Hier man kann man in SCSS die bconnect Icons ohne großen Aufwand einfügen, für $icon gilt der Buchstabe zum Icon die Liste ist unter "bconnext Icons zu finden"
+<pre>
+  <code>
+    @include bc-icon($icon);
+  </code>
+</pre>
+
+Mit diesem Mixin kann man die FontAwesome Icons ohne Probleme im SCSS verwenden. Das erste steuert das Design also die Typischen SCSS Angaben für den Font, das zweite fügt das angebene Icon hinzu.
+<pre>
+  <code>
+    @include fa-icon;
+    @include fa-icon-content($icon);
+  </code>
+</pre>
+
+<h6>Appearance</h6>
+Für dieses Mixin gibt es kein Autoprefix, liegt daran das es noch keine Default Eigenschaft gibt ohne Vendorprefix und auch nix für Microsoft(IE) gibt.<br />
+<pre>
+  <code>
+    @include appearance($value);
+  </code>
+</pre>
+
+<h6>Placeholder</h6>
+Für dieses Mixin gibt es kein Autoprefix, liegt daran das es noch keine Default Eigenschaft gibt ohne Vendorprefix und auch nix für Microsoft(IE) gibt.<br />
+<pre>
+  <code>
+    @include placeholder(@content);
+  </code>
+</pre>
+
+<h6>Breakpoint</h6>
+Dieses Mixin schreibt die benötigten MediaQuerys. Der übermittelte Wert $breakpoint ist immer min-width.<br />
+<pre>
+  <code>
+    @include breakpoint($breakpoint);
+  </code>
+</pre>
+
+<h6>Button</h6>
+Hier mit kann man die Ausgabe der Buttons steuern.<br />
+Mögliche Stile sind: default, filled, round, text, link<br />
+Für Button Group können die Buttons auch diesen Stil tragen.<br />
+Button Dropdown dann der "klickbare" Button auch eines der vorgebenen Stile haben<br />
+Anhand des Radius kann z. B. der Button egal in welchem Stil abgerundete Ecken haben, die Unit angabe ist Pflicht<br />
+<pre>
+  <code>
+    @include button($style, $radius);
+  </code>
+</pre>
+
+<h6>Horizontal Line</h6>
+Mit diesem Mixin kann man Trennlinien ein neues aussehen geben.<br />
+Mögliche Styles: default, icon, short<br />
+<pre>
+  <code>
+    @include hr($style);
+  </code>
+</pre>
+
+<h6>Lists</h6>
+Mit diesem Mixin kann man Listen ein neues aussehen geben.<br />
+Mögliche Styles: stripped, lined, nice, space, default<br />
+<pre>
+  <code>
+    @include list($style);
+  </code>
+</pre>

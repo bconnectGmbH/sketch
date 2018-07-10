@@ -1,0 +1,333 @@
+/* ------------------------------------ *\
+  #COLORS
+\* ------------------------------------ */
+
+//Main Colors
+$primary: #002e51 !default;
+$secondary: #ff651f !default;
+$success: #4bb543 !default;
+$warning: #ffae00 !default;
+$error: #c00 !default;
+
+//Contrast Colors
+$white: #fff !default;
+$light-grey: rgb(217, 237, 255) !default;
+$medium-grey: #b1babe !default;
+$dark-grey: #444 !default;
+$black: #000 !default;
+
+//SUPPORTING COLORS COMPANY ONLY
+$support1: #87003e !default;
+$support2: $medium-grey !default;
+$support3: #edebe5 !default;
+$support4: #ff942e !default;
+
+$black-transparent: rgba(0, 0, 0, .5) !default;
+
+/* ------------------------------------ *\
+  #GLOBAL
+\* ------------------------------------ */
+$global-width: 75rem !default;
+$global-text-direction: ltr !default;
+$global-left: if($global-text-direction == rtl, right, left);
+$global-right: if($global-text-direction == rtl, left, right);
+
+/* ------------------------------------ *\
+  #BREAKPOINTS
+\* ------------------------------------ */
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+) !default;
+
+/* ------------------------------------ *\
+  #GRID
+\* ------------------------------------ */
+$xy-grid: true;
+$grid-columns: 12 !default;
+$grid-container: $global-width !default;
+$grid-container-max: $global-width !default;
+$grid-margin-gutters: (
+  small: 16px,
+  medium: 32px
+) !default;
+$grid-padding-gutters: $grid-margin-gutters !default;
+$grid-container-padding: $grid-padding-gutters !default;
+$xy-block-grid-max: 8 !default;
+
+$grid-map: (
+  one: (
+    small: 1 of 1
+  ),
+  two: (
+    small: 1 of 1,
+    medium: 1 of 2,
+  ),
+  three: (
+    small: 1 of 1,
+    medium: 1 of 3,
+  ),
+  four: (
+    small: 1 of 1,
+    medium: 1 of 2,
+    large: 1 of 4
+  ),
+  five: (
+    small: 1 of 1,
+    medium: 1 of 2,
+    large: 1 of 5
+  ),
+  six: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 6
+  ),
+  seven: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 7
+  ),
+  eight: (
+    small: 1 of 1,
+    medium: 1 of 2,
+    large: 1 of 4,
+    xlarge: 1 of 8,
+  ),
+  nine: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 6,
+    xlarge: 1 of 9,
+  ),
+  ten: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 5,
+    xlarge: 1 of 10,
+  ),
+  eleven: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 6,
+    xlarge: 1 of 11,
+  ),
+  twelve: (
+    small: 1 of 1,
+    medium: 1 of 3,
+    large: 1 of 6,
+    xlarge: 1 of 12,
+  ),
+) !default;
+
+/* ------------------------------------ *\
+  #FONTS
+\* ------------------------------------ */
+
+$fa-font-path: '../node_modules/font-awesome-sass/assets/fonts/font-awesome/' !default;
+$website-font-path: '../fonts' !default;
+
+//400 is regular and 700 is bold, possible styles are normal and italic
+
+$base-font: 'PT Sans', 'Droid serif', sans-serif !default;
+$fontawesome: 'FontAwesome' !default;
+$bc-icon: 'bconnecticon' !default;
+
+$global-font-size: 100% !default;
+$lead-font-size: $global-font-size * 1.25 !default;
+
+/* ------------------------------------ *\
+  #HORIZONTAL LINE
+\* ------------------------------------ */
+$hr-icon: 'http://www.freeiconspng.com/uploads/circle-icon-30.png' !default;
+
+/* ------------------------------------ *\
+  #BUTTON
+\* ------------------------------------ */
+$round-button-height: 100px !default;
+$round-button-width: 100px !default;
+$color-button-drop-menu: $primary !default;
+$background-button-drop-menu: $white !default;
+$border-button-drop-menu: $primary !default;
+$background-hover-button-drop-menu: $support3 !default;
+$color-hover-button-drop-menu: $primary !default;
+
+/* ------------------------------------ *\
+  #CARD
+\* ------------------------------------ */
+$card-background: $white !default;
+$card-border-width: 1px !default;
+$card-border-color: $support2 !default;
+$card-border-radius: .25rem !default;
+$card-body-padding: 1.25rem !default;
+$card-header-padding: .75rem 1.25rem !default;
+$card-header-color: $support3 !default;
+$card-header-border: 1px solid $support2 !default;
+$card-footer-padding: .75rem 1.25rem !default;
+$card-footer-color: $support3 !default;
+$card-footer-border: 1px solid $support2 !default;
+
+/* ------------------------------------ *\
+  #ACCORDION
+\* ------------------------------------ */
+$acc-item-background: $white !default;
+$acc-item-border-width: 1px !default;
+$acc-item-border-color: $support2 !default;
+$acc-item-border-radius: .25rem !default;
+$acc-item-body-padding: 1.25rem !default;
+$acc-item-header-padding: .75rem 1.25rem !default;
+$acc-item-header-background-color: $support3 !default;
+$acc-item-header-border: 1px solid $support2 !default;
+$acc-item-header-link-color: $primary !default;
+$acc-item-footer-padding: .75rem 1.25rem !default;
+$acc-item-footer-background-color: $support3 !default;
+$acc-item-footer-border: 1px solid $support2 !default;
+$acc-item-footer-link-color: $primary !default;
+
+/* ------------------------------------ *\
+  #TABS
+\* ------------------------------------ */
+$tab-navigation-border: $support2 !default;
+$tab-link-padding: .5rem 1rem !default;
+$tab-active-link-color: $primary !default;
+$tab-active-link-background: $white !default;
+$tab-active-link-border-color: $support2 $support2 $white !default;
+$tab-link-border-radius: .25rem !default;
+$tab-hover-link-border-color: $support3 $support3 $white !default;
+
+/* ------------------------------------ *\
+  #INFOBOX
+\* ------------------------------------ */
+$infobox-max-width: 500px !default;
+$infobox-padding: 1rem !default;
+$infobox-content-background: $white !default;
+$infobox-content-border: 1px solid rgba(0, 0, 0, .2) !default;
+$infobox-content-border-radius: .3 !default;
+$infobox-divider: 1px solid $support3 !default;
+$infobox-close-fontsize: 1.5rem !default;
+$infobox-close-color: $primary !default;
+$infobox-close-opacity: .5 !default;
+
+/* ------------------------------------ *\
+  #HERO
+\* ------------------------------------ */
+$hero-background-color: $support3 !default;
+$hero-content-padding: 2.5rem 5rem !default;
+$hero-mobile-content-padding: 1rem 2rem !default;
+$hero-content-color-background: $primary !default;
+$hero-content-max-width: 70% !default;
+$hero-content-color: $primary !default;
+
+/* ------------------------------------ *\
+  #BREADCRUMB
+\* ------------------------------------ */
+$breadcrumb-item-color: $secondary !default;
+$breadcrumb-item-hover-border-color: $secondary !default;
+$breadcrumb-active-item: $support2 !default;
+$breadcrumb-nav-padding: .75rem 1rem !default;
+$breadcrumb-divider-color: $primary !default;
+$breadcrumb-space-between-items: .5rem !default;
+
+/* ------------------------------------ *\
+  #FOOTERMENU
+\* ------------------------------------ */
+$footer-menu-separator: $secondary !default;
+$footer-menu-item-color: $white !default;
+$footer-menu-title-color: $white !default;
+$footer-menu-item-hover-border-color: $secondary !default;
+
+/* ------------------------------------ *\
+  #INLINEMENU
+\* ------------------------------------ */
+$inline-menu-item-background: $support3 !default;
+$inline-menu-item-hover-background: $primary !default;
+$inline-menu-item-height: 50px !default;
+$inline-menu-item-font-size: 16px !default;
+$inline-menu-item-color: $primary !default;
+$inline-menu-item-padding: 5px 10px !default;
+$inline-menu-item-hover-color: $white !default;
+
+// Flyout
+$flyout-min-width: 15rem !default;
+$dropdown-link-color: $primary !default;
+
+/* ------------------------------------ *\
+  #SUBMENU BLOCK
+\* ------------------------------------ */
+$submenu-block-link-color: $white !default;
+$submenu-block-link-bg-color: $primary !default;
+$submenu-block-border-color: $support2 !default;
+$submenu-block-hover-link-color: $primary !default;
+$submenu-block-hover-link-bg-color: $support3 !default;
+
+/* ------------------------------------ *\
+  #PAGER
+\* ------------------------------------ */
+$pager-border-radius: .25rem !default;
+$pager-link-padding: .5rem .75rem !default;
+$pager-link-color: $primary !default;
+$pager-link-bg-color: $support3 !default;
+$pager-link-border-color: $support2 !default;
+$pager-hover-link-bg-color: $primary !default;
+$pager-hover-link-color: $white !default;
+
+/* ------------------------------------ *\
+  #STATUS
+\* ------------------------------------ */
+$status-close-fontsize: 1.5rem !default;
+$status-close-opacity: 1 !default;
+$status-close-padding: .75rem 1.25rem !default;
+$status-padding: .75rem 1.25rem !default;
+$status-border-radius: .25rem !default;
+
+/* ------------------------------------ *\
+  #TEASER
+\* ------------------------------------ */
+$teaser-image-size: 30% !default;
+$teaser-border-radius: .25rem !default;
+$teaser-body-padding-overlay: .5rem 1rem !default;
+$teaser-body-padding-left: .5rem 0 .5rem 1.5rem !default;
+$teaser-body-padding-right: .5rem 1.5rem .5rem 0 !default;
+$teaser-breakpoint: medium !default;
+
+/* ------------------------------------ *\
+  #HEADER
+\* ------------------------------------ */
+$navbar-padding: 0 1rem !default;
+$navbar-toggler-padding-y: .25rem !default;
+$navbar-toggler-padding-x: .75rem !default;
+$navbar-toggler-font-size: 1.25rem !default;
+$navbar-toggler-border-radius: 0 !default;
+$navbar-bg: $support3 !default;
+$navbar-logo-top-padding: .3125rem !default;
+$navbar-logo-bottom-padding: .3125rem !default;
+$navbar-logo-margin-right: 1rem !default;
+$navbar-toggler-border-width: 1px !default;
+$navbar-toggler-color: $primary !default;
+
+/* ------------------------------------ *\
+  #HEADER
+\* ------------------------------------ */
+$footer-bg: $primary !default;
+$footer-color: $white !default;
+$footer-padding: 2rem 1rem !default;
+
+/* ------------------------------------ *\
+  #HERO
+\* ------------------------------------ */
+$slider-hero-content-padding: 2.5rem 5rem !default;
+$slider-hero-content-padding-left: 2.5rem 5rem 2.5rem 2.5rem !default;
+$slider-hero-content-padding-right: 2.5rem 2.5rem 2.5rem 5rem !default;
+$slider-mobile-hero-content-padding: 2rem !default;
+$slider-mobile-hero-content-padding-left: 2rem !default;
+$slider-mobile-hero-content-padding-right: 2rem !default;
+
+/* ------------------------------------ *\
+  #SCROLLMAGIC
+\* ------------------------------------ */
+$swipe-first-backgroundcolor: $dark-grey !default;
+$swipe-second-backgroundcolor: $support2 !default;
+$swipe-third-backgroundcolor: $support3 !default;
+$swipe-fourth-backgroundcolor: $support4 !default;

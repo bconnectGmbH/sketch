@@ -1,0 +1,86 @@
+.social-media {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  background: $primary;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include breakpoint(large) {
+    justify-content: flex-start;
+  }
+
+  li {
+    padding-left: 0;
+    padding-right: 1rem;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  a {
+    color: $white;
+
+    &::before {
+      font-size: 20px;
+      transition: 5s;
+      @include fa-icon;
+
+      @include breakpoint(large) {
+        font-size: 32px;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        transform: rotate(720deg) scale(.8, .8);
+        transition: 5s;
+      }
+    }
+  }
+
+  .facebook {
+    &::before {
+      @include fa-icon-content($fa-var-facebook);
+    }
+  }
+
+  .twitter {
+    &::before {
+      @include fa-icon-content($fa-var-twitter);
+    }
+  }
+
+  .drupal {
+    &::before {
+      @include fa-icon-content($fa-var-drupal);
+    }
+  }
+
+  .xing {
+    &::before {
+      @include fa-icon-content($fa-var-xing);
+    }
+  }
+
+  .github {
+    &::before {
+      @include fa-icon-content($fa-var-github);
+    }
+  }
+
+  .googleplus {
+    &::before {
+      @include fa-icon-content($fa-var-google-plus);
+    }
+  }
+
+  .linkedin {
+    &::before {
+      @include fa-icon-content($fa-var-linkedin);
+    }
+  }
+}

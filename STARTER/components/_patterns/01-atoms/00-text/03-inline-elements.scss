@@ -1,0 +1,76 @@
+a {
+  @include font($base-font, 'regular');
+
+  color: $secondary;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active,
+  &.active {
+    border-bottom: 1px solid $primary;
+  }
+
+  &:hover,
+  &:active {
+    outline: none;
+  }
+}
+
+b,
+strong {
+  @include font($base-font, 'bold');
+}
+
+i,
+cite,
+em,
+var,
+address,
+dfn {
+  @include font($base-font, 'italic');
+}
+
+b > em,
+strong > em {
+  @include font($base-font, 'bolditalic');
+}
+
+small {
+  font-size: 80%;
+  display: block;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+ins {
+  text-decoration: none;
+  text-decoration: underline wavy $support4;
+}
+
+mark {
+  background-color: $support4;
+  color: $white;
+  padding: 0 3px;
+}
+
+q {
+  @include font($base-font, 'italic');
+
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+}

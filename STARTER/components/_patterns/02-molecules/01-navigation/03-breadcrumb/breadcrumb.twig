@@ -1,0 +1,37 @@
+{#
+/**
+ * Breadcrumb
+ *
+ * @param array $breadcrumbs Array mit allen Breadcrumb items
+ *
+ * @example
+ * {% set breadcrumbs = {
+ *   0: {'breadcrumb_url': '/home', 'breadcrumb_text': faker('text', 25)},
+ *   1: {'breadcrumb_url': '/home/page1', 'breadcrumb_text': faker('text', 25)},
+ *   2: {'breadcrumb_url': '/home/page1/page2', 'breadcrumb_text': faker('text', 25)},
+ *   3: {'breadcrumb_url': '/home/page1/page2/page3', 'breadcrumb_text': faker('text', 25)},
+ * } %}
+ * {% include "@molecules/01-navigation/03-breadcrumb/breadcrumb.twig" with {
+ *    breadcrumb_url: breadcrumb_url,
+ *    breadcrumb_text: breadcrumb_text,
+ *    breadcrumb_text_current : 'Page 4'
+ * } %}
+ */
+#}
+
+{% if breadcrumbs %}
+  <nav class="breadcrumb-nav" role="navigation" aria-labelledby="breadcrumb">
+    <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumbs nav">
+    {% for breadcrumb in breadcrumbs %}
+      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        {% if breadcrumb.breadcrumb_url %}
+          <a itemprop="item" href="{{ breadcrumb.breadcrumb_url }}" ><span itemprop="name">{{ breadcrumb.breadcrumb_text }}</span></a>
+        {% else %}
+          <span itemprop="name">{{ breadcrumb.breadcrumb_text }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+      <li class="current"><h1>{{ breadcrumb_text_current }}</h1></li>
+    </ol>
+  </nav>
+{% endif %}

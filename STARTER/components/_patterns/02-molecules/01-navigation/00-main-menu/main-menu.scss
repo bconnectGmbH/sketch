@@ -1,0 +1,125 @@
+.inline-nav {
+  ul {
+    margin: 0;
+
+    li {
+      background-color: $inline-menu-item-background;
+      min-height: $inline-menu-item-height;
+      line-height: 1;
+
+      a {
+        color: $inline-menu-item-color;
+        min-height: $inline-menu-item-height;
+        padding: $inline-menu-item-padding;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: $inline-menu-item-font-size;
+        @include font($base-font, 'bold');
+      }
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active,
+      &.active,
+      &.show {
+        background-color: $inline-menu-item-hover-background;
+
+        a {
+          color: $inline-menu-item-hover-color;
+          background-color: $inline-menu-item-hover-background;
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    z-index: 1000;
+    display: none;
+    margin: .125rem 0 0;
+    color: $color-button-drop-menu;
+    background-color: $background-button-drop-menu;
+    background-clip: padding-box;
+    border: 1px solid $border-button-drop-menu;
+
+    @include breakpoint(large) {
+      position: absolute;
+      float: left;
+      min-width: $flyout-min-width;
+    }
+
+    li {
+      padding: 0;
+
+      a {
+        clear: both;
+        color: $dropdown-link-color;
+        background-color: transparent;
+        border: 0;
+        @include font($base-font, 'regular');
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          background-color: $background-hover-button-drop-menu;
+          color: $color-hover-button-drop-menu;
+        }
+      }
+    }
+  }
+
+  .dropdown-submenu {
+    position: relative;
+
+    > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: 0;
+    }
+
+    > a {
+      &::after {
+        margin-left: 5px;
+        @include fa-icon;
+        @include fa-icon-content($fa-var-angle-down);
+      }
+    }
+
+    @include breakpoint(large) {
+      .level-1 {
+        .dropdown-submenu {
+          > a {
+            &::after {
+              margin-left: 5px;
+              @include fa-icon;
+              @include fa-icon-content($fa-var-angle-right);
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      > .dropdown-menu {
+        display: block;
+      }
+    }
+
+    > .dropdown-menu.level-1 {
+      top: 100%;
+      left: 0;
+    }
+
+    &.pull-left {
+      float: none;
+
+      > .dropdown-menu {
+        left: -100%;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+

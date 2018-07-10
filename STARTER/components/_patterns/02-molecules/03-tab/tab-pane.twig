@@ -1,0 +1,43 @@
+{#
+/**
+ * Tab Pane
+ *
+ * @param string $tab_url Link für den
+ * @param int $tab_heading_level Heading Level
+ * @param int $tab_heading Titel für den Content
+ * @param int $tab_text Content für den Tab
+ *
+ * @example
+ * {% set tab_items = {
+ *   0: {'tab_url': 'tab1', 'tab_title': faker('text', 5), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   1: {'tab_url': 'tab2', 'tab_title': faker('text', 10), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   2: {'tab_url': 'tab3', 'tab_title': faker('text', 8), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   3: {'tab_url': 'tab4', 'tab_title': faker('text', 7), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ * } %}
+ * <div class="tab-content">
+ *   {% for key, tab_item in tab_items %}
+ *     {% include "@molecules/03-tab/tab-pane.twig" with {
+ *       "tab_url": tab_item.tab_url,
+ *       "tab_heading_level": tab_item.tab_heading_level,
+ *       "tab_heading": tab_item.tab_heading,
+ *       "tab_text": tab_item.tab_text,
+ *       "key": key,
+ *     } %}
+ *   {% endfor %}
+ * </div>
+ */
+#}
+
+<div id="{{tab_url}}" class="tab-pane {% if key == 0 %}active{% else %}fade{% endif %}"><br>
+  {% if tab_heading %}
+    {% include "@atoms/00-text/01-headings.twig" with {
+      heading_level: tab_heading_level,
+      heading: tab_heading,
+    } %}
+  {% endif %}
+  {% if tab_text %}
+    {% include "@atoms/00-text/00-paragraph.twig" with {
+      paragraph_content: tab_text
+    } %}
+  {% endif %}
+</div>

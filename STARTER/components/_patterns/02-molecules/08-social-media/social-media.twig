@@ -1,0 +1,20 @@
+{#
+/**
+ * Social Media
+ *
+ * Dient nur zur Anschauung.
+ * Wir nutzen das Modul AddToAny.
+ *
+ * @example
+ * {% include "@molecules/08-social-media/social-media.twig" with {
+ *   socialmedia_urls: socialmedia.items
+ * } %}
+ *
+ */
+#}
+
+<ul class="social-media">
+  {% for socialmedia_url in socialmedia_urls %}
+    <li><a href="{{socialmedia_url.url}}" class="{{socialmedia_url.title|lower}}" title="{{socialmedia_url.title}}"></a></li>
+  {% endfor %}
+</ul>

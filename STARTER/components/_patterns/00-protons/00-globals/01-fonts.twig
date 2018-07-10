@@ -1,0 +1,24 @@
+{#
+/**
+ * Fonts
+ *
+ * Alle Fonts aus dem CI
+ * mit einem Mixin wird Font und Fontstyle gesteuert
+ * <code>@include font($font-family, regular)</code>
+ * Mögliche Fontstyles sind = regular, bold, italic, bolditalic
+ *
+ * @example
+ * {% set items = { 'regular': 'div', 'bold': 'b', 'italic': 'em', 'bolditalic': 'b'} %}
+ * <ul class="sg-fonts">
+ *  {% for key, item in items %}
+ *    <li>
+ *    {% if key == 'bolditalic' %}
+ *      <{{item}}><em>Ich bin der Test der Fontschrift in Fontstyle {{key}}</em></{{item}}>
+ *    {% else %}
+ *      <{{item}}>Ich bin der Test der Fontschrift in Fontstyle {{key}}</{{item}}>
+ *    {% endif %}
+ *    </li>
+ *  {% endfor %}
+ * </ul>
+ */
+#}

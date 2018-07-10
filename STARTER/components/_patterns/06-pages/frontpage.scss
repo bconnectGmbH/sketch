@@ -1,0 +1,14 @@
+.reference-grid {
+  > div {
+    @include xy-gutters($gutter-position: top left right bottom);
+
+    img {
+      width: auto;
+      margin: 0 auto;
+
+      @include breakpoint(large) {
+        width: 100%;
+      }
+    }
+  }
+}

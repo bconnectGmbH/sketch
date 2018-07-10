@@ -1,0 +1,55 @@
+{#
+/**
+ * Login
+ *
+ * @example
+ * {% include "@organisms/08-forms/01-login.twig" with {
+ *   username_label_for: faker('text', 15),
+ *   username_input_id: 'textfield-username',
+ *   username_placeholder: 'username',
+ *   password_label_for: faker('text', 15),
+ *   password_input_id: 'textfield-password',
+ *   password_placeholder: 'password',
+ *   login_submit_id: 'user-login-form-submit1',
+ *   login_submit_value: 'Login',
+ *   login_heading: 'Login'
+ * } %}
+ */
+#}
+
+<section>
+  {% include "@atoms/00-text/01-headings.twig" with {
+    "heading_level": 1,
+    "heading": login_heading
+  } %}
+  <form class="user-login-form" data-drupal-selector="user-login-form" action="/user/login" method="post" id="user-login-form" accept-charset="UTF-8" novalidate="novalidate">
+    {% include "@atoms/04-forms/01-textfield.twig" with {
+      text_label_for: username_label_for,
+      text_input_id: username_input_id,
+      text_placeholder: username_placeholder,
+      form_required: true,
+      autocorrect: 'off',
+      spellcheck: false,
+      autocomplete: 'off',
+      type_input: 'text'
+    } %}
+
+    {% include "@atoms/04-forms/01-textfield.twig" with {
+      text_label_for: password_label_for,
+      text_input_id: password_input_id,
+      text_placeholder: password_placeholder,
+      form_required: true,
+      autocorrect: 'off',
+      spellcheck: false,
+      autocomplete: 'off',
+      type_input: 'password'
+    } %}
+
+    <input data-drupal-selector="edit-user-login-form" type="hidden" name="form_id" value="user_login_form">
+
+    {% include "@atoms/04-forms/07-submit.twig" with {
+      submit_id: login_submit_id,
+      submit_value: login_submit_value
+    } %}
+  </form>
+</section>

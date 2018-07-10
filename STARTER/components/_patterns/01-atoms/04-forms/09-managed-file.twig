@@ -1,0 +1,36 @@
+{#
+ /**
+ * Managed File
+ *
+ * @param string $upload_label Text über Upload Button
+ * @param int $upload_button_size Größe des Button
+ * @param string $upload_placeholder Text auf Button, wird nach Auswahl ersetzt durch den Dateinamen
+ * @param string $upload_button_value Text auf dem Absenden Button
+ * @param string $form_help_text Der Beschreibungstext / Hilfstext
+ *
+ * @example
+ * {% include "@atoms/04-forms/09-managed-file.twig" with {
+ *   upload_label: 'Managed File',
+ *   upload_button_size: 60,
+ *   upload_placeholder: faker('text', 50),
+ *   upload_button_value: 'Upload',
+ *   manage_file_field_id: 'file_field_id2',
+ *   manage_textfield_id: 'textfield_id2'
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-managed-file form-item-managed-file">
+  <label class="label" for="edit-managed-file">{{upload_label}}</label>
+  <div id="edit-managed-file" class="form-managed-file">
+    <div class="form-custom">
+      <input type="file" id="{{manage_file_field_id}}" name="files[managed_file]" size="{{upload_button_size}}" class="form-file" {% if form_required %} required aria-required="true" {% endif %}>
+      <input type="text" id="{{manage_textfield_id}}" name="textfield" placeholder="{{upload_placeholder}}" class="form-text" disabled {% if form_required %} required aria-required="true" {% endif %}>
+    </div>
+    <input type="submit" id="edit-managed-file-upload-button" name="managed_file_upload_button" value="{{upload_button_value}}" class="form-submit ajax-processed">
+    <input type="hidden" name="managed_file[fid]" value="0">
+  </div>
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

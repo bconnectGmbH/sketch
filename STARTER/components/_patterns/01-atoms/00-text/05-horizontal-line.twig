@@ -1,0 +1,30 @@
+{#
+/**
+ * Horizontal Line
+ *
+ * Horizontal Linie in 3 verschiedenen Varianten
+ * - default = class=""
+ * - icon = class="with-icon"
+ * - short = class="short"
+ *
+ * @param string $hr_class Klasse die, die Darstellung steuert (leer (keine Klassenangabe), with-icon, short)
+ *
+ * @example
+ * <h6>Horizonte Linie default</h6>
+ * {% include "@atoms/00-text/05-horizontal-line.twig" %}
+ * <h6>Horizonte Linie mit Icon</h6>
+ * {% include "@atoms/00-text/05-horizontal-line.twig" with {
+ *   hr_class: 'with-icon'
+ * } %}
+ * <h6>Horizonte Linie kurz</h6>
+ * {% include "@atoms/00-text/05-horizontal-line.twig" with {
+ *   hr_class: 'short'
+ * } %}
+ */
+#}
+
+{% if hr_class %}
+  <hr class="{{hr_class}}"></hr>
+{% else %}
+  <hr></hr>
+{% endif %}

@@ -1,0 +1,68 @@
+{#
+/**
+ * Intro
+ *
+ * @example
+ * {% set cards = {
+ *   0: {'card_heading': 'Nachbau b-connect Home in Pattern Lab','card_heading_level': 3,'card_text': 'Hier geht es zum Nachbau der b-connect Startseite in Pattern Lab.','card_img_position': 'top','card_img_src': '../../../../images/logos/logo_small.png','card_button_class': 'filled','card_button_url': '/patterns/06-pages-frontpage/06-pages-frontpage.html','card_button_text': 'b-connect Home in Pattern Lab','card_target': '_blank'},
+ *   1: {'card_heading': 'Bilder','card_heading_level': 3,'card_text': 'Hier finden Sie eine beispielhafte Darstellung von Bildern. Slider und Bilderlisten können mit verschiedensten Effekten und Animationen versehen werden. Das Bildmaterial wurde bereitgestellt von isabelscharenberg.com','card_img_position': 'top','card_img_src': '../../../../images/b-connect/Development_Slide_Image.png','card_button_class': 'filled','card_button_url': '/patterns/06-pages-gallery/06-pages-gallery.html','card_button_text': 'Bilder','card_target': '_blank'},
+ *   2: {'card_heading': 'Animationen','card_heading_level': 3,'card_text': 'Hier finden Sie eine kleine Auswahl von Animationen. Die Animationen werden als Bausteine im Rahmen des Atomic Design eingesetzt.','card_img_position': 'top','card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png','card_button_class': 'filled','card_button_url': '/patterns/06-pages-onepager-effect/06-pages-onepager-effect.html','card_button_text': 'Animationen','card_target': '_blank'},
+ *   3: {'card_heading': 'Weitere Animationen','card_heading_level': 3,'card_text': 'Hier finden Sie eine kleine Auswahl von animierter Schrift (SVG). Die Effekte können auf unterschiedlichste Schriftarten angewendet werden. Zahlreiche weitere Effekte stehen zur Verfügung.','card_img_position': 'top','card_img_src': '../../../../images/b-connect/Service_Slide_Image.png','card_button_class': 'filled','card_button_url': '/patterns/03-organisms-10-magic/index.html','card_button_text': 'Weitere Animationen','card_target': '_blank'},
+ * } %}
+ * {% include "@pages/00-intro.twig" with {
+ *   content_class: 'intro',
+ *   logo_img_alt: faker('text', 50),
+ *   logo_img_title: faker('text', 50),
+ *   logo_img_src_mobile: '../../../../images/logos/schriftzug.png',
+ *   logo_img_src: '../../../../images/logos/bc_logo_text.png',
+ * } %}
+ */
+#}
+
+{% embed '@templates/site-container.twig' %}
+  {% block site_content %}
+    <section>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 1, heading: 'Will­kom­men im Pat­tern Lab Demo'} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: 'Zum bessern Verständnis was ein auf Komponenten basierendes Design ist und wie sich ein Living Style Guide anfühlen kann, haben wir ein Demo-System mit Beispielen für Sie geschaffen. Über Quick­links ha­ben Sie die Mög­lich­keit schnell durch Pat­tern Lab über einige vorbereitete Ansichten zu na­vi­gie­ren. Für Anregungen und Fragen steht Ihnen der b-connect Support gerne jederzeit Rede und Antwort: <a href="mailto:support@b-connect.de">support@b-connect.de</a>, Tel.: <a href="tel:+ 49 30 217 363-0">+ 49 30 217 363-0</a>'} %}
+      {% include "@organisms/04-card-grid/card-grid.twig" with {
+        cards: cards,
+        card_grid_key: "two"
+      } %}
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: 'Was ist Pattern Lab?'} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: 'Pattern Lab ist ein lebender Style Guide / Living Style Guide. Über eine Sammlung von Tools, kann ein Atomic WebDesign aufgebaut und gewartet und erweitert werden. Pattern Lab nutzt für den Aufbau des Layouts das Atomic Design Prinzip. Elemente werden geclustert. Das heißt, sie werden ausgehend von ihren kleinsten Bestandteilen hin zu größeren Verbünden beschrieben.<br><br>
+      Nutzen: Für die Darstellung von orchestrierten Elementen können Pages angelegt werden auf welchen z. B. eine Website- oder Intranet Darstellung simuliert werden kann. Pattern Lab kann zur Erstellung von interaktiven Click Dummies verwendet werden. Das Pattern Lab kann z. B. auch an ein Drupal-System angeschlossen werden. Änderungen welche im Pattern Lab vorgenommen werden, können auf diese Weise sehr schnell in der angeschlossenen Website angezeigt werden. Das gilt auch für Animationen.'} %}
+      <div style="max-width: 800px; margin: 0 auto;">{% include "@atoms/06-images/02-figure.twig" with { figure_img_src: '../../../../images/b-connect/patternlab_drupal.png', figure_output_image_tag: true} %}</div>
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: 'Was ist Atomic Design?'} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: '"Atomic Design" wurde aus der Chemie abgeleitet. In diesem Design Konzept werden die Elemente in einzelne Bestandteile zerlegt. Beginnend mit der kleinsten Einheit, den Protonen, werden hier zunächst die Farben, Icons oder Schriften definiert. Darauf aufbauend werden in den Atomen die Schaltflächen, Formularfelder, Headlines etc. beschrieben. Moleküle sind die nächstgrößere Einheit. Sie entstehen jeweils durch Gruppierungen verschiedener Atome. Ein Bild mit Text und Button ergibt z. B. einen Teaser. Dieser Teaser ist ein Molekül. Aus Molekülen und Atomen setzen sich als nächstgrößere Instanz die Organismen zusammen z. B. eine Teaser-Liste. Schließlich gibt es noch Seiten­-Templates welche jeweils aus vielen Organismen bestehen können, die zusammengesetzt eine Seitenvorlage (Page) ergeben.'} %}
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 2, heading: 'Beispiele der Design-Elemente '} %}
+      <div class="button-group">
+        <a class="button filled" target="_blank" href="/patterns/00-protons/index.html">Protonen</a>
+        <a class="button filled" target="_blank" href="/patterns/01-atoms/index.html">Atome</a>
+        <a class="button filled" target="_blank" href="/patterns/02-molecules/index.html">Moleküle</a>
+        <a class="button filled" target="_blank" href="/patterns/03-organisms/index.html">Organismen</a>
+      </div>
+      {% include "@atoms/06-images/02-figure.twig" with { figure_img_src: '../../../../images/b-connect/atomares_design.png', figure_output_image_tag: true} %}
+      {% include "@atoms/00-text/01-headings.twig" with { heading_level: 3, heading: 'Beispiel LEGO®:'} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: 'Ein LEGO-Projekt kann man in Angriff nehmen, indem man alle Teile einfach unsortiert auf einen Tisch legt und durch den Stapel stöbert um das passende Stück zu finden. Diese Herangehensweise an ein Lego-Projekt ist sicherlich eine praktikable Strategie, auch wenn sie unangemessen willkürlich ist. Man achtet nur dann auf den Stapel Ziegelsteine, wenn man ihn durchsuchst, um das bestimmte Stück zu finden, das man braucht. 
+      Mit dieser Strategie werden viele digitale Projekte angegangen. Der Kunde braucht eine Website, also fangen wir gleich an zu entwerfen und dann zu bauen.
+      Unser Blick bleibt auf das Endprodukt fixiert und wir schauen selten, wenn überhaupt, auf die zugrunde liegenden Muster aus denen unsere endgültigen UIs bestehen.'} %}
+      {% include "@atoms/06-images/02-figure.twig" with { figure_img_src: '../../../../images/b-connect/lego-2.png', img_caption: 'Bild aus "Multiscreen UX Design" von Wolfram Nagel und http://atomicdesign.bradfrost.com/chapter-4/', figure_output_image_tag: true} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: 'Wenn man sich die Zeit nimmt die Teile des Designs zu organisieren so dass sie nutzvoller werden, kann man sich bewusster und effizienter mit der Arbeit befassen. Organisieren braucht zweifellos Zeit, Planung und Anstrengung. Es ist nicht kostenlos.
+      Die Tatsache, dass diese Konfiguration im fertigen Produkt nicht sichtbar dargestellt wird, könnte dazu verleiten zu sagen, dass dies eine Ablenkung von der eigentlichen Arbeit darstellt, die getan werden muss. Warum die Mühe?'} %}
+      {% include "@atoms/06-images/02-figure.twig" with { figure_img_src: '../../../../images/b-connect/lego-3.png', img_caption: 'Bild aus "Multiscreen UX Design" von Wolfram Nagel und http://atomicdesign.bradfrost.com/chapter-4/', figure_output_image_tag: true} %}
+      {% include "@atoms/00-text/00-paragraph.twig" with { paragraph_content: 'Indem Sie sich die Zeit nehmen, die Teile zu organisieren, kann man das Ganze realistischer, gezielter und effizienter gestalten.
+      Wenn Sie eine Bibliothek Ihrer verfügbaren Materialien erstellen, können Sie das Projekt methodischer angehen und viel Zeit sparen.
+      Anstatt einen willkürlichen Stapel von Ziegeln zu durchforsten und Muster neu zu erfinden, können Sie ein organisiertes System von Komponenten erstellen, die Ihnen helfen, in kürzerer Zeit bessere Arbeit zu leisten.'} %}
+      {% include "@atoms/06-images/02-figure.twig" with { figure_img_src: '../../../../images/b-connect/lego-4.png', img_caption: 'Bild aus "Multiscreen UX Design" von Wolfram Nagel und http://atomicdesign.bradfrost.com/chapter-4/', figure_output_image_tag: true} %}
+    </section>
+  {% endblock %}
+{% endembed %}
+
+
+
+
+
+
+
+
+

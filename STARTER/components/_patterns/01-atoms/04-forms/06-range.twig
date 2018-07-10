@@ -1,0 +1,26 @@
+{#
+ /**
+ * Range
+ *
+ * @param string $startpoint_range Der Startpunkt wo der "Händler" default stehen soll
+ * @param string $min_range Der geringst mögliche Wert
+ * @param string $max_range Der höhst mögliche Wert
+ * @param string $step_range Die Möglichen Steps innerhalb der Range z. B. 0.1
+ * @param string $form_help_text Der Beschreibungstext / Hilfstext
+ *
+ * @example
+ * {% include "@atoms/04-forms/06-range.twig" with {
+ *   startpoint: 2,
+ *   min_range: 0,
+ *   max_range: 10,
+ *   step_range: 0.1
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-radios form-item-radios">
+  <input type="range" value="{{startpoint}}" min="{{min_range}}" max="{{max_range}}" step="{{step_range}}">
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

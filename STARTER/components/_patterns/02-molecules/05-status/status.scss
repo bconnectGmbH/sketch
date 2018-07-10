@@ -1,0 +1,49 @@
+.alert {
+  position: relative;
+  padding: $status-padding;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: $status-border-radius;
+  @include fade;
+
+  &.warning {
+    background: rgba($warning, .3);
+    color: $warning;
+  }
+
+  &.status {
+    background: rgba($success, .3);
+    color: $success;
+  }
+
+  &.error {
+    background: rgba($error, .3);
+    color: $error;
+  }
+}
+
+.alert-dismissible {
+  padding-right: 4rem;
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $status-close-padding;
+    float: right;
+    font-size: $status-close-fontsize;
+    line-height: 1;
+    font-weight: 700;
+    color: inherit;
+    text-shadow: 0 1px 0 #fff;
+    opacity: $status-close-opacity;
+    background-color: transparent;
+    border: 0;
+    @include appearance(none);
+
+    span {
+      font-size: 20px;
+    }
+  }
+}
+

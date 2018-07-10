@@ -1,0 +1,22 @@
+{#
+ /**
+ * Submit
+ *
+ * @param string $submit_value Text auf dem Button
+ * @param string $form_help_text Hilfstext
+ * @param strin $submit_id ID
+ *
+ * @example
+ * {% include "@atoms/04-forms/07-submit.twig" with {
+ *   submit_id: faker('text', 5),
+ *   submit_value: faker('text', 50)
+ * } %}
+ */
+#}
+
+<div class="form-item form-type-submit form-item-submit">
+  <input type="submit" data-drupal-selector="{{submit_id}}" id="{{submit_id}}" name="op" value="{{submit_value}}" class="js-form-submit form-submit" {% if form_required %} required aria-required="true" {% endif %}>
+  {% if form_help_text %}
+    <div class="description">{{form_help_text}}</div>
+  {% endif %}
+</div>

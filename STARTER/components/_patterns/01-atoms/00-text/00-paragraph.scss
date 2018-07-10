@@ -1,0 +1,9 @@
+/* ------------------------------------ *\
+  #STYLES IN PARAGRAPH
+\* ------------------------------------ */
+:root {
+  @include font($base-font, 'regular');
+
+  font-size: $global-font-size;
+  line-height: 1.5;
+}

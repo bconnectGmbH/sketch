@@ -1,0 +1,61 @@
+{#
+/**
+ * Responsive Image
+ *
+ * Default theme implementation of a responsive image.
+ *
+ * @param $sources: The attributes of the <source> tags for this <picture> tag.
+ * @param $img_element: The controlling image, with the fallback image in srcset.
+ * @param $output_image_tag: Whether or not to output an <img> tag instead of a <picture> tag.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_responsive_image()
+ *
+ * @example
+ * {% set sources = {
+ *   'i0': {'mediaquery': '(min-width: 1024px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1200.png'},
+ *   'i1': {'mediaquery': '(min-width: 640px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image1024.png'},
+ *   'i2': {'mediaquery': '(min-width: 0px)', 'srcset': '../../../../images/b-connect/Development_Slide_Image640.png'},
+ * } %}
+ * {% set img_sizes = '(min-width: 1200px) 33vw, (min-width: 1024px) 50vw, 100vw' %}
+ * <h6>Als Image</h6>
+ * {% include "@atoms/06-images/03-responsive-image.twig" with {
+ *   res_img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
+ *   res_img_sizes: img_sizes,
+ *   res_img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   res_img_alt: 'Alternativ Titel',
+ *   res_img_title: 'Bild Titel',
+ *   res_output_image_tag: true,
+ * } %}
+ * <h6>Als Picture</h6>
+ * {% include "@atoms/06-images/03-responsive-image.twig" with {
+ *   res_picture_img_srcset: sources,
+ *   res_img_sizes: img_sizes,
+ *   res_img_src: '../../../../images/b-connect/Development_Slide_Image.png',
+ *   res_img_alt: 'Alternativ Titel',
+ *   res_img_url: '#',
+ *   res_img_title: 'Bild Titel',
+ * } %}
+ */
+#}
+
+{% if res_output_image_tag %}
+  {% include "@atoms/06-images/00-image.twig" with {
+    img_srcset: res_img_srcset,
+    img_sizes: res_img_sizes,
+    img_src: res_img_src,
+    img_alt: res_img_alt,
+    img_title: res_img_title,
+    img_url: res_img_url,
+  } %}
+{% else %}
+  {% include "@atoms/06-images/01-pictures.twig" with {
+    picture_img_srcset: res_picture_img_srcset,
+    picture_img_src: res_img_src,
+    picture_img_alt: res_img_alt,
+    picture_img_title: res_img_title,
+    picture_img_url: res_img_url,
+  } %}
+{% endif %}
+
+

@@ -1,0 +1,43 @@
+{#
+/**
+ * Status
+ *
+ * @param array $message_list Array mit allen Messages
+ *
+ * @example
+ * {% set message_list = {
+ *   "status": {'message': faker('text', 300)},
+ *   "warning": {'message': faker('text', 300)},
+ *   "error": {'message': faker('text', 300)}
+ * } %}
+ * {% include "@molecules/05-status/status.twig" with {
+ *   message_list: message_list
+ * } %}
+ */
+#}
+
+{% for type, messages in message_list %}
+  <div class="alert {{ type }} alert-dismissible show" role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+    {% if type == 'error' %}
+      <div role="alert">
+    {% endif %}
+      {% if status_headings[type] %}
+        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+      {% endif %}
+      {% if messages|length > 1 %}
+        <ul>
+          {% for message in messages %}
+            <li class="{{ type }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        {{ messages|first }}
+      {% endif %}
+    {% if type == 'error' %}
+      </div>
+    {% endif %}
+  </div>
+{% endfor %}
