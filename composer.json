@@ -4,22 +4,8 @@
     "type": "drupal-theme",
     "require": {
         "webmozart/glob": "^4.1",
-        "drupal/components": "^1.0",
-        "drupal/ui_patterns": "dev-44-ui-patterns-settings"
+        "drupal/components": "^1.0"
     },
-    "repositories": [{
-        "type": "package",
-        "package": {
-            "name": "drupal/ui_patterns",
-            "version": "dev-44-ui-patterns-settings",
-            "type": "drupal-module",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/christianwiedemann/ui_patterns.git",
-                "reference": "44-ui-patterns-settings"
-            }
-        }
-    }],
     "authors": [{
         "name": "Erik Seifert",
         "email": "erik.seifert@b-connect.de"
