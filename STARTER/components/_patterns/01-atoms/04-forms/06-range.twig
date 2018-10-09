@@ -20,7 +20,7 @@
 
 <div class="form-item form-type-radios form-item-radios">
   <input type="range" value="{{startpoint}}" min="{{min_range}}" max="{{max_range}}" step="{{step_range}}">
-  {% if form_help_text %}
+  {%- if form_help_text -%}
     <div class="description">{{form_help_text}}</div>
-  {% endif %}
+  {%- endif -%}
 </div>

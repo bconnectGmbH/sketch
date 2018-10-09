@@ -116,10 +116,10 @@
  */
 #}
 
-<div class="teaser-row {% if teaser_img_position %}{{teaser_img_position}}{% endif %}">
-  {% if title_section_above == true %}
+<div class="teaser-row {%- if teaser_img_position -%}{{teaser_img_position}}{%- endif -%}">
+  {%- if title_section_above == true -%}
     <div class="teaser-title-top">
-      {% if teaser_heading %}
+      {%- if teaser_heading -%}
         {% include "@atoms/00-text/01-headings.twig" with {
           heading_level: teaser_heading_level,
           heading: teaser_heading,
@@ -127,19 +127,19 @@
           link_attributes: teaser_heading_link_attributes,
           small: teaser_small
         } %}
-      {% endif %}
-      {% if teaser_subheading %}
+      {%- endif -%}
+      {%- if teaser_subheading -%}
         {% include "@atoms/00-text/01-headings.twig" with {
           heading_level: teaser_subheading_level,
           heading: teaser_subheading,
           subtitle: true
         } %}
-      {% endif %}
+      {%- endif -%}
     </div>
-  {% endif %}
-  <div class="teaser-content" {% if teaser_img_position == 'overlay' %}style="background-image: url('{{teaser_img_src}}');"{% endif %}>
-    {% if teaser_img_position == 'left' or teaser_img_position == 'overlay' %}
-      {% if teaser_img_src %}
+  {%- endif -%}
+  <div class="teaser-content" {%- if teaser_img_position == 'overlay' -%}style="background-image: url('{{teaser_img_src}}');"{%- endif -%}>
+    {%- if teaser_img_position == 'left' or teaser_img_position == 'overlay' -%}
+      {%- if teaser_img_src -%}
         <div class="teaser-image">
           {% include "@atoms/06-images/00-image.twig" with {
             img_src: teaser_img_src,
@@ -147,13 +147,13 @@
             img_title: teaser_img_title
           } %}
         </div>
-      {% endif %}
-    {% endif %}
-    {% if teaser_text or teaser_button_url %}
+      {%- endif -%}
+    {%- endif -%}
+    {%- if teaser_text or teaser_button_url -%}
       <div class="teaser-body">
         <div class="teaser-content-inner">
-          {% if title_section_above == false %}
-            {% if teaser_heading %}
+          {%- if title_section_above == false -%}
+            {%- if teaser_heading -%}
               {% include "@atoms/00-text/01-headings.twig" with {
                 heading_level: teaser_heading_level,
                 heading: teaser_heading,
@@ -161,8 +161,8 @@
                 link_attributes: teaser_heading_link_attributes,
                 small: teaser_small
               } %}
-            {% endif %}
-            {% if teaser_subheading %}
+            {%- endif -%}
+            {%- if teaser_subheading -%}
               <small>
                 {% include "@atoms/00-text/01-headings.twig" with {
                   heading_level: teaser_subheading_level,
@@ -170,27 +170,29 @@
                   subtitle: true,
                 } %}
               </small>
-            {% endif %}
-          {% endif %}
-          {% if teaser_text %}
-            <div class="teaser-text">
-              {% include "@atoms/00-text/00-paragraph.twig" with {
-                paragraph_content: teaser_text
-              } %}
-            </div>
-          {% endif %}
-          {% if teaser_button_url %}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if teaser_text -%}
+            {% block teaser_text %}
+              <div class="teaser-text">
+                {% include "@atoms/00-text/00-paragraph.twig" with {
+                  paragraph_content: teaser_text
+                } %}
+              </div>
+            {% endblock %}
+          {%- endif -%}
+          {%- if teaser_button_url -%}
             {% include "@atoms/03-buttons/00-button.twig" with {
               button_url: teaser_button_url,
               button_extra_class: teaser_button_class,
               button_text: teaser_button_text
             } %}
-          {% endif %}
+          {%- endif -%}
         </div>
       </div>
-    {% endif %}
-    {% if teaser_img_position == 'right' %}
-      {% if teaser_img_src %}
+    {%- endif -%}
+    {%- if teaser_img_position == 'right' -%}
+      {%- if teaser_img_src -%}
         <div class="teaser-image">
           {% include "@atoms/06-images/00-image.twig" with {
             img_src: teaser_img_src,
@@ -198,8 +200,8 @@
             img_title: teaser_img_title
           } %}
         </div>
-      {% endif %}
-    {% endif %}
+      {%- endif -%}
+    {%- endif -%}
   </div>
 </div>
 

@@ -32,43 +32,45 @@
 #}
 
 <div class="card accordion-item">
-  {% if accordion_title %}
+  {%- if accordion_title -%}
     <div class="card-header">
-      <a data-toggle="collapse" role="button" href="#item-{{key}}-{{ accordion_title|md5 }}" {% if key == 0 %}aria-expanded="true"{% else %}aria-expanded="false"{% endif %} data-target="#item-{{key}}-{{ accordion_title|md5 }}" aria-controls="item-{{key}}-{{ accordion_title|md5 }}">{{accordion_title}}</a>
+      <a data-toggle="collapse" role="button" href="#item-{{key}}-{{ accordion_title|md5 }}" {%- if key == 0 -%}aria-expanded="true"{%- else -%}aria-expanded="false"{%- endif -%} data-target="#item-{{key}}-{{ accordion_title|md5 }}" aria-controls="item-{{key}}-{{ accordion_title|md5 }}">{{accordion_title}}</a>
     </div>
-  {% endif %}
-  <div id="item-{{key}}-{{ accordion_title|md5 }}" class="collapse {% if key == 0 %}show{% endif %}" aria-labelledby="item-{{key}}-{{ accordion_title|md5 }}" data-parent="{{accordion_parent}}">
+  {%- endif -%}
+  <div id="item-{{key}}-{{ accordion_title|md5 }}" class="collapse {%- if key == 0 -%}show{%- endif -%}" aria-labelledby="item-{{key}}-{{ accordion_title|md5 }}" data-parent="{{accordion_parent}}">
     <div class="card-body">
-      {% if card_heading %}
-        {% include "@atoms/00-text/01-headings.twig" with {
-          heading_level: card_heading_level,
-          heading: card_heading,
-          link_url: card_heading_link_url,
-          link_attributes: card_heading_link_attributes,
-          small: card_small
-        } %}
-      {% endif %}
-      {% if card_subheading %}
-        <small>
+      {% block card_body %}
+        {%- if card_heading -%}
           {% include "@atoms/00-text/01-headings.twig" with {
-            heading_level: card_subheading_level,
-            heading: card_subheading,
-            subtitle: true,
+            heading_level: card_heading_level,
+            heading: card_heading,
+            link_url: card_heading_link_url,
+            link_attributes: card_heading_link_attributes,
+            small: card_small
           } %}
-        </small>
-      {% endif %}
-      {% if card_text %}
-        {% include "@atoms/00-text/00-paragraph.twig" with {
-          paragraph_content: card_text
-        } %}
-      {% endif %}
-      {% if card_button_url %}
-        {% include "@atoms/03-buttons/00-button.twig" with {
-          button_url: card_button_url,
-          button_extra_class: card_button_class,
-          button_text: card_button_text
-        } %}
-      {% endif %}
+        {%- endif -%}
+        {%- if card_subheading -%}
+          <small>
+            {% include "@atoms/00-text/01-headings.twig" with {
+              heading_level: card_subheading_level,
+              heading: card_subheading,
+              subtitle: true,
+            } %}
+          </small>
+        {%- endif -%}
+        {%- if card_text -%}
+          {% include "@atoms/00-text/00-paragraph.twig" with {
+            paragraph_content: card_text
+          } %}
+        {%- endif -%}
+        {%- if card_button_url -%}
+          {% include "@atoms/03-buttons/00-button.twig" with {
+            button_url: card_button_url,
+            button_extra_class: card_button_class,
+            button_text: card_button_text
+          } %}
+        {%- endif -%}
+      {% endblock %}
     </div>
   </div>
 </div>

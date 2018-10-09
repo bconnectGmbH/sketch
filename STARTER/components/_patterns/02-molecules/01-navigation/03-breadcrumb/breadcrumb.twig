@@ -19,19 +19,19 @@
  */
 #}
 
-{% if breadcrumbs %}
+{%- if breadcrumbs -%}
   <nav class="breadcrumb-nav" role="navigation" aria-labelledby="breadcrumb">
     <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumbs nav">
-    {% for breadcrumb in breadcrumbs %}
+    {%- for breadcrumb in breadcrumbs -%}
       <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-        {% if breadcrumb.breadcrumb_url %}
+        {%- if breadcrumb.breadcrumb_url -%}
           <a itemprop="item" href="{{ breadcrumb.breadcrumb_url }}" ><span itemprop="name">{{ breadcrumb.breadcrumb_text }}</span></a>
-        {% else %}
+        {%- else -%}
           <span itemprop="name">{{ breadcrumb.breadcrumb_text }}</span>
-        {% endif %}
+        {%- endif -%}
       </li>
-    {% endfor %}
+    {%- endfor -%}
       <li class="current"><h1>{{ breadcrumb_text_current }}</h1></li>
     </ol>
   </nav>
-{% endif %}
+{%- endif -%}

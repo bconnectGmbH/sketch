@@ -126,13 +126,13 @@
           'rel': 'bookmark'
         },
       } %}
-      {% if node_subheading %}
+      {%- if node_subheading -%}
         {% include "@atoms/00-text/01-headings.twig" with {
           "heading_level": node_subheading_level,
           "heading": node_subheading,
           "subtitle": true
         } %}
-      {% endif %}
+      {%- endif -%}
       {{ title_suffix }}
     </header>
   {% endblock article_header %}
@@ -146,24 +146,24 @@
   {% endblock article_content %}
 
   {% block article_footer %}
-    {% if article_tags %}
+    {%- if article_tags -%}
       <div>
         <span class="tags-headline">Tags:</span>
         <ul class="list-inline">
-          {% for tag in article_tags  %}
+          {%- for tag in article_tags -%}
             <li class="list-inline-item"><a href="{{ tag.url }}" target="_blank">{{ tag.word }}</a></li>
-          {% endfor %}
+          {%- endfor -%}
         </ul>
       </div>
-    {% endif %}
-    {% if display_submitted %}
+    {%- endif -%}
+    {%- if display_submitted -%}
       <footer>
         {{ author_picture }}
         <div{{ author_attributes }}>
           {% trans %} Submitted by {{ node_author_name }} on {{ node_date }}{% endtrans %}
         </div>
       </footer>
-    {% endif %}
+    {%- endif -%}
   {% endblock article_footer %}
 
 </article>

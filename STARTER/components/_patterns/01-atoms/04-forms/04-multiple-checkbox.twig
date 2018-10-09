@@ -20,20 +20,20 @@
  */
 #}
 
- <div class="form-item form-type-checkboxes form-item-checkboxes">
+<div class="form-item form-type-checkboxes form-item-checkboxes">
   <label class="label" for="edit-checkboxes">{{form_label}}</label>
   <div id="edit-checkboxes" class="form-checkboxes">
     <form>
-      {% for item in items %}
+      {%- for item in items -%}
         {% include "@atoms/04-forms/03-checkbox.twig" with {
           form_id: item.form_id,
           checkbox_group_name: item.checkbox_group_name,
           checkbox_label: item.checkbox_label
         } %}
-      {% endfor %}
+      {%- endfor -%}
     </form>
   </div>
-  {% if form_help_text %}
+  {%- if form_help_text -%}
     <div class="description">{{form_help_text}}</div>
-  {% endif %}
+  {%- endif -%}
 </div>

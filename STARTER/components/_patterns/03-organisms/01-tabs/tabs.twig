@@ -24,17 +24,17 @@
 
 <div class="tab-wrapper">
   <ul class="nav tabs" role="tablist">
-    {% for key, tab_link in tab_items %}
+    {%- for key, tab_link in tab_items -%}
       {% include "@molecules/03-tab/tab-navigation-link.twig" with {
         "tab_url": tab_link.tab_url,
         "tab_title": tab_link.tab_title,
         "key": key,
       } %}
-    {% endfor %}
+    {%- endfor -%}
   </ul>
 
   <div class="tab-content">
-    {% for key, tab_item in tab_items %}
+    {%- for key, tab_item in tab_items -%}
       {% include "@molecules/03-tab/tab-pane.twig" with {
         "tab_url": tab_item.tab_url,
         "tab_heading_level": tab_item.tab_heading_level,
@@ -42,6 +42,6 @@
         "tab_text": tab_item.tab_text,
         "key": key,
       } %}
-    {% endfor %}
+    {%- endfor -%}
   </div>
 </div>

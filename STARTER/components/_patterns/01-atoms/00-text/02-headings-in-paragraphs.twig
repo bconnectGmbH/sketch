@@ -20,40 +20,40 @@
  *  <div class="sg-fonts">
  *  <h6>Headlines in Paragraph</h6>
  *  <p>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *      {% include "@atoms/00-text/02-headings-in-paragraphs.twig" with {
  *        heading_level: i,
  *        heading: faker('text', 200),
  *      } %}
- *  {% endfor %}
+ *    {%- endfor -%}
  *  </p>
  *  <h6>Headlines in Paragraph verlinkt</h6>
  *  <p>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *      {% include "@atoms/00-text/02-headings-in-paragraphs.twig" with {
  *        heading_level: i,
  *        link_url: '#',
  *        heading: faker('text', 200),
  *      } %}
- *  {% endfor %}
+ *  {%- endfor -%}
  *  </p>
  *  </div>
  */
 #}
 
-<h{{ heading_level }} class="hyphen h{{ heading_level }}">
-{% if link_url %}
+<h{{ heading_level }} class="h{{ heading_level }}">
+{%- if link_url -%}
   <a
-    {% for attribute,value in link_attributes %}
+    {%- for attribute,value in link_attributes -%}
       {{ attribute }}="{{ value }}"
-    {% endfor %}
+    {%- endfor -%}
     href="{{ link_url }}"
   >
     {% block heading %}
       {{ heading }}
     {% endblock %}
   </a>
-{% else %}
+{%- else -%}
   {{ heading }}
-{% endif %}
+{%- endif -%}
 </h{{ heading_level }}>

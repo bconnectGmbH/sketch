@@ -36,21 +36,21 @@
  */
 #}
 
-{% if trigger_type == 'link' %}
+{%- if trigger_type == 'link' -%}
   <a type="button" role="button" class="button link" data-toggle="modal" data-target="#{{infobox_id}}">
     {{trigger_button_text}}
   </a>
-{% else %}
+{%- else -%}
   <button type="button" class="button" data-toggle="modal" data-target="#{{infobox_id}}">
     {{trigger_button_text}}
   </button>
-{% endif %}
+{%- endif -%}
 
 <div class="modal fade" tabindex="-1" role="dialog" id="{{infobox_id}}">
     <div class="modal-dialog" role="document">
         <div class="infobox-content">
 
-        {% if infobox_heading %}
+        {%- if infobox_heading -%}
           <div class="infobox-header">
             {% include "@atoms/00-text/01-headings.twig" with {
               heading_level: infobox_heading_level,
@@ -60,23 +60,25 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-        {% endif %}
+        {%- endif -%}
 
-        {% if infobox_text %}
+        {%- if infobox_text -%}
           <div class="infobox-body">
-            {% include "@atoms/00-text/00-paragraph.twig" with {
-              paragraph_content: infobox_text
-            } %}
+            {% block infobox_body %}
+              {% include "@atoms/00-text/00-paragraph.twig" with {
+                paragraph_content: infobox_text
+              } %}
+            {% endblock %}
           </div>
-        {% endif %}
+        {%- endif -%}
 
-        {% if infobox_footer %}
+        {%- if infobox_footer -%}
           <div class="infobox-footer">
             {% block infobox_footer %}
               {{infobox_footer}}
             {% endblock %}
           </div>
-        {% endif %}
+        {%- endif -%}
       </div>
     </div>
   </div>

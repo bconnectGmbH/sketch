@@ -38,20 +38,20 @@
       img_href: logo_img_href,
     } %}
   </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{menu_id}}" aria-controls="{{menu_id}}" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="{{menu_id}}" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="{{menu_id}}">
     {{ menus.menu_links(items, 0) }}
     {% macro menu_links(items, menu_level) %}
       {% import _self as menus %}
-      {% if items %}
-        {% if menu_level == 0 %}
+      {%- if items -%}
+        {%- if menu_level == 0 -%}
           <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav navbar-nav level-{{menu_level}}">
-        {% else %}
+        {%- else -%}
           <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav sub level-{{menu_level}} dropdown-menu">
-        {% endif %}
-        {% for item in items %}
+        {%- endif -%}
+        {%- for item in items -%}
           {% set list_classes = [
               'item',
               item.is_expanded ? 'dropdown',
@@ -59,14 +59,14 @@
               item.in_active_trail ? 'active-trail'
           ] %}
           <li itemprop="name" class="{{ list_classes|join(' ') }}">
-            <a itemprop="url" href="{{ item.url }}" {% if item.is_expanded and menu_level < 1 %} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ item.title }}</a>
-            {% if item.below %}
+            <a itemprop="url" href="{{ item.url }}" {%- if item.is_expanded and menu_level < 1 -%} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{%- endif -%}>{{ item.title }}</a>
+            {%- if item.below -%}
               {{ menus.menu_links(item.below, menu_level + 1) }}
-            {% endif %}
+            {%- endif -%}
           </li>
-        {% endfor %}
+        {%- endfor -%}
         </ul>
-      {% endif %}
+      {%- endif -%}
     {% endmacro %}
     <div class="search-wrapper-mobile">
       {% include "@molecules/10-block/search-block.twig" with {

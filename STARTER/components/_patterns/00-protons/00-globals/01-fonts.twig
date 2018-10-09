@@ -10,15 +10,15 @@
  * @example
  * {% set items = { 'regular': 'div', 'bold': 'b', 'italic': 'em', 'bolditalic': 'b'} %}
  * <ul class="sg-fonts">
- *  {% for key, item in items %}
+ *  {%- for key, item in items -%}
  *    <li>
- *    {% if key == 'bolditalic' %}
+ *    {%- if key == 'bolditalic' -%}
  *      <{{item}}><em>Ich bin der Test der Fontschrift in Fontstyle {{key}}</em></{{item}}>
- *    {% else %}
+ *    {%- else -%}
  *      <{{item}}>Ich bin der Test der Fontschrift in Fontstyle {{key}}</{{item}}>
- *    {% endif %}
+ *    {%- endif -%}
  *    </li>
- *  {% endfor %}
+ *  {%- endfor -%}
  * </ul>
  */
 #}

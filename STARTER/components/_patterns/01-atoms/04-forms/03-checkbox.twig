@@ -18,10 +18,10 @@
 #}
 
 <div class="form-item form-type-checkbox form-item-checkbox-{{form_id}}">
-    <input type="checkbox" id="{{form_id}}" name="{{checkbox_group_name}}" value="{{checkbox_label|lower|replace(' ', '-')}}" class="form-checkbox" {% if form_checked %} checked {% endif %} {% if form_required %} required aria-required="true" {% endif %}>
+    <input type="checkbox" id="{{form_id}}" name="{{checkbox_group_name}}" value="{{checkbox_label|lower|replace(' ', '-')}}" class="form-checkbox" {%- if form_checked -%} checked {%- endif -%} {%- if form_required -%} required aria-required="true" {%- endif -%}>
     <label class="option" for="{{form_id}}">{{checkbox_label}}</label>
-    {% if form_help_text %}
+    {%- if form_help_text -%}
         <div class="description">{{form_help_text}}</div>
-    {% endif %}
+    {%- endif -%}
 </div>
 

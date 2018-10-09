@@ -18,15 +18,15 @@
 <div class="drop-button">
     <a class="button filled"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown Example <span class="icon"></span></a>
     <ul class="dropdown-menu" x-placement="bottom-start">
-      {% for item in items %}
-          <li>
+      {%- for item in items -%}
+        <li>
             {% include "@atoms/03-buttons/00-button.twig" with {
                 button_url: item.button_url,
                 button_text: item.button_text,
                 button_extra_class: item.button_class
             } %}
           </li>
-      {% endfor %}
+      {%- endfor -%}
   </ul>
 </div>
 

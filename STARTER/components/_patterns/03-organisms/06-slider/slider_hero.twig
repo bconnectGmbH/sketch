@@ -37,7 +37,7 @@
 #}
 
 <div id="{{slider_id}}" class="slider {{slider_extra_class}}">
-  {% for slide in sliderItems %}
+  {%- for slide in sliderItems -%}
     {% include "@molecules/09-hero/hero.twig" with {
       hero_heading: slide.hero_heading,
       hero_heading_level: slide.hero_heading_level,
@@ -52,5 +52,5 @@
       hero_img_as_background: slide.hero_img_as_background,
       img_only: slide.img_only
     } %}
-  {% endfor %}
+  {%- endfor -%}
 </div>

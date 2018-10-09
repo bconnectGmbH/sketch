@@ -16,28 +16,28 @@
  */
 #}
 
-{% for type, messages in message_list %}
+{%- for type, messages in message_list -%}
   <div class="alert {{ type }} alert-dismissible show" role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">×</span>
     </button>
-    {% if type == 'error' %}
+    {%- if type == 'error' -%}
       <div role="alert">
-    {% endif %}
-      {% if status_headings[type] %}
+    {%- endif -%}
+      {%- if status_headings[type] -%}
         <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-      {% endif %}
-      {% if messages|length > 1 %}
+      {%- endif -%}
+      {%- if messages|length > 1 -%}
         <ul>
-          {% for message in messages %}
+          {%- for message in messages -%}
             <li class="{{ type }}">{{ message }}</li>
-          {% endfor %}
+          {%- endfor -%}
         </ul>
-      {% else %}
+      {%- else -%}
         {{ messages|first }}
-      {% endif %}
-    {% if type == 'error' %}
+      {%- endif -%}
+    {%- if type == 'error' -%}
       </div>
-    {% endif %}
+    {%- endif -%}
   </div>
-{% endfor %}
+{%- endfor -%}

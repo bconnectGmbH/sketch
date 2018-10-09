@@ -34,11 +34,11 @@
 #}
 
 <div id="{{slider_id}}" class="slider-img {{slider_extra_class}}">
-  {% for slide in sliderItems %}
+  {%- for slide in sliderItems -%}
     {% include "@atoms/06-images/00-image.twig" with {
       img_src: slide.img_src,
       img_alt: slide.img_alt,
       img_title: slide.img_title,
     } %}
-  {% endfor %}
+  {%- endfor -%}
 </div>

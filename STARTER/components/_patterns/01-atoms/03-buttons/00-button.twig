@@ -41,4 +41,4 @@
  */
 #}
 
-<a href="{{button_url}}" {% if target %}target="{{target}}"{% endif %} class="button{% if button_extra_class %} {{button_extra_class}}{% endif %}">{{button_text}}</a>
+<a href="{{button_url}}" {%- if target -%}target="{{target}}"{%- endif -%} class="button{%- if button_extra_class -%} {{button_extra_class}}{%- endif -%}">{{button_text}}</a>

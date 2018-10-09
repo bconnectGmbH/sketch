@@ -94,47 +94,49 @@
  */
 #}
 
-<div class="hero {% if hero_style %}{{hero_style}}{% endif %}{% if hero_img_as_background %} background{% endif %}"{% if hero_img_as_background and hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
-  {% if hero_style != "img-right" %}
-    <div class="image" {% if hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
+<div class="hero{%- if hero_style -%} {{hero_style}}{%- endif -%}{%- if hero_img_as_background -%} background{%- endif -%}"{%- if hero_img_as_background and hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
+  {%- if hero_style != "img-right" -%}
+    <div class="image" {%- if hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
       {% include "@atoms/06-images/00-image.twig" with {
         img_src: hero_img_src,
         img_alt: hero_img_alt,
         img_title: hero_img_title
       } %}
     </div>
-  {% endif %}
-  {% if hero_heading or hero_text or hero_button_url %}
+  {%- endif -%}
+  {%- if hero_heading or hero_text or hero_button_url -%}
   <div class="content">
-    {% if hero_heading %}
+    {%- if hero_heading -%}
       {% include "@atoms/00-text/01-headings.twig" with {
         heading_level: hero_heading_level,
         heading: hero_heading,
         heading_class: 'hero-headline animated'
       } %}
-    {% endif %}
-    {% if hero_text %}
-      {% include "@atoms/00-text/00-paragraph.twig" with {
-        paragraph_content: hero_text,
-        paragraph_class: 'animated'
-      } %}
-    {% endif %}
-    {% if hero_button_url %}
+    {%- endif -%}
+    {%- if hero_text -%}
+      {% block teaser_text %}
+        {% include "@atoms/00-text/00-paragraph.twig" with {
+          paragraph_content: hero_text,
+          paragraph_class: 'animated'
+        } -%}
+      {% endblock %}
+    {%- endif -%}
+    {%- if hero_button_url -%}
       {% include "@atoms/03-buttons/00-button.twig" with {
         button_url: hero_button_url,
         button_extra_class: hero_button_class,
         button_text: hero_button_text
       } %}
-    {% endif %}
-  {% endif %}
+    {%- endif -%}
+  {%- endif -%}
   </div>
-  {% if hero_style == "img-right" %}
-    <div class="image" {% if hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
+  {%- if hero_style == "img-right" -%}
+    <div class="image" {%- if hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
       {% include "@atoms/06-images/00-image.twig" with {
         img_src: hero_img_src,
         img_alt: hero_img_alt,
         img_title: hero_img_title
       } %}
     </div>
-  {% endif %}
+  {%- endif -%}
 </div>

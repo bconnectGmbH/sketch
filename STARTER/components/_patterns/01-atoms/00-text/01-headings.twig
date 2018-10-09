@@ -16,16 +16,16 @@
  * @example
  *  <div class="sg-header-styles">
  *    <h6>Headline Standard</h6>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *    <div class="sg-pattern pl-heading-examples-1">
  *      {% include "@atoms/00-text/01-headings.twig" with {
  *        heading_level: i,
  *        heading: faker('text', 200),
  *      } %}
  *    </div>
- *    {% endfor %}
+ *    {%- endfor -%}
  *    <h6>Headline Standard Link</h6>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *    <div class="sg-pattern pl-heading-examples-1">
  *      {% include "@atoms/00-text/01-headings.twig" with {
  *        heading_level: i,
@@ -33,9 +33,9 @@
  *        heading: faker('text', 200),
  *      } %}
  *    </div>
- *    {% endfor %}
+ *    {%- endfor -%}
  *    <h6>Headline Subtitle</h6>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *    <div class="sg-pattern pl-heading-examples-2">
  *      {% include "@atoms/00-text/01-headings.twig" with {
  *        heading_level: i,
@@ -43,9 +43,9 @@
  *        heading: faker('text', 200),
  *      } %}
  *    </div>
- *    {% endfor %}
+ *    {%- endfor -%}
  *    <h6>Headline Small for Teasers</h6>
- *    {% for i in 1..6 %}
+ *    {%- for i in 1..6 -%}
  *    <div class="sg-pattern pl-heading-examples-2">
  *      {% include "@atoms/00-text/01-headings.twig" with {
  *        heading_level: i,
@@ -53,32 +53,28 @@
  *        heading: faker('text', 200),
  *      } %}
  *    </div>
- *    {% endfor %}
+ *    {%- endfor -%}
  *  </div>
  */
 #}
 
-<h{{ heading_level }} class="hyphen {% if subtitle or heading_class %}{% if subtitle %} subtitle{% endif %} {{heading_class}}{% endif %}">
-  {% if link_url %}
+<h{{ heading_level }} class="headline{%- if subtitle or heading_class -%}{%- if subtitle -%} subtitle{%- endif -%} {{heading_class}}{%- endif -%}">
+  {%- if link_url -%}
     <a
-      {% for attribute,value in link_attributes %}
+      {%- for attribute,value in link_attributes -%}
         {{ attribute }}="{{ value }}"
-      {% endfor %}
+      {%- endfor -%}
       href="{{ link_url }}"
     >
-    {% block heading %}
-      {% if small %}
+    {%- block heading -%}
+      {%- if small -%}
         <small>{{ heading }}</small>
-      {% else %}
+      {%- else -%}
         {{ heading }}
-      {% endif %}
-    {% endblock %}
+      {%- endif -%}
+    {%- endblock -%}
     </a>
-  {% else %}
-    {% if small %}
-      <small>{{ heading }}</small>
-    {% else %}
-      {{ heading }}
-    {% endif %}
-  {% endif %}
+  {%- else -%}
+    {%- if small -%}<small>{{ heading }}</small>{%- else -%}{{ heading }}{%- endif -%}
+  {%- endif -%}
 </h{{ heading_level }}>

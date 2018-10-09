@@ -58,30 +58,31 @@
  */
 #}
 
-
 <div class="card-grid grid-{{card_grid_key}}">
-  {% for card in cards %}
-    {% include "@molecules/00-card/card.twig" with {
-      "card_header_content": card.card_header_content,
-      "card_footer_content": card.card_footer_content,
-      "card_heading": card.card_heading,
-      "card_heading_level": card.card_heading_level,
-      "card_heading_link_url": card.card_heading_link_url,
-      "card_heading_link_attributes": card.card_heading_link_attributes,
-      "card_small": card.card_small,
-      "card_subheading_level": card.card_subheading_level,
-      "card_subheading": card.card_subheading,
-      "card_text": card.card_text,
-      "card_button_url": card.card_button_url,
-      "button_extra_class": card.button_extra_class,
-      "button_text": card.button_text,
-      "card_img_position": card.card_img_position,
-      "title_section_above": card.title_section_above,
-      "card_img_src": card.card_img_src,
-      "card_img_title":card.card_img_title,
-      "card_img_alt": card.card_img_alt,
-      "card_button_class": card.card_button_class,
-      "card_button_text": card.card_button_text
-    } %}
-  {% endfor %}
+  {%- for card in cards -%}
+    <div class="item">
+      {% include "@molecules/00-card/card.twig" with {
+        "card_header_content": card.card_header_content,
+        "card_footer_content": card.card_footer_content,
+        "card_heading": card.card_heading,
+        "card_heading_level": card.card_heading_level,
+        "card_heading_link_url": card.card_heading_link_url,
+        "card_heading_link_attributes": card.card_heading_link_attributes,
+        "card_small": card.card_small,
+        "card_subheading_level": card.card_subheading_level,
+        "card_subheading": card.card_subheading,
+        "card_text": card.card_text,
+        "card_button_url": card.card_button_url,
+        "button_extra_class": card.button_extra_class,
+        "button_text": card.button_text,
+        "card_img_position": card.card_img_position,
+        "title_section_above": card.title_section_above,
+        "card_img_src": card.card_img_src,
+        "card_img_title":card.card_img_title,
+        "card_img_alt": card.card_img_alt,
+        "card_button_class": card.card_button_class,
+        "card_button_text": card.card_button_text
+      } %}
+    </div>
+  {%- endfor -%}
 </div>

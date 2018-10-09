@@ -19,12 +19,12 @@
 #}
 
 <div class="block">
-    {{ title_prefix }}
-    {% if label %}
-      <h2{{ title_attribute }}>{{ label }}</h2>
-    {% endif %}
-    {{ title_suffix }}
-    {% block content %}
-      {{ content }}
-    {% endblock %}
+  {{ title_prefix }}
+  {%- if label -%}
+    <h2{{ title_attribute }}>{{ label }}</h2>
+  {%- endif -%}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 </div>

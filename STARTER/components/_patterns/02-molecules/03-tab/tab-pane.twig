@@ -28,16 +28,18 @@
  */
 #}
 
-<div id="{{tab_url}}" class="tab-pane {% if key == 0 %}active{% else %}fade{% endif %}"><br>
-  {% if tab_heading %}
+<div id="{{tab_url}}" class="tab-pane{%- if key == 0 -%} active{%- else -%} fade{%- endif -%}"><br>
+  {%- if tab_heading -%}
     {% include "@atoms/00-text/01-headings.twig" with {
       heading_level: tab_heading_level,
       heading: tab_heading,
     } %}
-  {% endif %}
-  {% if tab_text %}
-    {% include "@atoms/00-text/00-paragraph.twig" with {
-      paragraph_content: tab_text
-    } %}
-  {% endif %}
+  {%- endif -%}
+  {%- if tab_text -%}
+    {% block tab_text %} 
+      {% include "@atoms/00-text/00-paragraph.twig" with {
+        paragraph_content: tab_text
+      } %}
+    {% endblock %}
+  {%- endif -%}
 </div>

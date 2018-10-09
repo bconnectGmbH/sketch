@@ -17,11 +17,11 @@
 #}
 
 <div class="button-group">
-  {% for item in items %}
+  {%- for item in items -%}
     {% include "@atoms/03-buttons/00-button.twig" with {
       button_url: item.button_url,
       button_text: item.button_text,
       button_extra_class: item.button_class
     } %}
-  {% endfor %}
+  {%- endfor -%}
 </div>

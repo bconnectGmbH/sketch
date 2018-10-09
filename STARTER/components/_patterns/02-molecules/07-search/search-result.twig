@@ -33,10 +33,10 @@
     <a href="{{ search_result_url }}">{{ search_result_title }}</a>
   </h3>
   {{ search_result_title_suffix }}
-  {% if search_result_snippet %}
+  {%- if search_result_snippet -%}
     <p{{ search_result_content_attributes }}>{{ search_result_snippet }}</p>
-  {% endif %}
-  {% if search_result_info %}
+  {%- endif -%}
+  {%- if search_result_info -%}
     <p><strong>{{ search_result_info }}</strong></p>
-  {% endif %}
+  {%- endif -%}
 </div>

@@ -42,7 +42,7 @@
  */
 #}
 <div class="teaser-list">
-  {% for teaser in teasers %}
+  {%- for teaser in teasers -%}
     {% include "@molecules/06-teaser/teaser.twig" with {
       "teaser_img_position": teaser.teaser_img_position,
       "title_section_above": teaser.title_section_above,
@@ -61,5 +61,5 @@
       "teaser_button_class": teaser.teaser_button_class,
       "teaser_button_text": teaser.teaser_button_text
     } %}
-  {% endfor %}
+  {%- endfor -%}
 </div>

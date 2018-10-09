@@ -26,11 +26,11 @@
 <fieldset class="form-wrapper" id="edit-fieldset">
   <legend><span class="fieldset-legend">{{fieldset_legend}}</span></legend>
   <div class="fieldset-wrapper">
-    {% if form_help_text %}
+    {%- if form_help_text -%}
       <div class="fieldset-description">{{fieldset_description}}</div>
-    {% endif %}
-    {% block fieldset_content %}
+    {%- endif -%}
+    {%- block fieldset_content -%}
       {{fieldset_content}}
-    {% endblock %}
+    {%- endblock -%}
   </div>
 </fieldset>

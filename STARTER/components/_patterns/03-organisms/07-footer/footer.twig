@@ -22,45 +22,52 @@
 
 <footer class="footer">
   <div class="footer-container top">
-    <div class="navigation left footermenu-grid grid-three">
-      <div class="footermenu">
-        {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
-          menu_title: "Footer Menü 1",
-          items: items
+    {% block footer_left %}
+      <div class="navigation left footermenu-grid grid-three">
+        <div class="footermenu">
+          {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
+            menu_title: "Footer Menü 1",
+            items: items
+          } %}
+        </div>
+        <div class="footermenu">
+          {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
+            menu_title: "Footer Menü 2",
+            items: items
+          } %}
+        </div>
+        <div class="footermenu">
+          {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
+            menu_title: "Footer Menü 3",
+            items: items
+          } %}
+        </div>
+      </div>
+    {% endblock %}
+    {% block footer_right %}
+      <div class="company-info right">
+        <div class="company-title">{{company_name}}</div>
+        {% set copyright_date = "now"|date("Y") %}
+        {% set copyright = [copyright_company, copyright_date]|join(', ') %}
+        {% include "@atoms/00-text/00-paragraph.twig" with {
+          paragraph_content: company_data,
+        } %}
+        {% include "@atoms/00-text/00-paragraph.twig" with {
+          paragraph_content: copyright,
+        } %}
+        {% include "@molecules/08-social-media/social-media.twig" with {
+          socialmedia_urls: socialmedia_urls
         } %}
       </div>
-      <div class="footermenu">
-        {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
-          menu_title: "Footer Menü 2",
-          items: items
-        } %}
-      </div>
-      <div class="footermenu">
-        {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
-          menu_title: "Footer Menü 3",
-          items: items
-        } %}
-      </div>
-    </div>
-    <div class="company-info right">
-      <div class="company-title">{{company_name}}</div>
-      {% set copyright_date = "now"|date("Y") %}
-      {% set copyright = [copyright_company, copyright_date]|join(', ') %}
-      {% include "@atoms/00-text/00-paragraph.twig" with {
-        paragraph_content: company_data,
-      } %}
-      {% include "@atoms/00-text/00-paragraph.twig" with {
-        paragraph_content: copyright,
-      } %}
-      {% include "@molecules/08-social-media/social-media.twig" with {
-        socialmedia_urls: socialmedia_urls
-      } %}
-    </div>
+    {% endblock %}
   </div>
-  <div class="footer-container bottom">
-    {% include "@atoms/00-text/00-paragraph.twig" with {
-      paragraph_content: slogan,
-      paragraph_class: slogan_paragraph_class,
-    } %}
-  </div>
+
+  {% block footer_bottom %}
+    <div class="footer-container bottom">
+      {% include "@atoms/00-text/00-paragraph.twig" with {
+        paragraph_content: slogan,
+        paragraph_class: slogan_paragraph_class,
+      } %}
+    </div>
+  {% endblock %}
 </footer>

@@ -15,8 +15,8 @@
 #}
 
 <div class="form-item form-type-submit form-item-submit">
-  <input type="submit" data-drupal-selector="{{submit_id}}" id="{{submit_id}}" name="op" value="{{submit_value}}" class="js-form-submit form-submit" {% if form_required %} required aria-required="true" {% endif %}>
-  {% if form_help_text %}
+  <input type="submit" data-drupal-selector="{{submit_id}}" id="{{submit_id}}" name="op" value="{{submit_value}}" class="js-form-submit form-submit" {%- if form_required -%} required aria-required="true" {%- endif -%}>
+  {%- if form_help_text -%}
     <div class="description">{{form_help_text}}</div>
-  {% endif %}
+  {%- endif -%}
 </div>

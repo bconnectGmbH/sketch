@@ -7,9 +7,9 @@
  *
  * @example
  *  {% set items = { '$primary': '#232323', '$secondary': '#9b9b9b', '$success': '#4bb543', '$warning': '#ffae00', '$error': '#c00', '$white': '#fff', '$black': '#000', 
- *                 '$support1': '#6b6b6b', '$support2': '#474747', '$support3': '#727272', '$support4': '#f8f8f8', '$black-transparent': 'rgba(0, 0, 0, .5)' } %}
+ *                 '$support1': '#6b6b6b', '$support2': '#474747', '$support3': '#727272', '$support4': '#f8f8f8', '$black-transparent': 'rgba(0, 0, 0, .5)' } -%}
  *  <ul class="sg-colors">
- *    {% for key, item in items %}
+ *    {%- for key, item in items -%}
  *      <li>
  *        <div class="sg-swatch" style="background: {{item}};"></div>
  *        <div class="sg-info">
@@ -17,7 +17,7 @@
  *         <code>{{key}}</code>
  *        </div>
  *      </li>
- *    {% endfor %}
+ *    {%- endfor -%}
  *  </ul>
  */
 #}
