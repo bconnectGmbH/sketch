@@ -9,13 +9,10 @@
  * @example
  * <div class="sg-fonts">
  *   {% include "@atoms/00-text/00-paragraph.twig" with {
- *     paragraph_content: 'Ein Projekt startet und doch es gibt noch keinen Text, <del>gelöschter Text</del> allerdings sollte das <em>Layout schon bald <mark>präsentiert</mark> werden ... was tun?<q>Quote von dem <dfn>Auftraggeber (Definition Term)</dfn></q></em> Damit das Projekt gleich <ins><abbr>bzw. (Abkürzung)</abbr> unmittelbar (neu hinzugefügter text)</ins> starten kann benutze einfach etwas <strong>Lorem ipsum</strong> - Blind-, Füll-, Dummy-, Nachahmungs-, Platzhaltertext. Generiere einfach soviel Lorem Ipsum Text wie du brauchst, kopiere und füge ihn in dein Layout als vorübergehenden Platzhalter ein. Somit sieht das Projekt ein Stückchen vollständiger aus als zuvor. <strong><em>Viel Spaß dabei.</strong></em>',
+ *     paragraph_content: '<p>Ein Projekt startet und doch es gibt noch keinen Text, <del>gelöschter Text</del> allerdings sollte das <em>Layout schon bald <mark>präsentiert</mark> werden ... was tun?<q>Quote von dem <dfn>Auftraggeber (Definition Term)</dfn></q></em> Damit das Projekt gleich <ins><abbr>bzw. (Abkürzung)</abbr> unmittelbar (neu hinzugefügter text)</ins> starten kann benutze einfach etwas <strong>Lorem ipsum</strong> - Blind-, Füll-, Dummy-, Nachahmungs-, Platzhaltertext. Generiere einfach soviel Lorem Ipsum Text wie du brauchst, kopiere und füge ihn in dein Layout als vorübergehenden Platzhalter ein. Somit sieht das Projekt ein Stückchen vollständiger aus als zuvor. <strong><em>Viel Spaß dabei.</strong></em></p>',
  *   } %}
  * </div>
  */
 #}
 
-<p class="hyphen {% if paragraph_class %}{{paragraph_class}}{% endif %}">
-  {{paragraph_content|raw}}
-</p>
-
+{{paragraph_content|raw}}
