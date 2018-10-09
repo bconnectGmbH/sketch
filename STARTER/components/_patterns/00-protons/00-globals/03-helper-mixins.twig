@@ -7,10 +7,10 @@ Mögliche Stile sind: regular, italic, bold, bolditalic
   </code>
 </pre>
 <br /><br />
-Dieses Mixin ermöglicht es die Schriftgröße am dem Breakpoint Medium mit skalieren zu lassen.<br />
+Dieses Mixin ermöglicht es verschiedenen properties an ausgewählten Breakpoints mit skalieren zu lassen.<br />
 <pre>
   <code>
-    @include vw($size);
+    @include interpolate($properties, $min-screen, $max-screen, $min-value, $max-value);
   </code>
 </pre>
 

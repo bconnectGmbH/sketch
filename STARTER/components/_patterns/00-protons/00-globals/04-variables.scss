@@ -139,6 +139,34 @@ $global-font-size: 100% !default;
 $lead-font-size: $global-font-size * 1.25 !default;
 
 /* ------------------------------------ *\
+  #FONTSIZE
+\* ------------------------------------ */
+$h1: 60px;
+$h2: 52px;
+$h3: 42px;
+$h4: 36px;
+$h5: 30px;
+$h6: 25px;
+
+//small
+$s-h1: 50px;
+$s-h2: 40px;
+$s-h3: 32px;
+$s-h4: 28px;
+$s-h5: 24px;
+$s-h6: 20px;
+
+//in paragraph
+$p-h1: 48px;
+$p-h2: 42px;
+$p-h3: 33px;
+$p-h4: 27px;
+$p-h5: 22px;
+$p-h6: 18px;
+
+$sub: 20px;
+
+/* ------------------------------------ *\
   #HORIZONTAL LINE
 \* ------------------------------------ */
 $hr-icon: 'http://www.freeiconspng.com/uploads/circle-icon-30.png' !default;

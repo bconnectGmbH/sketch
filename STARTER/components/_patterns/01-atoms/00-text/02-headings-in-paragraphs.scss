@@ -25,32 +25,26 @@
 \* ------------------------------------ */
 p {
   .h1 {
-    font-size: 4.5em;
-    @include vw(48px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h1 - 12, $p-h1);
   }
 
   .h2 {
-    font-size: 4.5em;
-    @include vw(42px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h2 - 10, $p-h2);
   }
 
   .h3 {
-    font-size: 4.5em;
-    @include vw(33px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h3 - 8, $p-h3);
   }
 
   .h4 {
-    font-size: 4.5em;
-    @include vw(27px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h4 - 6, $p-h4);
   }
 
   .h5 {
-    font-size: 4.5em;
-    @include vw(22px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h5 - 4, $p-h5);
   }
 
   .h6 {
-    font-size: 4.5em;
-    @include vw(18px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $p-h6 - 2, $p-h5);
   }
 }

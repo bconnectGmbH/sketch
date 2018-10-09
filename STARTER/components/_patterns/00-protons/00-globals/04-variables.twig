@@ -5,149 +5,283 @@
  * Alle Variablen
  *
  * @example
- * <h6>Colors</h6>
- * $primary<br />
- * $secondary<br />
- * $success<br />
- * $warning<br />
- * $error<br />
- * $white<br />
- * $light-grey<br />
- * $medium-grey<br />
- * $dark-grey<br />
- * $black<br />
- * $support1<br />
- * $support2<br />
- * $support3<br />
- * $support4<br />
- * $black-transparent<br />
- * <h6>Breakpoints</h6>
- * $global-max-width<br />
- * $breakpoints: (<br />
- * &nbsp;&nbsp;small: 0<br />
- * &nbsp;&nbsp;medium: 640<br />
- * &nbsp;&nbsp;large: 1024<br />
- * &nbsp;&nbsp;xlarge 1200<br />
- * &nbsp;&nbsp;xxlarge 1440<br />
- * )<br />
- * <h6>Font</h6>
- * $fa-font-path<br />
- * $website-font-path<br />
- * $base-font<br />
- * $fontawesome<br />
- * $bc-icon<br />
- * $global-font-size<br />
- * $lead-font-size<br />
- * <h6>Horizontal Line</h6>
- * $hr-icon<br />
- * <h6>Button</h6>
- * $round-button-height<br />
- * $round-button-width<br />
- * $color-button-drop-menu<br />
- * $background-button-drop-menu<br />
- * $border-button-drop-menu<br />
- * $background-hover-button-drop-menu<br />
- * $color-hover-button-drop-menu<br />
- * <h6>Card</h6>
- * $card-background<br />
- * $card-border-width<br />
- * $card-border-color<br />
- * $card-border-radius<br />
- * $card-body-padding<br />
- * $card-header-padding<br />
- * $card-header-color<br />
- * $card-header-border<br />
- * $card-footer-padding<br />
- * $card-footer-color<br />
- * $card-footer-border<br />
- * <h6>Accordion</h6><br />
- * $acc-item-background<br />
- * $acc-item-border-width<br />
- * $acc-item-border-color<br />
- * $acc-item-border-radius<br />
- * $acc-item-body-padding<br />
- * $acc-item-header-padding<br />
- * $acc-item-header-color<br />
- * $acc-item-header-border<br />
- * $acc-item-header-link-color<br />
- * $acc-item-footer-padding<br />
- * $acc-item-footer-color<br />
- * $acc-item-footer-border<br />
- * $acc-item-footer-link-color<br />
- * <h6>Tabs</h6>
- * $tab-navigation-border<br />
- * $tab-link-padding<br />
- * $tab-active-link-color<br />
- * $tab-active-link-background<br />
- * $tab-active-link-border-color<br />
- * $tab-link-border-radius<br />
- * $tab-hover-link-border-color<br />
- * <h6>Infobox</h6>
- * $infobox-max-width<br />
- * $infobox-padding<br />
- * $infobox-content-background<br />
- * $infobox-content-border<br />
- * $infobox-content-border-radius<br />
- * $infobox-divider<br />
- * $infobox-close-fontsize<br />
- * $infobox-close-color<br />
- * $infobox-close-opacity<br />
- * <h6>Hero</h6>
- * $hero-background-color<br />
- * $hero-content-padding<br />
- * $hero-content-color-background<br />
- * $hero-content-max-width<br />
- * $hero-content-color<br />
- * <h6>Breadcrumb</h6>
- * $breadcrumb-active-item<br />
- * $breadcrumb-nav-padding<br />
- * $breadcrumb-divider-color<br />
- * $breadcrumb-space-between-items<br />
- * $breadcrumb-item-color
- * $breadcrumb-item-hover-border-color
- * <h6>Footermenu</h6>
- * $footer-menu-separator<br />
- * $footer-menu-item-color<br />
- * $footer-menu-title-color<br />
- * $footer-menu-item-hover-border-color<br />
- * <h6>Inline Menu</h6>
- * $inline-menu-item-background<br />
- * $inline-menu-item-hover-background<br />
- * $inline-menu-item-height<br />
- * $inline-menu-item-font-size<br />
- * $inline-menu-item-color<br />
- * $inline-menu-item-padding<br />
- * $inline-menu-item-hover-color<br />
- * $flyout-min-width<br />
- * $dropdown-link-color<br />
- * <h6>Submenu Block</h6>
- * $submenu-block-link-color<br />
- * $submenu-block-link-bg-color<br />
- * $submenu-block-border-color<br />
- * $submenu-block-hover-link-color<br />
- * $submenu-block-hover-link-bg-color<br />
- * <h6>Pager</h6>
- * $pager-border-radius<br />
- * $pager-link-padding<br />
- * $pager-link-color<br />
- * $pager-link-bg-color<br />
- * $pager-link-border-color<br />
- * $pager-hover-link-bg-color<br />
- * $pager-hover-link-color<br />
- * <h6>Status</h6>
- * $status-close-fontsize<br />
- * $status-close-opacity<br />
- * $status-close-padding<br />
- * $status-padding<br />
- * $status-border-radius<br />
- * <h6>Teaser</h6>
- * $teaser-image-size<br />
- * $teaser-border-radius<br />
- * $teaser-body-padding<br />
- * $teaser-body-padding-left<br />
- * $teaser-body-padding-right<br />
- * $teaser-breakpoint: medium<br />
- * <h6>Scollmagic</h6>
+ * <h6>COLORS</h6>
+ * $primary: #002e51;<br />
+ * $secondary: #ff651f;<br />
+ * $success: #4bb543;<br />
+ * $warning: #ffae00;<br />
+ * $error: #c00;<br />
+ * </br>
+ * $white: #fff;<br />
+ * $light-grey: rgb(217, 237, 255);<br />
+ * $medium-grey: #b1babe;<br />
+ * $dark-grey: #444;<br />
+ * $black: #000;<br />
+ * <br />
+ * $support1: #87003e;<br />
+ * $support2:  * $medium-grey;<br />
+ * $support3: #edebe5;<br />
+ * $support4: #ff942e;<br />
+ * $black-transparent: rgba(0, 0, 0, .5);<br />
+ * <h6>GLOBAL</h6>
+ * $global-width: 75rem;<br />
+ * $global-text-direction: ltr;<br />
+ * $global-left: if( * $global-text-direction == rtl, right, left);<br />
+ * $global-right: if( * $global-text-direction == rtl, left, right);<br />
+ * <h6>BREAKPOINTS</h6>
+ * $breakpoints: (
+ * &nbsp;&nbsp;small: 0,<br />
+ * &nbsp;&nbsp;medium: 640px,<br />
+ * &nbsp;&nbsp;large: 1024px,<br />
+ * &nbsp;&nbsp;xlarge: 1200px,<br />
+ * &nbsp;&nbsp;xxlarge: 1440px,<br />
+ * );<br />
+ * <h6>GRID</h6>
+ * $xy-grid: true;<br />
+ * $grid-columns: 12;<br />
+ * $grid-container:  * $global-width;<br />
+ * $grid-container-max:  * $global-width;<br />
+ * $grid-margin-gutters: (<br />
+ * &nbsp;&nbsp;small: 16px,<br />
+ * &nbsp;&nbsp;medium: 32px<br />
+ * );<br />
+ * $grid-padding-gutters:  * $grid-margin-gutters;<br />
+ * $grid-container-padding:  * $grid-padding-gutters;<br />
+ * $xy-block-grid-max: 8;<br />
+ * $grid-map: (<br />
+ * &nbsp;&nbsp;one: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;two: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 2,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;three: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;four: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 2,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 4<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;five: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 2,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 5<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;six: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 6<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;seven: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 7<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;eight: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 2,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 4,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;xlarge: 1 of 8,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;nine: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 6,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;xlarge: 1 of 9,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;ten: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 5,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;xlarge: 1 of 10,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;eleven: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 6,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;xlarge: 1 of 11,<br />
+ * &nbsp;&nbsp;),<br />
+ * &nbsp;&nbsp;twelve: (<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;small: 1 of 1,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;medium: 1 of 3,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;large: 1 of 6,<br />
+ * &nbsp;&nbsp;&nbsp;&nbsp;xlarge: 1 of 12,<br />
+ * &nbsp;&nbsp;),<br />
+ * );<br />
+ * <h6>FONTS</h6>
+ * $fa-font-path: '../node_modules/font-awesome-sass/assets/fonts/font-awesome/';<br />
+ * $website-font-path: '../fonts';<br />
+ * $base-font: 'PT Sans', 'Droid serif', sans-serif;<br />
+ * $fontawesome: 'FontAwesome';<br />
+ * $bc-icon: 'bconnecticon';<br />
+ * $global-font-size: 100%;<br />
+ * $lead-font-size:  * $global-font-size * 1.25;<br />
+ * <h6>FONTSIZE</h6>
+ * $h1: 60px;<br />
+ * $h2: 52px;<br />
+ * $h3: 42px;<br />
+ * $h4: 36px;<br />
+ * $h5: 30px;<br />
+ * $h6: 25px;<br />
+ * <br />
+ * //small<br />
+ * $s-h1: 50px;<br />
+ * $s-h2: 40px;<br />
+ * $s-h3: 32px;<br />
+ * $s-h4: 28px;<br />
+ * $s-h5: 24px;<br />
+ * $s-h6: 20px;<br />
+ * <br />
+ * //in paragraph<br />
+ * $p-h1: 48px;<br />
+ * $p-h2: 42px;<br />
+ * $p-h3: 33px;<br />
+ * $p-h4: 27px;<br />
+ * $p-h5: 22px;<br />
+ * $p-h6: 18px;<br />
+ * <br />
+ * $sub: 20px;<br />
+ * <h6>HORIZONTAL LINE</h6>
+ * $hr-icon: 'http://www.freeiconspng.com/uploads/circle-icon-30.png';<br />
+ * <h6>BUTTON</h6>
+ * $round-button-height: 100px;<br />
+ * $round-button-width: 100px;<br />
+ * $color-button-drop-menu:  * $primary;<br />
+ * $background-button-drop-menu:  * $white;<br />
+ * $border-button-drop-menu:  * $primary;<br />
+ * $background-hover-button-drop-menu:  * $support3;<br />
+ * $color-hover-button-drop-menu:  * $primary;<br />
+ * <h6>CARD</h6>
+ * $card-background:  * $white;<br />
+ * $card-border-width: 1px;<br />
+ * $card-border-color:  * $support2;<br />
+ * $card-border-radius: .25rem;<br />
+ * $card-body-padding: 1.25rem;<br />
+ * $card-header-padding: .75rem 1.25rem;<br />
+ * $card-header-color:  * $support3;<br />
+ * $card-header-border: 1px solid  * $support2;<br />
+ * $card-footer-padding: .75rem 1.25rem;<br />
+ * $card-footer-color:  * $support3;<br />
+ * $card-footer-border: 1px solid  * $support2;<br />
+ * <h6>ACCORDION</h6>
+ * $acc-item-background:  * $white;<br />
+ * $acc-item-border-width: 1px;<br />
+ * $acc-item-border-color:  * $support2;<br />
+ * $acc-item-border-radius: .25rem;<br />
+ * $acc-item-body-padding: 1.25rem;<br />
+ * $acc-item-header-padding: .75rem 1.25rem;<br />
+ * $acc-item-header-background-color:  * $support3;<br />
+ * $acc-item-header-border: 1px solid  * $support2;<br />
+ * $acc-item-header-link-color:  * $primary;<br />
+ * $acc-item-footer-padding: .75rem 1.25rem;<br />
+ * $acc-item-footer-background-color:  * $support3;<br />
+ * $acc-item-footer-border: 1px solid  * $support2;<br />
+ * $acc-item-footer-link-color:  * $primary;<br />
+ * <h6>TABS</h6>
+ * $tab-navigation-border:  * $support2;<br />
+ * $tab-link-padding: .5rem 1rem;<br />
+ * $tab-active-link-color:  * $primary;<br />
+ * $tab-active-link-background:  * $white;<br />
+ * $tab-active-link-border-color:  * $support2  * $support2  * $white;<br />
+ * $tab-link-border-radius: .25rem;<br />
+ * $tab-hover-link-border-color:  * $support3  * $support3  * $white;<br />
+ * <h6>INFOBOX</h6>
+ * $infobox-max-width: 500px;<br />
+ * $infobox-padding: 1rem;<br />
+ * $infobox-content-background:  * $white;<br />
+ * $infobox-content-border: 1px solid rgba(0, 0, 0, .2);<br />
+ * $infobox-content-border-radius: .3;<br />
+ * $infobox-divider: 1px solid  * $support3;<br />
+ * $infobox-close-fontsize: 1.5rem;<br />
+ * $infobox-close-color:  * $primary;<br />
+ * $infobox-close-opacity: .5;<br />
+ * <h6>HERO</h6>
+ * $hero-background-color:  * $support3;<br />
+ * $hero-content-padding: 2.5rem 5rem;<br />
+ * $hero-mobile-content-padding: 1rem 2rem;<br />
+ * $hero-content-color-background:  * $primary;<br />
+ * $hero-content-max-width: 70%;<br />
+ * $hero-content-color:  * $primary;<br />
+ * <h6>BREADCRUMB</h6>
+ * $breadcrumb-item-color:  * $secondary;<br />
+ * $breadcrumb-item-hover-border-color:  * $secondary;<br />
+ * $breadcrumb-active-item:  * $support2;<br />
+ * $breadcrumb-nav-padding: .75rem 1rem;<br />
+ * $breadcrumb-divider-color:  * $primary;<br />
+ * $breadcrumb-space-between-items: .5rem;<br />
+ * <h6>FOOTERMENU</h6>
+ * $footer-menu-separator:  * $secondary;<br />
+ * $footer-menu-item-color:  * $white;<br />
+ * $footer-menu-title-color:  * $white;<br />
+ * $footer-menu-item-hover-border-color:  * $secondary;<br />
+ * <h6>INLINEMENU</h6>
+ * $inline-menu-item-background:  * $support3;<br />
+ * $inline-menu-item-hover-background:  * $primary;<br />
+ * $inline-menu-item-height: 50px;<br />
+ * $inline-menu-item-font-size: 16px;<br />
+ * $inline-menu-item-color:  * $primary;<br />
+ * $inline-menu-item-padding: 5px 10px;<br />
+ * $inline-menu-item-hover-color:  * $white;<br />
+ * $flyout-min-width: 15rem;<br />
+ * $dropdown-link-color:  * $primary;<br />
+ * <h6>SUBMENU BLOCK</h6>
+ * $submenu-block-link-color:  * $white;<br />
+ * $submenu-block-link-bg-color:  * $primary;<br />
+ * $submenu-block-border-color:  * $support2;<br />
+ * $submenu-block-hover-link-color:  * $primary;<br />
+ * $submenu-block-hover-link-bg-color:  * $support3;<br />
+ * <h6>PAGER</h6>
+ * $pager-border-radius: .25rem;<br />
+ * $pager-link-padding: .5rem .75rem;<br />
+ * $pager-link-color:  * $primary;<br />
+ * $pager-link-bg-color:  * $support3;<br />
+ * $pager-link-border-color:  * $support2;<br />
+ * $pager-hover-link-bg-color:  * $primary;<br />
+ * $pager-hover-link-color:  * $white;<br />
+ * <h6>STATUS</h6>
+ * $status-close-fontsize: 1.5rem;<br />
+ * $status-close-opacity: 1;<br />
+ * $status-close-padding: .75rem 1.25rem;<br />
+ * $status-padding: .75rem 1.25rem;<br />
+ * $status-border-radius: .25rem;<br />
+ * <h6>TEASER</h6>
+ * $teaser-image-size: 30%;<br />
+ * $teaser-border-radius: .25rem;<br />
+ * $teaser-body-padding-overlay: .5rem 1rem;<br />
+ * $teaser-body-padding-left: .5rem 0 .5rem 1.5rem;<br />
+ * $teaser-body-padding-right: .5rem 1.5rem .5rem 0;<br />
+ * $teaser-breakpoint: medium;<br />
+ * <h6>HEADER</h6>
+ * $navbar-padding: 0 1rem;<br />
+ * $navbar-toggler-padding-y: .25rem;<br />
+ * $navbar-toggler-padding-x: .75rem;<br />
+ * $navbar-toggler-font-size: 1.25rem;<br />
+ * $navbar-toggler-border-radius: 0;<br />
+ * $navbar-bg:  * $support3;<br />
+ * $navbar-logo-top-padding: .3125rem;<br />
+ * $navbar-logo-bottom-padding: .3125rem;<br />
+ * $navbar-logo-margin-right: 1rem;<br />
+ * $navbar-toggler-border-width: 1px;<br />
+ * $navbar-toggler-color:  * $primary;<br />
+ * <h6>HEADER</h6>
+ * $footer-bg:  * $primary;<br />
+ * $footer-color:  * $white;<br />
+ * $footer-padding: 2rem 1rem;<br />
+ * <h6>HERO</h6>
+ * $slider-hero-content-padding: 2.5rem 5rem;<br />
+ * $slider-hero-content-padding-left: 2.5rem 5rem 2.5rem 2.5rem;<br />
+ * $slider-hero-content-padding-right: 2.5rem 2.5rem 2.5rem 5rem;<br />
+ * $slider-mobile-hero-content-padding: 2rem;<br />
+ * $slider-mobile-hero-content-padding-left: 2rem;<br />
+ * $slider-mobile-hero-content-padding-right: 2rem;<br />
+ * <h6>SCROLLMAGIC</h6>
+ * $swipe-first-backgroundcolor:  * $dark-grey;<br />
+ * $swipe-second-backgroundcolor:  * $support2;<br />
+ * $swipe-third-backgroundcolor:  * $support3;<br />
+ * $swipe-fourth-backgroundcolor:  * $support4;<br />
  */
 #}
 

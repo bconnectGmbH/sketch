@@ -47,74 +47,67 @@ h6 {
 \* ------------------------------------ */
 h1,
 h1 a {
-  font-size: 3.75rem;
-  margin-bottom: 1.2rem;
-  @include vw(60px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h1/2, $h1);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 20px);
 
   small {
-    font-size: 3rem;
-    @include vw(50px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $s-h1/2, $s-h1);
   }
 }
 
 h2,
 h2 a {
-  font-size: 3.4375rem;
-  @include vw(52px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h2/2, $h2);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 
   small {
-    font-size: 2.5rem;
-    @include vw(40px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $s-h2/2, $s-h2);
   }
 }
 
 h3,
 h3 a {
-  font-size: 4.5em;
-  @include vw(42px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h3/2, $h3);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 
   small {
-    font-size: 2em;
-    @include vw(32px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $s-h3/2, $s-h3);
   }
 }
 
 h4,
 h4 a {
-  font-size: 4.5em;
-  @include vw(36px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h4/2, $h4);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 
   small {
-    font-size: 1.75em;
-    @include vw(28px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $s-h4/2, $s-h4);
   }
 }
 
 h5,
 h5 a {
-  font-size: 4.5em;
-  @include vw(30px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h5/2, $h5);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 
   small {
-    font-size: 1.5em;
-    @include vw(24px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $s-h5/2, $s-h5);
   }
 }
 
 h6,
 h6 a {
-  font-size: 4.5em;
-  @include vw(25px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h6/2, $h6);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 
   small {
-    font-size: 1.25em;
-    @include vw(20px);
+    @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $h6/2, $h6);
   }
 }
 
 .subtitle {
   color: $support2;
   margin-top: 0;
-  font-size: 1.25em;
-  @include vw(20px);
+  @include interpolate(font-size, 320px, mediaqueryvalue(xxlarge), $sub/2, $sub);
+  @include interpolate(margin-bottom, 320px, mediaqueryvalue(xxlarge), 10px, 15px);
 }
