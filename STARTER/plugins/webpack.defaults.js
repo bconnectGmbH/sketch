@@ -24,7 +24,7 @@ module.exports = function (env, config) {
   }
 
   config.output = {
-    path: path.resolve(__dirname, '../vendor'),
+    path: path.resolve(__dirname, '../components/vendor'),
     filename: 'js/[name].js',
   };
   config.plugins.push(
