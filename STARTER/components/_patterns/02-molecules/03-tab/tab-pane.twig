@@ -8,11 +8,12 @@
  * @param int $tab_text Content für den Tab
  *
  * @example
+ * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
  * {% set tab_items = {
- *   0: {'tab_url': 'tab1', 'tab_title': faker('text', 5), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
- *   1: {'tab_url': 'tab2', 'tab_title': faker('text', 10), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
- *   2: {'tab_url': 'tab3', 'tab_title': faker('text', 8), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
- *   3: {'tab_url': 'tab4', 'tab_title': faker('text', 7), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': faker('text', 200)},
+ *   0: {'tab_url': 'tab1', 'tab_title': faker('text', 5), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': paragraph_concat},
+ *   1: {'tab_url': 'tab2', 'tab_title': faker('text', 10), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': paragraph_concat},
+ *   2: {'tab_url': 'tab3', 'tab_title': faker('text', 8), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': paragraph_concat},
+ *   3: {'tab_url': 'tab4', 'tab_title': faker('text', 7), 'tab_heading': faker('text', 50), 'tab_heading_level': 3, 'tab_text': paragraph_concat},
  * } %}
  * <div class="tab-content">
  *   {% for key, tab_item in tab_items %}

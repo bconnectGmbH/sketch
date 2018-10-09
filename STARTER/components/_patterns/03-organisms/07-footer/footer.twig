@@ -10,11 +10,11 @@
   * @example
   * {% include "@organisms/07-footer/footer.twig" with {
   *    items: footermenu.items,
-  *    company_name: 'b-connect',
-  *    company_data: 'TEL.: +49 30 217 363-0<br>FAX: +49 30 217 363-99<br><a href="mailto:mail@b-connect.de">mail@b-connect.de</a>',
-  *    copyright_company: '© b-connect GmbH',
+  *    company_name: 'democompany',
+  *    company_data: '<p>TEL.: +49 12 123 321-0<br>FAX: +49 12 123 321-99<br><a href="mailto:support@democompany.de">support@democompany.de</a></p>',
+  *    copyright_company: '© democompany GmbH',
   *    socialmedia_urls: socialmedia.items,
-  *    slogan: 'b-connect. Made in Berlin. Since 1998!',
+  *    slogan: '<p>demo company! This is our slogan</p>',
   *    slogan_paragraph_class: 'slogan',
   * } %}
   */
@@ -48,7 +48,7 @@
       <div class="company-info right">
         <div class="company-title">{{company_name}}</div>
         {% set copyright_date = "now"|date("Y") %}
-        {% set copyright = [copyright_company, copyright_date]|join(', ') %}
+        {% set copyright = '<p>' ~ [copyright_company, copyright_date]|join(', ' )~ '</p>' %}
         {% include "@atoms/00-text/00-paragraph.twig" with {
           paragraph_content: company_data,
         } %}
