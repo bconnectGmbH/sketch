@@ -18,17 +18,13 @@ module.exports = function (env) {
     require(`./plugins/webpack.${plugin}.js`)(env, config);
   });
 
-  if (!fs.existsSync(`${__dirname  }/vendor`))) {
-    fs.mkdirSync(`${__dirname  }/vendor`);
+  if (!fs.existsSync(`${__dirname  }/components/vendor`)) {
+    fs.mkdirSync(`${__dirname  }/components/vendor`);
   }
 
 
   config.plugins.push(
-    new webpack.WatchIgnorePlugin([`${__dirname  }/vendor`]),
-    new CleanWebpackPlugin(['components/vendor'], { watch: true }),
-    new CopyWebpackPlugin([
-      { from: `${__dirname  }/vendor`, to: `${__dirname  }/components/vendor`, toType: 'dir' },
-    ], { copyUnmodified: true }),
+    new webpack.WatchIgnorePlugin([`${__dirname  }/components/vendor`])
   );
 
   console.info('Ready loading plugins.'.green);

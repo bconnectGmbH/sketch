@@ -36,7 +36,8 @@
         "pattern-lab/drupal-twig-components": "^2.0.0",
         "aleksip/plugin-data-transform": "^1.0.0",
         "b-connect/plugin-twig-doc": "^0.4.0",
-        "pattern-lab/plugin-faker": "^2.0"
+        "pattern-lab/plugin-faker": "^2.0",
+        "asm89/twig-lint": "^1.0"
     },
     "scripts": {
         "server": "php core/console --server",
@@ -62,6 +63,9 @@
         ],
         "pre-package-uninstall": [
           "PatternLab\\Installer::prePackageUninstall"
+        ],
+        "twig-lint": [
+            "twig-lint --ansi"
         ]
       },
     "extra": {
