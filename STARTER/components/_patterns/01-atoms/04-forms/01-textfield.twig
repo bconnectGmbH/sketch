@@ -69,7 +69,7 @@
         {%- else -%}
           <span class="form-icon">{{svg|raw}}</span>
         {%- endif -%}
-        <input type="{{type_input}}" {%- if autocorrect -%}autocorrect="{{autocorrect}}"{%- endif -%} {%- if autocomplete -%}autocomplete="{{autocomplete}}"{%- endif -%} {%- if spellcheck -%}spellcheck="{{spellcheck}}"{%- endif -%} {%- if autofocus -%}autofocus{%- endif -%} autocapitalize="off" id="{{text_input_id}}" {%- if text_input_id -%}data-drupal-selector="{{text_input_id}}"{%- endif -%} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{%- if error -%} error{%- endif -%}" {%- if form_required -%} required aria-required="true" {%- endif -%}>
+        <input type="{{type_input}}" {% if autocorrect %}autocorrect="{{autocorrect}}"{% endif %} {% if autocomplete %}autocomplete="{{autocomplete}}"{% endif %} {% if spellcheck %}spellcheck="{{spellcheck}}"{% endif %} {% if autofocus %}autofocus{% endif %} autocapitalize="off" id="{{text_input_id}}" {% if text_input_id %}data-drupal-selector="{{text_input_id}}"{% endif %} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{% if error %} error{% endif %}" {% if form_required %} required aria-required="true" {% endif %}>
       </div>
     </label>
     {%- if form_help_text -%}
@@ -79,7 +79,7 @@
 {%- else -%}
   <div class="form-item form-type-textfield form-item-textfield">
     <label class="label" for="{{text_label_for}}">
-      <input type="{{type_input}}" {%- if autocorrect -%}autocorrect="{{autocorrect}}"{%- endif -%} {%- if autocomplete -%}autocomplete="{{autocomplete}}"{%- endif -%} {%- if spellcheck -%}spellcheck="{{spellcheck}}"{%- endif -%} {%- if autofocus -%}autofocus{%- endif -%} autocapitalize="off" id="{{text_input_id}}" {%- if text_input_id -%}data-drupal-selector="{{text_input_id}}"{%- endif -%} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{%- if error -%} error{%- endif -%}" {%- if form_required -%} required aria-required="true" {%- endif -%}>
+      <input type="{{type_input}}" {% if autocorrect %}autocorrect="{{autocorrect}}"{% endif %} {% if autocomplete %}autocomplete="{{autocomplete}}"{% endif %} {% if spellcheck %}spellcheck="{{spellcheck}}"{% endif %} {% if autofocus %}autofocus{% endif %} autocapitalize="off" id="{{text_input_id}}" {% if text_input_id %}data-drupal-selector="{{text_input_id}}"{% endif %} name="textfield" placeholder="{{text_placeholder}}" class="form-text form-element{% if error-%} error{% endif %}" {% if form_required %} required aria-required="true" {% endif %}>
     </label>
     {%- if form_help_text -%}
       <div class="description">{{form_help_text}}</div>

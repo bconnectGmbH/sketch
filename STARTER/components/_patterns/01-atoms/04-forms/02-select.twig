@@ -18,13 +18,14 @@
 #}
 
 <div class="form-item form-type-select form-item-select">
-  <label class="label" for="edit-select">{{form_label}}</label>
-  <select id="{{select_id}}" name="select" class="form-select" {%- if form_required -%} required aria-required="true" {%- endif -%}>
-    {%- for item in items -%}
-      <option value="{{item|lower|replace(' ', '-')}}">{{item}}</option>
-    {%- endfor -%}
-  </select>
-  {%- if form_help_text -%}
-    <div class="description">{{form_help_text}}</div>
-  {%- endif -%}
-</div>
+    <label class="label" for="edit-select">{{form_label}}</label>
+    <select id="{{select_id}}" name="select" class="form-select" {% if form_required %} required aria-required="true" {% endif %}>
+      {%- for item in items -%}
+        <option value="{{item|lower|replace(' ', '-')}}">{{item}}</option>
+      {%- endfor -%}
+    </select>
+    {%- if form_help_text -%}
+      <div class="description">{{form_help_text}}</div>
+    {%- endif -%}
+  </div>
+  

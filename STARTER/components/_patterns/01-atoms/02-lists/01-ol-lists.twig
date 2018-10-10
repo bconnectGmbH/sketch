@@ -26,10 +26,11 @@
  */
 #}
 
-<ol {%- if list_class -%} class="{{list_class}}" {%- endif -%}>
+<ol {% if list_class %} class="{{list_class}}" {% endif %}>
   {%- for item in items -%}
     <li>
-      {{item}}
+      {{-item-}}
     </li>
   {%- endfor -%}
 </ol>
+  

@@ -19,10 +19,11 @@
  *
  * @example
  * <h6>Default Style</h6>
+ * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -31,7 +32,7 @@
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -41,7 +42,7 @@
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -54,7 +55,7 @@
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -69,7 +70,7 @@
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -82,7 +83,7 @@
  * {% include "@molecules/09-hero/hero.twig" with {
  *   hero_heading: faker('text', 50),
  *   hero_heading_level: 2,
- *   hero_text: faker('text', 400),
+ *   hero_text: paragraph_concat,
  *   hero_button_url: '#',
  *   hero_button_class: 'filled animated',
  *   hero_button_text: faker('text', 25),
@@ -94,9 +95,9 @@
  */
 #}
 
-<div class="hero{%- if hero_style -%} {{hero_style}}{%- endif -%}{%- if hero_img_as_background -%} background{%- endif -%}"{%- if hero_img_as_background and hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
+<div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if hero_img_as_background %} background{% endif %}"{% if hero_img_as_background and hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
   {%- if hero_style != "img-right" -%}
-    <div class="image" {%- if hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
+    <div class="image" {% if hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
       {% include "@atoms/06-images/00-image.twig" with {
         img_src: hero_img_src,
         img_alt: hero_img_alt,
@@ -131,7 +132,7 @@
   {%- endif -%}
   </div>
   {%- if hero_style == "img-right" -%}
-    <div class="image" {%- if hero_img_src -%}data-background="{{hero_img_src}}"{%- endif -%}>
+    <div class="image" {% if hero_img_src %}data-background="{{hero_img_src}}"{% endif %}>
       {% include "@atoms/06-images/00-image.twig" with {
         img_src: hero_img_src,
         img_alt: hero_img_alt,

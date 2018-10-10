@@ -36,7 +36,7 @@
             item.in_active_trail ? 'active-trail'
         ] %}
         <li itemprop="name" class="{{ list_classes|join(' ') }}">
-          <a itemprop="url" href="{{ item.url }}" {%- if item.is_expanded and menu_level < 1 -%} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{%- endif -%}>{{ item.title }}</a>
+          <a itemprop="url" href="{{ item.url }}" {% if item.is_expanded and menu_level < 1 %} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ item.title }}</a>
           {%- if item.below -%}
             {{ menus.menu_links(item.below, menu_level + 1) }}
           {%- endif -%}

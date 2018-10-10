@@ -21,16 +21,17 @@
 #}
 
 <div class="form-item form-type-managed-file form-item-managed-file">
-  <label class="label" for="edit-managed-file">{{upload_label}}</label>
-  <div id="edit-managed-file" class="form-managed-file">
-    <div class="form-custom">
-      <input type="file" id="{{manage_file_field_id}}" name="files[managed_file]" size="{{upload_button_size}}" class="form-file" {%- if form_required -%} required aria-required="true" {%- endif -%}>
-      <input type="text" id="{{manage_textfield_id}}" name="textfield" placeholder="{{upload_placeholder}}" class="form-text" disabled {%- if form_required -%} required aria-required="true" {%- endif -%}>
+    <label class="label" for="edit-managed-file">{{upload_label}}</label>
+    <div id="edit-managed-file" class="form-managed-file">
+      <div class="form-custom">
+        <input type="file" id="{{manage_file_field_id}}" name="files[managed_file]" size="{{upload_button_size}}" class="form-file" {% if form_required %} required aria-required="true" {% endif %}>
+        <input type="text" id="{{manage_textfield_id}}" name="textfield" placeholder="{{upload_placeholder}}" class="form-text" disabled {% if form_required %} required aria-required="true" {% endif %}>
+      </div>
+      <input type="submit" id="edit-managed-file-upload-button" name="managed_file_upload_button" value="{{upload_button_value}}" class="form-submit ajax-processed">
+      <input type="hidden" name="managed_file[fid]" value="0">
     </div>
-    <input type="submit" id="edit-managed-file-upload-button" name="managed_file_upload_button" value="{{upload_button_value}}" class="form-submit ajax-processed">
-    <input type="hidden" name="managed_file[fid]" value="0">
+    {%- if form_help_text -%}
+      <div class="description">{{form_help_text}}</div>
+    {%- endif -%}
   </div>
-  {%- if form_help_text -%}
-    <div class="description">{{form_help_text}}</div>
-  {%- endif -%}
-</div>
+  

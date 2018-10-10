@@ -47,10 +47,11 @@
  */
 #}
 
-<ul {%- if list_class -%} class="{{list_class}}" {%- endif -%}>
-  {%- for item in items -%}
-    <li>
-      {{item}}
-    </li>
-  {%- endfor -%}
-</ul>
+<ul {% if list_class %}class="{{list_class}}"{% endif %}>
+    {%- for item in items -%}
+      <li>
+        {{-item-}}
+      </li>
+    {%- endfor -%}
+  </ul>
+  

@@ -30,10 +30,10 @@
 #}
 
 {%- if picture_img_url -%}
-  <a {%- for attribute,value in link_attributes -%} {{ attribute }}="{{ value }}" {%- endfor -%} href="{{ picture_img_url }}">
-{%- endif -%}
+  <a {% for attribute,value in link_attributes -%} {{ attribute }}="{{ value }}" {% endfor %} href="{{ picture_img_url }}">
+{% endif %}
   <picture>
-    {%- if picture_img_srcset -%}<!--[if IE 9]><video style="display: none;"><![endif]--> {%- for source in picture_img_srcset -%}<source media="{{source.mediaquery}}" srcset="{{source.srcset}}"/>{%- endfor -%}<!--[if IE 9]></video><![endif]-->{%- endif -%}
+    {% if picture_img_srcset -%}<!--[if IE 9]><video style="display: none;"><![endif]--> {% for source in picture_img_srcset %}<source media="{{source.mediaquery}}" srcset="{{source.srcset}}"/>{% endfor %}<!--[if IE 9]></video><![endif]-->{% endif %}
     {% include "@atoms/06-images/00-image.twig" with {
       img_src: picture_img_src,
       img_alt: picture_img_alt,

@@ -17,6 +17,7 @@
  * @param array link_attributes array e.g "link_attributes": { 'target': '_blank'}
  *
  * @example
+ * {% set headline_link = '<a>' ~ faker('text', 200) ~ '</a>' %}
  *  <div class="sg-fonts">
  *  <h6>Headlines in Paragraph</h6>
  *  <p>
@@ -32,8 +33,7 @@
  *    {%- for i in 1..6 -%}
  *      {% include "@atoms/00-text/02-headings-in-paragraphs.twig" with {
  *        heading_level: i,
- *        link_url: '#',
- *        heading: faker('text', 200),
+ *        heading: headline_link,
  *      } %}
  *  {%- endfor -%}
  *  </p>
@@ -42,18 +42,7 @@
 #}
 
 <h{{ heading_level }} class="h{{ heading_level }}">
-{%- if link_url -%}
-  <a
-    {%- for attribute,value in link_attributes -%}
-      {{ attribute }}="{{ value }}"
-    {%- endfor -%}
-    href="{{ link_url }}"
-  >
-    {% block heading %}
-      {{ heading }}
-    {% endblock %}
-  </a>
-{%- else -%}
-  {{ heading }}
-{%- endif -%}
+  {%- if heading -%}
+    {{ heading }}
+  {%- endif -%}
 </h{{ heading_level }}>

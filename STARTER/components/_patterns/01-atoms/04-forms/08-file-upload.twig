@@ -20,9 +20,10 @@
 
 <div class="form-item form-custom form-type-file form-item-files-file">
   <label class="label" for="edit-file">{{upload_label}}</label>
-  <input type="file" id="{{upload_file_field_id}}" name="files[file]" size="{{upload_button_size}}" class="form-file" {%- if form_required -%} required aria-required="true" {%- endif -%}>
-  <input type="text" id="{{upload_textfield_id}}" name="textfield" placeholder="{{upload_placeholder}}" class="form-text" disabled {%- if form_required -%} required aria-required="true" {%- endif -%}>
+  <input type="file" id="{{upload_file_field_id}}" name="files[file]" size="{{upload_button_size}}" class="form-file" {% if form_required %} required aria-required="true" {% endif %}>
+  <input type="text" id="{{upload_textfield_id}}" name="textfield" placeholder="{{upload_placeholder}}" class="form-text" disabled {% if form_required %} required aria-required="true" {% endif %}>
   {%- if form_help_text -%}
     <div class="description">{{form_help_text}}</div>
   {%- endif -%}
 </div>
+  

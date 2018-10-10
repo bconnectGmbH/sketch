@@ -12,7 +12,7 @@
  * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
  * <h6>Link</h6>
  * {% embed "@molecules/04-infobox/infobox.twig" with {
- *   "infobox_id": faker('text', 10),
+ *   "infobox_id": faker('word', 10),
  *   "trigger_button_text": faker('text', 50),
  *   "infobox_heading": faker('text', 50),
  *   "infobox_heading_level": 3,
@@ -27,7 +27,7 @@
  * {% endembed %}
  * <h6>Button</h6>
  * {% embed "@molecules/04-infobox/infobox.twig" with {
- *   "infobox_id": faker('text', 10),
+ *   "infobox_id": faker('word', 10),
  *   "trigger_button_text": faker('text', 50),
  *   "infobox_heading": faker('text', 50),
  *   "infobox_heading_level": 3,

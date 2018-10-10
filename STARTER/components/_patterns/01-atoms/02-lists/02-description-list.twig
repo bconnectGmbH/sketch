@@ -23,15 +23,11 @@
  */
 #}
 
-<dl {%- if list_class -%} class="{{list_class}}" {%- endif -%}>
-  {%- for item in items -%}
-    {%- for content in item -%}
-      <dt>
-        {{content.dt}}
-      </dt>
-      <dd>
-        {{content.dd}}
-      </dd>
+<dl {% if list_class %} class="{{list_class}}" {% endif %}>
+    {%- for item in items -%}
+      {%- for content in item -%}
+        <dt>{{content.dt}}</dt>
+        <dd>{{content.dd}}</dd>
+      {%- endfor -%}
     {%- endfor -%}
-  {%- endfor -%}
 </dl>

@@ -44,6 +44,10 @@ textarea {
 
   &:optional {
     border-left: 1px solid $support3;
+
+    &:focus {
+      border-color: $secondary;
+    }
   }
 
   &:required {

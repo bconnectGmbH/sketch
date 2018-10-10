@@ -29,7 +29,7 @@
  */
 #}
 
-<div id="{{tab_url}}" class="tab-pane{%- if key == 0 -%} active{%- else -%} fade{%- endif -%}"><br>
+<div id="{{tab_url}}" class="tab-pane{% if key == 0 %} active{% else %} fade{% endif %}"><br>
   {%- if tab_heading -%}
     {% include "@atoms/00-text/01-headings.twig" with {
       heading_level: tab_heading_level,
