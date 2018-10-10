@@ -17,9 +17,7 @@
  * @param string $card_subheading_level Subheadline Level 1-6
  * @param string $card_text Card Body Inhalt im <p> - Tag
  * @param string $card_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $card_button_url Link wohin der Button verlinkt wird
- * @param string $card_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $card_button_text Buttontext
+ * @param string $card_link Link wohin der Button verlinkt wird
  * @param string $card_footer_content
  * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
  * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
@@ -38,9 +36,7 @@
  *   card_img_title: faker('text', 50),
  *   card_img_alt: faker('text', 50),
  *   card_text: paragraph_concat,
- *   card_button_class: 'filled',
- *   card_button_url: '#',
- *   card_button_text: faker('text', 50),
+ *   card_link: '<a href="#" class="button filled">Card Button Text</a>'
  * } %}
  * <h6>Card mit Image Bottom</h6>
  * {% include "@molecules/00-card/card.twig" with {
@@ -177,10 +173,7 @@
         {% block card_body_button %}
           {%- if card_button_url -%}
             {% include "@atoms/03-buttons/00-button.twig" with {
-              button_url: card_button_url,
-              button_extra_class: card_button_class,
-              button_text: card_button_text,
-              target: card_target
+              link: card_link
             } %}
           {%- endif -%}
         {% endblock %}

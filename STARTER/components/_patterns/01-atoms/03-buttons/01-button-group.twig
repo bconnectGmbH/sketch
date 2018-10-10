@@ -9,7 +9,10 @@
  * @param string $button_text Buttontext
  *
  * @example
- * {% set button_items = { '0': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}, '1': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}, '2': {'button_url': '#', 'button_text': faker('text', 25), 'button_class': 'filled'}} %}
+ * {% set button_items = { 
+    '0': {'link': '<a href="#" class="button filled">Button Text 1</a>'},
+    '1': {'link': '<a href="#" class="button filled">Button Text 2</a>'}, 
+    '2': {'link': '<a href="#" class="button filled">Button Text 3</a>'}} %}
  * {% include "@atoms/03-buttons/01-button-group.twig" with {
  *   items: button_items
  * } %}
@@ -19,9 +22,7 @@
 <div class="button-group">
   {%- for item in items -%}
     {% include "@atoms/03-buttons/00-button.twig" with {
-      button_url: item.button_url,
-      button_text: item.button_text,
-      button_extra_class: item.button_class
+      link: item.link,
     } %}
   {%- endfor -%}
 </div>

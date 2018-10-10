@@ -2,43 +2,32 @@
 /**
  * Button
  *
- * Button
+ * Set a Link or a Button as Default Field Template for Links
  *
- * @param string $button_url Link wohin der Button verlinkt wird
- * @param string $button_extra_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $button_text Buttontext
+ * @param string $link full Link wrapper
  *
  * @example
  * <h6>Button default</h6>
  * {% include "@atoms/03-buttons/00-button.twig" with {
- *   button_url: '#',
- *   button_text: faker('text', 25)
+ *   link: '<a href="#" class="button">Button Default Link Text</a>'
  * } %}
  * <h6>Button filled</h6>
  * {% include "@atoms/03-buttons/00-button.twig" with {
- *   button_url: '#',
- *   button_extra_class: 'filled',
- *   button_text: faker('text', 25)
+ *   link: '<a href="#" class="button filled">Button filled Link Text</a>'
  * } %}
  * <h6>Button round</h6>
  * {% include "@atoms/03-buttons/00-button.twig" with {
- *   button_url: '#',
- *   button_extra_class: 'round',
- *   button_text: faker('text', 25)
+ *   link: '<a href="#" class="button round">Button round Link Text</a>'
  * } %}
  * <h6>Button text</h6>
  * {% include "@atoms/03-buttons/00-button.twig" with {
- *   button_url: '#',
- *   button_extra_class: 'text',
- *   button_text: faker('text', 25)
+ *   button_url: link: '<a href="#" class="button text">Button "text" Link Text</a>'
  * } %}
  * <h6>Button link</h6>
  * {% include "@atoms/03-buttons/00-button.twig" with {
- *   button_url: '#',
- *   button_extra_class: 'link',
- *   button_text: faker('text', 25)
+ *   button_url: link: '<a href="#" class="button link">Button "link" Link Text</a>'
  * } %}
  */
 #}
 
-<a href="{{button_url}}" {%- if target -%}target="{{target}}"{%- endif -%} class="button{%- if button_extra_class -%} {{button_extra_class}}{%- endif -%}">{{button_text}}</a>
+{{link}}

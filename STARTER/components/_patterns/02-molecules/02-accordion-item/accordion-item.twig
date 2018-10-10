@@ -9,9 +9,7 @@
  * @param string $card_subheading Subheadline Inhalt
  * @param string $card_subheading_level Subheadline Level 1-6
  * @param string $card_text Card Body Inhalt im <p> - Tag
- * @param string $card_button_url Link wohin der Button verlinkt wird
- * @param string $card_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $card_button_text Buttontext
+ * @param string $card_link Link wohin der Button verlinkt wird
  * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
  * @param bool $subtitle true/false
  * @param string $accordion_title Titel vom Accordion
@@ -38,7 +36,7 @@
         <a data-toggle="collapse" role="button" href="#item-{{key}}-{{ accordion_title|md5 }}" {% if key == 0 %}aria-expanded="true"{% else %}aria-expanded="false"{% endif %} data-target="#item-{{key}}-{{ accordion_title|md5 }}" aria-controls="item-{{key}}-{{ accordion_title|md5 }}">{{accordion_title}}</a>
       </div>
     {%- endif -%}
-    <div id="item-{{key}}-{{ accordion_title|md5 }}" class="collapse{% if key == 0 %} show{% endif %}" aria-labelledby="item-{{key}}-{{ accordion_title|md5 }}" data-parent="{{accordion_parent}}">
+    <div id="item-{{key}}-{{ accordion_title|md5 }}" class="collapse{% if key == 0 %} show{% endif %}" aria-labelledby="item-{{key}}-{{ accordion_title|md5 }}" data-parent="#{{accordion_parent}}">
       <div class="card-body">
         {% block card_body %}
           {%- if card_heading -%}
@@ -66,9 +64,7 @@
           {%- endif -%}
           {%- if card_button_url -%}
             {% include "@atoms/03-buttons/00-button.twig" with {
-              button_url: card_button_url,
-              button_extra_class: card_button_class,
-              button_text: card_button_text
+              link: card_link
             } %}
           {%- endif -%}
         {% endblock %}

@@ -4,11 +4,13 @@
  *
  * Button Dropdown
  *
- * @param string $button_url Link wohin der Button verlinkt wird
- * @param string $button_text Buttontext
+ * @param string $link Link wohin der Button verlinkt wird
  *
  * @example
- * {% set button_items = { '0': {'button_url': '#', 'button_text': faker('text', 25)}, '1': {'button_url': '#', 'button_text': faker('text', 25)}, '2': {'button_url': '#', 'button_text': faker('text', 25)}} %}
+ * {% set button_items = { 
+   '0': {'link': '<a href="#" class="button filled">Button Text 1</a>'}, 
+   '1': {'link': '<a href="#" class="button filled">Button Text 1</a>'}, 
+   '2': {'link': '<a href="#" class="button filled">Button Text 1</a>'}} %}
  * {% include "@atoms/03-buttons/02-button-dropdown.twig" with {
  *   items: button_items
  * } %}
@@ -21,12 +23,10 @@
     {%- for item in items -%}
     <li>
         {% include "@atoms/03-buttons/00-button.twig" with {
-        button_url: item.button_url,
-        button_text: item.button_text,
-        button_extra_class: item.button_class
+        link: item.link
         } %}
     </li>
     {%- endfor -%}
 </ul>
 </div>
-      
+  

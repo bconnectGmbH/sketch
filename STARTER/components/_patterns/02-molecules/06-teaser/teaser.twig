@@ -17,9 +17,7 @@
  * @param string $teaser_subheading_level Subheadline Level 1-6
  * @param string $teaser_text Teaser Body Inhalt im <p> - Tag
  * @param string $teaser_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $teaser_button_url Link wohin der Button verlinkt wird
- * @param string $teaser_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $teaser_button_text Buttontext
+ * @param string $teaser_link Link wohin der Button verlinkt wird
  * @param string $teaser_footer_content
  * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
  * @param bool $teaser_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
@@ -57,9 +55,7 @@
  *   teaser_img_title: faker('text', 50),
  *   teaser_img_alt: faker('text', 50),
  *   teaser_text: paragraph_concat,
- *   teaser_button_url: '#',
- *   teaser_button_text: faker('text', 15),
- *   teaser_button_class: 'filled'
+ *   teaser_link: '<a href="#" class="button filled">Button filled Link Text</a>',
  * } %}
  * <h6>Image Left Title Above</h6>
  * <br />
@@ -75,8 +71,7 @@
  *   teaser_img_title: faker('text', 50),
  *   teaser_img_alt: faker('text', 50),
  *   teaser_text: paragraph_concat,
- *   teaser_button_url: '#',
- *   teaser_button_text: faker('text', 15),
+ *   teaser_link: '<a href="#" class="button filled">Button filled Link Text</a>',
  * } %}
  * <h6>Image Right Title Above</h6>
  * <br />
@@ -93,8 +88,7 @@
  *   teaser_img_title: faker('text', 50),
  *   teaser_img_alt: faker('text', 50),
  *   teaser_text: paragraph_concat,
- *   teaser_button_url: '#',
- *   teaser_button_text: faker('text', 15),
+ *   teaser_link: '<a href="#" class="button filled">Button filled Link Text</a>',
  * } %}
  * <h6>Image Overlay</h6>
  * <br />
@@ -110,99 +104,94 @@
  *   teaser_img_title: faker('text', 50),
  *   teaser_img_alt: faker('text', 50),
  *   teaser_text: paragraph_concat,
- *   teaser_button_url: '#',
- *   teaser_button_text: faker('text', 15),
- *   teaser_button_class: 'filled'
+ *   teaser_link: '<a href="#" class="button filled">Button filled Link Text</a>'
  * } %}
  */
 #}
 
 <div class="teaser-row {% if teaser_img_position %} {{teaser_img_position}}{% endif %}">
-  {%- if title_section_above == true -%}
-    <div class="teaser-title-top">
-      {%- if teaser_heading -%}
-        {% include "@atoms/00-text/01-headings.twig" with {
-          heading_level: teaser_heading_level,
-          heading: teaser_heading,
-          link_url: teaser_heading_link_url,
-          link_attributes: teaser_heading_link_attributes,
-          small: teaser_small
-        } %}
-      {%- endif -%}
-      {%- if teaser_subheading -%}
-        {% include "@atoms/00-text/01-headings.twig" with {
-          heading_level: teaser_subheading_level,
-          heading: teaser_subheading,
-          subtitle: true
-        } %}
-      {%- endif -%}
-    </div>
-  {%- endif -%}
-  <div class="teaser-content"{% if teaser_img_position == 'overlay' %} style="background-image: url('{{teaser_img_src}}');"{% endif %}>
-    {%- if teaser_img_position == 'left' or teaser_img_position == 'overlay' -%}
-      {%- if teaser_img_src -%}
-        <div class="teaser-image">
-          {% include "@atoms/06-images/00-image.twig" with {
-            img_src: teaser_img_src,
-            img_alt: teaser_img_alt,
-            img_title: teaser_img_title
+    {%- if title_section_above == true -%}
+      <div class="teaser-title-top">
+        {%- if teaser_heading -%}
+          {% include "@atoms/00-text/01-headings.twig" with {
+            heading_level: teaser_heading_level,
+            heading: teaser_heading,
+            link_url: teaser_heading_link_url,
+            link_attributes: teaser_heading_link_attributes,
+            small: teaser_small
           } %}
-        </div>
-      {%- endif -%}
-    {%- endif -%}
-    {%- if teaser_text or teaser_button_url -%}
-      <div class="teaser-body">
-        <div class="teaser-content-inner">
-          {%- if title_section_above == false -%}
-            {%- if teaser_heading -%}
-              {% include "@atoms/00-text/01-headings.twig" with {
-                heading_level: teaser_heading_level,
-                heading: teaser_heading,
-                link_url: teaser_heading_link_url,
-                link_attributes: teaser_heading_link_attributes,
-                small: teaser_small
-              } %}
-            {%- endif -%}
-            {%- if teaser_subheading -%}
-              <small>
-                {% include "@atoms/00-text/01-headings.twig" with {
-                  heading_level: teaser_subheading_level,
-                  heading: teaser_subheading,
-                  subtitle: true,
-                } %}
-              </small>
-            {%- endif -%}
-          {%- endif -%}
-          {%- if teaser_text -%}
-            {% block teaser_text %}
-              <div class="teaser-text">
-                {% include "@atoms/00-text/00-paragraph.twig" with {
-                  paragraph_content: teaser_text
-                } %}
-              </div>
-            {% endblock %}
-          {%- endif -%}
-          {%- if teaser_button_url -%}
-            {% include "@atoms/03-buttons/00-button.twig" with {
-              button_url: teaser_button_url,
-              button_extra_class: teaser_button_class,
-              button_text: teaser_button_text
-            } %}
-          {%- endif -%}
-        </div>
+        {%- endif -%}
+        {%- if teaser_subheading -%}
+          {% include "@atoms/00-text/01-headings.twig" with {
+            heading_level: teaser_subheading_level,
+            heading: teaser_subheading,
+            subtitle: true
+          } %}
+        {%- endif -%}
       </div>
     {%- endif -%}
-    {%- if teaser_img_position == 'right' -%}
-      {%- if teaser_img_src -%}
-        <div class="teaser-image">
-          {% include "@atoms/06-images/00-image.twig" with {
-            img_src: teaser_img_src,
-            img_alt: teaser_img_alt,
-            img_title: teaser_img_title
-          } %}
+    <div class="teaser-content"{% if teaser_img_position == 'overlay' %} style="background-image: url('{{teaser_img_src}}');"{% endif %}>
+      {%- if teaser_img_position == 'left' or teaser_img_position == 'overlay' -%}
+        {%- if teaser_img_src -%}
+          <div class="teaser-image">
+            {% include "@atoms/06-images/00-image.twig" with {
+              img_src: teaser_img_src,
+              img_alt: teaser_img_alt,
+              img_title: teaser_img_title
+            } %}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if teaser_text or teaser_button_url -%}
+        <div class="teaser-body">
+          <div class="teaser-content-inner">
+            {%- if title_section_above == false -%}
+              {%- if teaser_heading -%}
+                {% include "@atoms/00-text/01-headings.twig" with {
+                  heading_level: teaser_heading_level,
+                  heading: teaser_heading,
+                  link_url: teaser_heading_link_url,
+                  link_attributes: teaser_heading_link_attributes,
+                  small: teaser_small
+                } %}
+              {%- endif -%}
+              {%- if teaser_subheading -%}
+                <small>
+                  {% include "@atoms/00-text/01-headings.twig" with {
+                    heading_level: teaser_subheading_level,
+                    heading: teaser_subheading,
+                    subtitle: true,
+                  } %}
+                </small>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if teaser_text -%}
+              {% block teaser_text %}
+                <div class="teaser-text">
+                  {% include "@atoms/00-text/00-paragraph.twig" with {
+                    paragraph_content: teaser_text
+                  } %}
+                </div>
+              {% endblock %}
+            {%- endif -%}
+            {%- if teaser_button_url -%}
+              {% include "@atoms/03-buttons/00-button.twig" with {
+                link: teaser_link
+              } %}
+            {%- endif -%}
+          </div>
         </div>
       {%- endif -%}
-    {%- endif -%}
-  </div>
-</div>
-
+      {%- if teaser_img_position == 'right' -%}
+        {%- if teaser_img_src -%}
+          <div class="teaser-image">
+            {% include "@atoms/06-images/00-image.twig" with {
+              img_src: teaser_img_src,
+              img_alt: teaser_img_alt,
+              img_title: teaser_img_title
+            } %}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>  
