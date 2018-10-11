@@ -7,8 +7,6 @@
  * @param string $card_header_content Inhalt des Headers
  * @param string $card_img_position Bildposition (top/bottom/overlay)
  * @param string $card_img_src Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
- * @param string $card_img_alt Bild Alternativ Text
- * @param string $card_img_title Bildtitel
  * @param string $card_heading Titel für Card im Body
  * @param string $card_heading_level Header Level 1-6
  * @param string $card_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
@@ -32,11 +30,9 @@
  *   card_heading_level: 3,
  *   card_heading: faker('text', 50),
  *   card_small: true,
- *   card_img_src: '../../../../images/b-connect/consulting_Slide_Image.png',
- *   card_img_title: faker('text', 50),
- *   card_img_alt: faker('text', 50),
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  *   card_text: paragraph_concat,
- *   card_link: '<a href="#" class="button filled">Card Button Text</a>'
+ *   card_link: '<a href="#" class="button filled">Card Button Text</a>',
  * } %}
  * <h6>Card mit Image Bottom</h6>
  * {% include "@molecules/00-card/card.twig" with {
@@ -48,9 +44,7 @@
  *   card_small: true,
  *   card_subheading_level: 4,
  *   card_subheading: faker('text', 50),
- *   card_img_src: '../../../../images/b-connect/consulting_Slide_Image.png',
- *   card_img_title: faker('text', 50),
- *   card_img_alt: faker('text', 50),
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  *   card_text: paragraph_concat
  * } %}
  * <h6>Card mit Image Overlay</h6>
@@ -60,9 +54,8 @@
  *   card_heading_level: 3,
  *   card_heading: faker('text', 50),
  *   card_small: true,
- *   card_img_src: '../../../../images/b-connect/consulting_Slide_Image.png',
- *   card_img_title: faker('text', 50),
- *   card_img_alt: faker('text', 50),
+ *   cardbackgroundimage: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  *   card_text: paragraph_concat
  * } %}
  * <h6>Card mit Header & Footer</h6>
@@ -74,9 +67,7 @@
  *   card_subheading_level: 4,
  *   card_subheading: faker('text', 50),
  *   card_small: true,
- *   card_img_src: '../../../../images/b-connect/consulting_Slide_Image.png',
- *   card_img_title: faker('text', 50),
- *   card_img_alt: faker('text', 50),
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  *   card_text: paragraph_concat,
  *   card_header_content: 'Header Section',
  *   card_footer_content: 'Footer Section'
@@ -90,15 +81,13 @@
  *   card_subheading_level: 4,
  *   card_subheading: faker('text', 50),
  *   card_small: true,
- *   card_img_src: '../../../../images/b-connect/consulting_Slide_Image.png',
- *   card_img_title: faker('text', 50),
- *   card_img_alt: faker('text', 50),
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  *   card_text: paragraph_concat
  * } %}
  */
 #}
 
-<div class="card{% if card_img_position %} {{card_img_position}}{% endif %}"{% if card_img_position == 'overlay' %}style="background-image: url('{{card_img_src}}');"{% endif %}>
+<div class="card{% if card_img_position %} {{card_img_position}}{% endif %}"{% if card_img_position == 'overlay' %}style="background-image: url('{{cardbackgroundimage}}');"{% endif %}>
     {%- if card_header_content -%}
       <div class="card-header">
         {% block card_header_content %}
@@ -130,11 +119,9 @@
     {%- endif -%}
     {%- if card_img_position == 'top' or card_img_position == 'overlay' -%}
       {% block card_image_top %}
-        {%- if card_img_src -%}
+        {%- if cardimagetag -%}
           {% include "@atoms/06-images/00-image.twig" with {
-            img_src: card_img_src,
-            img_alt: card_img_alt,
-            img_title: card_img_title
+            imagetag: cardimagetag
           } %}
         {%- endif -%}
       {% endblock %}
@@ -170,8 +157,8 @@
             } %}
           {%- endif -%}
         {% endblock %}
-        {% block card_body_button %}
-          {%- if card_button_url -%}
+        {% block card_link %}
+          {%- if card_link -%}
             {% include "@atoms/03-buttons/00-button.twig" with {
               link: card_link
             } %}
@@ -181,11 +168,9 @@
     </div>
     {%- if card_img_position == 'bottom' -%}
       {% block card_image_bottom %}
-        {%- if card_img_src -%}
+        {%- if cardimagetag -%}
           {% include "@atoms/06-images/00-image.twig" with {
-            img_src: card_img_src,
-            img_alt: card_img_alt,
-            img_title: card_img_title
+            imagetag: cardimagetag
           } %}
         {%- endif -%}
       {% endblock %}
@@ -198,4 +183,3 @@
       </div>
     {%- endif -%}
   </div>
-  

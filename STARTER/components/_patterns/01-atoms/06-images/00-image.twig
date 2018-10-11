@@ -16,40 +16,22 @@
  * @example
  * <h6> Ohne Sourceset</h6>
  * {% include "@atoms/06-images/00-image.twig" with {
- *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
- *   img_alt: faker('text', 30),
- *   img_title: faker('text', 30),
+ *   imagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'
  * } %}
  * <h6> Bild verlinkt </h6>
  * {% include "@atoms/06-images/00-image.twig" with {
- *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
- *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
- *   img_alt: faker('text', 30),
- *   img_title: faker('text', 30),
- *   img_url: '#'
+ *   imagetag: '<a href="#"><img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png" srcset="https://dummyimage.com/640x16:9/c7c7c7/fff.png 640w, https://dummyimage.com/1024x16:9/c7c7c7/fff.png 1024w, https://dummyimage.com/1200x16:9/c7c7c7/fff.png 1200w"></a>'
  * } %}
  * <h6> Mit Sourceset</h6>
  * {% include "@atoms/06-images/00-image.twig" with {
- *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
- *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
- *   img_alt: faker('text', 30),
- *   img_title: faker('text', 30),
+ *   imagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png" srcset="https://dummyimage.com/640x16:9/c7c7c7/fff.png 640w, https://dummyimage.com/1024x16:9/c7c7c7/fff.png 1024w, https://dummyimage.com/1200x16:9/c7c7c7/fff.png 1200w">',
  * } %}
  * <h6> Mit Sourceset und Sizes</h6>
  * {% include "@atoms/06-images/00-image.twig" with {
- *   img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
- *   img_sizes: '(min-width: 1200px) 33vw, (min-width: 1024px) 50vw, 100vw',
- *   img_src: '../../../../images/b-connect/Development_Slide_Image.png',
- *   img_alt: faker('text', 30),
- *   img_title: faker('text', 30),
+ *   imagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png" srcset="https://dummyimage.com/640x16:9/c7c7c7/fff.png 640w, https://dummyimage.com/1024x16:9/c7c7c7/fff.png 1024w, https://dummyimage.com/1200x16:9/c7c7c7/fff.png 1200w" sizes="(min-width: 1200px) 33vw, (min-width: 1024px) 50vw, 100vw">'
  * } %}
  */
 #}
 
-{%- if img_url -%}
-  <a {% for attribute,value in link_attributes %} {{ attribute }}="{{ value }}" {% endfor %} href="{{ img_url }}">
-{%- endif -%}
-  <img {% if img_alt %}alt="{{ img_alt }}"{% endif %} {% if img_title %}title="{{ img_title }}"{% endif %} src="{{ img_src }}" {% if img_srcset %}srcset="{{ img_srcset }}"{% endif %} {% if img_sizes %}sizes="{{ img_sizes }}"{% endif %}/>
-{%- if img_url -%}
-  </a>
-{%- endif -%}
+{{imagetag|raw}}
+
