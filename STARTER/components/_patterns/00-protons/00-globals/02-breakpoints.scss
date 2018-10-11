@@ -13,6 +13,15 @@
   @return null;
 }
 
+@function mediaqueryvalue($key) {
+  @if map-has-key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  }
+
+  @warn 'Unknown `#{$key}` in $breakpoints.';
+  @return null;
+}
+
 @mixin -zf-each-breakpoint($small: true, $auto-insert-breakpoints: true) {
   $list: $breakpoint-classes;
 
