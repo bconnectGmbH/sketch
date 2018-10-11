@@ -47,61 +47,6 @@
 }
 
 .patternlab-wrapper {
-  .home { @include bc-icon($bc-icon-home); }
-  .speech { @include bc-icon($bc-icon-speech); }
-  .speaker { @include bc-icon($bc-icon-speaker); }
-  .key { @include bc-icon($bc-icon-key); }
-  .letter { @include bc-icon($bc-icon-letter); }
-  .compass { @include bc-icon($bc-icon-compass); }
-  .code { @include bc-icon($bc-icon-code); }
-  .wrench { @include bc-icon($bc-icon-wrench); }
-  .wrench1 { @include bc-icon($bc-icon-wrench1); }
-  .wrench2 { @include bc-icon($bc-icon-wrench2); }
-  .wrench3 { @include bc-icon($bc-icon-wrench3); }
-  .whistle { @include bc-icon($bc-icon-whistle); }
-  .whistle1 { @include bc-icon($bc-icon-whistle1); }
-  .whistle2 { @include bc-icon($bc-icon-whistle2); }
-  .whistle3 { @include bc-icon($bc-icon-whistle3); }
-  .cog { @include bc-icon($bc-icon-cog); }
-  .cart { @include bc-icon($bc-icon-cart); }
-  .write { @include bc-icon($bc-icon-write); }
-  .user { @include bc-icon($bc-icon-user); }
-  .tie { @include bc-icon($bc-icon-tie); }
-  .database { @include bc-icon($bc-icon-database); }
-  .direction { @include bc-icon($bc-icon-direction); }
-  .home-bubble { @include bc-icon($bc-icon-home-bubble); }
-  .speech-bubble { @include bc-icon($bc-icon-speech-bubble); }
-  .speaker-bubble { @include bc-icon($bc-icon-speaker-bubble); }
-  .key-bubble { @include bc-icon($bc-icon-key-bubble); }
-  .letter-bubble { @include bc-icon($bc-icon-letter-bubble); }
-  .compass-bubble { @include bc-icon($bc-icon-compass-bubble); }
-  .code-bubble { @include bc-icon($bc-icon-code-bubble); }
-  .wrench-bubble { @include bc-icon($bc-icon-wrench-bubble); }
-  .wrench1-bubble { @include bc-icon($bc-icon-wrench1-bubble); }
-  .wrench2-bubble { @include bc-icon($bc-icon-wrench2-bubble); }
-  .wrench3-bubble { @include bc-icon($bc-icon-wrench3-bubble); }
-  .whistle-bubble { @include bc-icon($bc-icon-whistle-bubble); }
-  .whistle1-bubble { @include bc-icon($bc-icon-whistle1-bubble); }
-  .whistle2-bubble { @include bc-icon($bc-icon-whistle2-bubble); }
-  .whistle3-bubble { @include bc-icon($bc-icon-whistle3-bubble); }
-  .cog-bubble { @include bc-icon($bc-icon-cog-bubble); }
-  .wrench-circle { @include bc-icon($bc-icon-wrench-circle); }
-  .wrench1-circle { @include bc-icon($bc-icon-wrench1-circle); }
-  .wrench2-circle { @include bc-icon($bc-icon-wrench2-circle); }
-  .wrench3-circle { @include bc-icon($bc-icon-wrench3-circle); }
-  .cart-circle { @include bc-icon($bc-icon-cart-circle); }
-  .write-circle { @include bc-icon($bc-icon-write-circle); }
-  .user-circle { @include bc-icon($bc-icon-user-circle); }
-  .home-circle { @include bc-icon($bc-icon-home-circle); }
-  .tie-circle { @include bc-icon($bc-icon-tie-circle); }
-  .database-circle { @include bc-icon($bc-icon-database-circle); }
-  .direction-circle { @include bc-icon($bc-icon-direction-circle); }
-  .cog-circle { @include bc-icon($bc-icon-cog-circle); }
-  // .logo-two-colors { @include bc-icon($logo-two-colors); }
-  // .logo-one-color { @include bc-icon($logo-one-color); }
-  // .bconnect { @include bc-icon($bconnect); }
-  // .bconnect-url { @include bc-icon($bconnect-url); }
-
   .icon-set {
     display: flex;
     padding: 0;
@@ -154,24 +99,4 @@
       }
     }
   }
-
-  .preview.masonry-layout {
-    .masonry-grid {
-      .grid-item {
-        border: 2px solid $primary;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-  
-        &:nth-child(odd) {
-          height: 200px;
-        }
-  
-        &:nth-child(even) {
-          height: 600px;
-        }
-      }
-    }
-  }
 }
-
-
