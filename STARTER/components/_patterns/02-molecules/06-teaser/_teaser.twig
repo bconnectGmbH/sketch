@@ -1,0 +1,118 @@
+{#
+/**
+ * Hero
+ *
+ * Hero mit unterschiedlichen Varianten der Darstellung
+ *
+ * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
+ * @param string $background_imagesrc Hero Bild Quelle
+ * @param bool $background_overlay 
+ * @param string $teaserimagetag Hero Bild Quelle
+ * @param string $hero_img_alt Hero Bild Alternativ Text
+ * @param string $hero_img_title Hero Bild Titel
+ * @param int $hero_img_height Height ohne Unit Angabe.
+ * @param string $hero_heading_level Headline Level
+ * @param string $hero_heading Headline Text
+ * @param string $hero_text Hero Text
+ * @param string $hero_hero_link Button URL
+ *
+ * @example
+ * <h6>Default Style</h6>
+ * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>'
+ * } %}
+ * <h6>Text Center Style</h6>
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   hero_style: 'text-center'
+ * } %}
+ * <h6>Default Style mit Hintergrundbild</h6>
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   background_overlay: true,
+ * } %}
+ * <h6>Hintergrundbild + Mittigen Text</h6>
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   hero_style: 'text-center',
+ *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   background_overlay: true,
+ * } %}
+ * <h6>Bild Links Style</h6>
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   hero_style: 'img-left',
+ *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ * } %}
+ * <h6>Bild Rechts Style</h6>
+ * {% include "@molecules/09-hero/hero.twig" with {
+ *   hero_heading: faker('text', 50),
+ *   hero_heading_level: 2,
+ *   hero_text: paragraph_concat,
+ *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   hero_style: 'img-right',
+ *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ * } %}
+ */
+#}
+
+<div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if background_overlay %} background{% endif %}"{% if background_overlay and background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
+    {%- if hero_style != "img-right" -%}
+      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
+        {% include "@atoms/06-images/00-image.twig" with {
+          imagetag: teaserimagetag
+        } %}
+      </div>
+    {%- endif -%}
+    {%- if hero_heading or hero_text or hero_button_url -%}
+    <div class="content">
+      {%- if hero_heading -%}
+        {% include "@atoms/00-text/01-headings.twig" with {
+          heading_level: hero_heading_level,
+          heading: hero_heading,
+          heading_class: 'hero-headline animated'
+        } %}
+      {%- endif -%}
+      {%- if hero_text -%}
+        {% block teaser_text %}
+          {% include "@atoms/00-text/00-paragraph.twig" with {
+            paragraph_content: hero_text,
+            paragraph_class: 'animated'
+          } -%}
+        {% endblock %}
+      {%- endif -%}
+      {%- if hero_button_url -%}
+        {% include "@atoms/03-buttons/00-button.twig" with {
+          link: hero_link
+        } %}
+      {%- endif -%}
+    {%- endif -%}
+    </div>
+    {%- if hero_style == "img-right" -%}
+      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
+        {% include "@atoms/06-images/00-image.twig" with {
+          imagetag: teaserimagetag
+        } %}
+      </div>
+    {%- endif -%}
+  </div>
+  

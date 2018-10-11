@@ -1,0 +1,185 @@
+{#
+/**
+ * Card
+ *
+ * Card mit unterschiedlichen Varianten der Darstellung
+ *
+ * @param string $card_header_content Inhalt des Headers
+ * @param string $card_img_position Bildposition (top/bottom/overlay)
+ * @param string $card_img_src Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
+ * @param string $card_heading Titel für Card im Body
+ * @param string $card_heading_level Header Level 1-6
+ * @param string $card_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
+ * @param array $card_heading_link_attributes key/value attributes to pass to link like target _blank
+ * @param string $card_subheading Subheadline Inhalt
+ * @param string $card_subheading_level Subheadline Level 1-6
+ * @param string $card_text Card Body Inhalt im <p> - Tag
+ * @param string $card_heading_link_attributes key/value attributes to pass to link like target _blank
+ * @param string $card_link Link wohin der Button verlinkt wird
+ * @param string $card_footer_content
+ * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
+ * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param bool $subtitle true/false
+ *
+ * @example
+ * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
+ * <h6>Card mit Image Top</h6>
+ * {% include "@molecules/00-card/card.twig" with {
+ *   card_img_position: 'top',
+ *   title_section_above: false,
+ *   card_heading_level: 3,
+ *   card_heading: faker('text', 50),
+ *   card_small: true,
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   card_text: paragraph_concat,
+ *   card_link: '<a href="#" class="button filled">Card Button Text</a>',
+ * } %}
+ * <h6>Card mit Image Bottom</h6>
+ * {% include "@molecules/00-card/card.twig" with {
+ *   card_img_position: 'bottom',
+ *   title_section_above: false,
+ *   card_heading_level: 3,
+ *   card_heading: faker('text', 50),
+ *   card_heading_link_url: '#',
+ *   card_small: true,
+ *   card_subheading_level: 4,
+ *   card_subheading: faker('text', 50),
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   card_text: paragraph_concat
+ * } %}
+ * <h6>Card mit Image Overlay</h6>
+ * {% include "@molecules/00-card/card.twig" with {
+ *   card_img_position: 'overlay',
+ *   title_section_above: false,
+ *   card_heading_level: 3,
+ *   card_heading: faker('text', 50),
+ *   card_small: true,
+ *   cardbackgroundimage: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   card_text: paragraph_concat
+ * } %}
+ * <h6>Card mit Header & Footer</h6>
+ * {% include "@molecules/00-card/card.twig" with {
+ *   card_img_position: 'top',
+ *   title_section_above: false,
+ *   card_heading_level: 3,
+ *   card_heading: faker('text', 50),
+ *   card_subheading_level: 4,
+ *   card_subheading: faker('text', 50),
+ *   card_small: true,
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   card_text: paragraph_concat,
+ *   card_header_content: 'Header Section',
+ *   card_footer_content: 'Footer Section'
+ * } %}
+ * <h6>Card mit Titel oberhalb des Bildes getrennt vom Content</h6>
+ * {% include "@molecules/00-card/card.twig" with {
+ *   card_img_position: 'top',
+ *   title_section_above: true,
+ *   card_heading_level: 3,
+ *   card_heading: faker('text', 50),
+ *   card_subheading_level: 4,
+ *   card_subheading: faker('text', 50),
+ *   card_small: true,
+ *   cardimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   card_text: paragraph_concat
+ * } %}
+ */
+#}
+
+<div class="card{% if card_img_position %} {{card_img_position}}{% endif %}"{% if card_img_position == 'overlay' %}style="background-image: url('{{cardbackgroundimage}}');"{% endif %}>
+    {%- if card_header_content -%}
+      <div class="card-header">
+        {% block card_header_content %}
+          {{card_header_content}}
+        {% endblock %}
+      </div>
+    {%- endif -%}
+    {%- if title_section_above == true -%}
+      <div class="card-title-top">
+        {% block card_title_top %}
+          {%- if card_heading -%}
+            {% include "@atoms/00-text/01-headings.twig" with {
+              heading_level: card_heading_level,
+              heading: card_heading,
+              link_url: card_heading_link_url,
+              link_attributes: card_heading_link_attributes,
+              small: card_small
+            } %}
+          {%- endif -%}
+          {%- if card_subheading -%}
+            {% include "@atoms/00-text/01-headings.twig" with {
+              heading_level: card_subheading_level,
+              heading: card_subheading,
+              subtitle: true
+            } %}
+          {%- endif -%}
+        {% endblock %}
+      </div>
+    {%- endif -%}
+    {%- if card_img_position == 'top' or card_img_position == 'overlay' -%}
+      {% block card_image_top %}
+        {%- if cardimagetag -%}
+          {% include "@atoms/06-images/00-image.twig" with {
+            imagetag: cardimagetag
+          } %}
+        {%- endif -%}
+      {% endblock %}
+    {%- endif -%}
+    <div class="card-body">
+      {% block card_body %}
+        {% block card_body_title %}
+          {%- if title_section_above == false -%}
+            {%- if card_heading -%}
+              {% include "@atoms/00-text/01-headings.twig" with {
+                heading_level: card_heading_level,
+                heading: card_heading,
+                link_url: card_heading_link_url,
+                link_attributes: card_heading_link_attributes,
+                small: card_small
+              } %}
+            {%- endif -%}
+            {%- if card_subheading -%}
+              <small>
+                {% include "@atoms/00-text/01-headings.twig" with {
+                  heading_level: card_subheading_level,
+                  heading: card_subheading,
+                  subtitle: true,
+                } %}
+              </small>
+            {%- endif -%}
+          {%- endif -%}
+        {% endblock %}
+        {% block card_body_text %}
+          {%- if card_text -%}
+            {% include "@atoms/00-text/00-paragraph.twig" with {
+              paragraph_content: card_text
+            } %}
+          {%- endif -%}
+        {% endblock %}
+        {% block card_link %}
+          {%- if card_link -%}
+            {% include "@atoms/03-buttons/00-button.twig" with {
+              link: card_link
+            } %}
+          {%- endif -%}
+        {% endblock %}
+      {% endblock %}  
+    </div>
+    {%- if card_img_position == 'bottom' -%}
+      {% block card_image_bottom %}
+        {%- if cardimagetag -%}
+          {% include "@atoms/06-images/00-image.twig" with {
+            imagetag: cardimagetag
+          } %}
+        {%- endif -%}
+      {% endblock %}
+    {%- endif -%}
+    {%- if card_footer_content -%}
+      <div class="card-footer">
+        {% block card_footer_content %}
+          {{card_footer_content}}
+        {% endblock %}
+      </div>
+    {%- endif -%}
+  </div>

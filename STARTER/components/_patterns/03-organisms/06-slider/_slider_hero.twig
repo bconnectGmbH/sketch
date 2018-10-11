@@ -1,0 +1,48 @@
+{#
+/**
+ * Slider Hero
+ *
+ * http://kenwheeler.github.io/slick/
+ *
+ * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
+ * @param string $hero_img_src Hero Bild Quelle
+ * @param int $hero_img_height Height ohne Unit Angabe.
+ * @param string $hero_heading_level Headline Level
+ * @param string $hero_heading Headline Text
+ * @param string $hero_text Hero Text
+ * @param string $hero_link Button URL
+ * @param array $sliderItems Liste aller Heros die als Slider ausgegeben werden sollen
+ * @param string $slider_extra_class Extra Class falls mehre Slider auf einer Seite existieren
+ *
+ * @example
+ * {% set sliderItems = {
+ *   0: {'hero_heading': 'DEFAULT STYLE', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>'},
+ *   1: {'hero_heading': 'TEXT CENTER STYLE', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>', 'hero_style': 'text-center'},
+ *   2: {'hero_heading': 'DEFAULT STYLE WITH BACKGROUND', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>', 'background_imagesrc': 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png', 'background_overlay': true},
+ *   3: {'hero_heading': 'TEXT CENTER STYLE  WITH BACKGROUND', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>', 'hero_style': 'text-center', 'background_imagesrc': 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png', 'hero_img_alt': faker('text', 50), 'hero_img_title': faker('text', 50), 'background_overlay': true},
+ *   4: {'hero_heading': 'IMAGE LEFT', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>', 'hero_style': 'img-left', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">', 'background_imagesrc': 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png'},
+ *   5: {'hero_heading': 'IMAGE RIGHT', 'hero_heading_level': 2, 'hero_text': faker('text', 400), 'hero_link': '<a href="#" class="button">Button Default Link Text</a>', 'hero_style': 'img-right', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">', 'background_imagesrc': 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png'},
+ * } %}
+ * <h6>Slick Slider</h6>
+ * {% include "@organisms/06-slider/slider_hero.twig" with {
+ *   sliderItems: sliderItems,
+ *   slider_extra_class: 'default'
+ * } %}
+ */
+#}
+
+<div id="{{slider_id}}" class="slider {{slider_extra_class}}">
+    {%- for slide in sliderItems -%}
+      {% include "@molecules/09-hero/hero.twig" with {
+        hero_heading: slide.hero_heading,
+        hero_heading_level: slide.hero_heading_level,
+        hero_text: slide.hero_text,
+        hero_style: slide.hero_style,
+        teaserimagetag: slide.teaserimagetag,
+        hero_link: slide.hero_link,
+        background_imagesrc: slide.background_imagesrc,
+        background_overlay: slide.background_overlay,
+      } %}
+    {%- endfor -%}
+  </div>
+  

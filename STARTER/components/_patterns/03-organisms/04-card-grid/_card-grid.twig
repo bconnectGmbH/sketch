@@ -1,0 +1,80 @@
+{#
+/**
+ * Card
+ *
+ * Card mit unterschiedlichen Varianten der Darstellung
+ *
+ * @param string $card_header_content Inhalt des Headers
+ * @param string $card_img_position Bildposition (top/bottom/overlay)
+ * @param string $cardimagetag Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
+ * @param string $card_heading Titel für Card im Body
+ * @param string $card_heading_level Header Level 1-6
+ * @param string $card_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
+ * @param array $card_heading_link_attributes key/value attributes to pass to link like target _blank
+ * @param string $card_subheading Subheadline Inhalt
+ * @param string $card_subheading_level Subheadline Level 1-6
+ * @param string $card_text Card Body Inhalt im <p> - Tag
+ * @param string $card_heading_link_attributes key/value attributes to pass to link like target _blank
+ * @param string $card_link Link wohin der Button verlinkt wird
+ * @param string $card_footer_content
+ * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
+ * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param bool $subtitle true/false
+ * @param string $card_grid_key Anzahl der Cotntainer nebeneinander
+ *
+ * @example
+ * {% set cards = {
+ *   0: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   1: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   2: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   3: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   4: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   5: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ * } %}
+ * <h6>Vier Card mit Image Top </h6>
+ * {% include "@organisms/04-card-grid/card-grid.twig" with {
+ *   cards: cards,
+ *   card_grid_key: "four"
+ * } %}
+ * <h6>Zwei Card mit Image Top </h6>
+ * {% include "@organisms/04-card-grid/card-grid.twig" with {
+ *   cards: cards,
+ *   card_grid_key: "two"
+ * } %}
+ * <h6>Sechs Card mit Image Top </h6>
+ * {% include "@organisms/04-card-grid/card-grid.twig" with {
+ *   cards: cards,
+ *   card_grid_key: "six"
+ * } %}
+ * <h6>Drei Card mit Image Top </h6>
+ * {% include "@organisms/04-card-grid/card-grid.twig" with {
+ *   cards: cards,
+ *   card_grid_key: "three"
+ * } %}
+ */
+#}
+
+
+<div class="card-grid grid-{{card_grid_key}}">
+    {%- for card in cards -%}
+      <div class="item">
+        {% include "@molecules/00-card/card.twig" with {
+          "card_header_content": card.card_header_content,
+          "card_footer_content": card.card_footer_content,
+          "card_heading": card.card_heading,
+          "card_heading_level": card.card_heading_level,
+          "card_heading_link_url": card.card_heading_link_url,
+          "card_heading_link_attributes": card.card_heading_link_attributes,
+          "card_small": card.card_small,
+          "card_subheading_level": card.card_subheading_level,
+          "card_subheading": card.card_subheading,
+          "card_text": card.card_text,
+          "card_link": card.card_link,
+          "card_img_position": card.card_img_position,
+          "title_section_above": card.title_section_above,
+          "cardimagetag": card.cardimagetag,
+        } %}
+      </div>
+    {%- endfor -%}
+  </div>
+  

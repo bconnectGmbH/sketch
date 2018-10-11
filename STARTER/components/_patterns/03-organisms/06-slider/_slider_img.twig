@@ -1,0 +1,34 @@
+{#
+/**
+ * Slider IMG
+ *
+ * http://kenwheeler.github.io/slick/
+ *
+ * @param string $style Hero Style -> img-left, img-right, text-center, leave empty for default
+ * @param string $img_src Hero Bild Quelle
+ * @param int $img_height Height ohne Unit Angabe.
+ * @param array $sliderItems Liste aller Heros die als Slider ausgegeben werden sollen
+ * @param string $slider_extra_class Extra Class falls mehre Slider auf einer Seite existieren
+ *
+ * @example
+ * {% set sliderItems = {
+ *   0: {'imagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   1: {'imagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/232323/fff.png">'},
+ *   2: {'imagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/474747/fff.png">'},
+ * } %}
+ * <h6>Slick Slider</h6>
+ * {% include "@organisms/06-slider/slider_img.twig" with {
+ *   sliderItems: sliderItems,
+ *   slider_extra_class: 'default'
+ * } %}
+ */
+#}
+
+<div id="{{slider_id}}" class="slider-img {{slider_extra_class}}">
+    {%- for slide in sliderItems -%}
+      {% include "@atoms/06-images/00-image.twig" with {
+        imagetag: slide.imagetag
+      } %}
+    {%- endfor -%}
+  </div>
+  

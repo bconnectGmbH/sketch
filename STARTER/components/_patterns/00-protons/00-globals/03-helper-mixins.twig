@@ -7,18 +7,11 @@ Mögliche Stile sind: regular, italic, bold, bolditalic
   </code>
 </pre>
 <br /><br />
-Dieses Mixin ermöglicht es verschiedenen properties an ausgewählten Breakpoints mit skalieren zu lassen.<br />
+Dieses Mixin ermöglicht es verschiedenen properties an ausgewählten Breakpoints skalieren zu lassen.<br />
+Kleiner Breakpoint und größter Breakpoint in dem skaliert werden sollen. Zusätzlich der kleinste Wert also auch der größte Wert für das Attribut müssen angegeben werden<br />
 <pre>
   <code>
     @include interpolate($properties, $min-screen, $max-screen, $min-value, $max-value);
-  </code>
-</pre>
-
-<h6>Icons</h6>
-Hier man kann man in SCSS die bconnect Icons ohne großen Aufwand einfügen, für $icon gilt der Buchstabe zum Icon die Liste ist unter "bconnext Icons zu finden"
-<pre>
-  <code>
-    @include bc-icon($icon);
   </code>
 </pre>
 

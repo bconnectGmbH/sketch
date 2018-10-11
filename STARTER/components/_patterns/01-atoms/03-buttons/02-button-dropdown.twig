@@ -2,9 +2,11 @@
 /**
  * Button Dropdown
  *
- * Button Dropdown
+ * Ausgabe von mehreren Links in Form eines Dropdowns
  *
- * @param string $link Link wohin der Button verlinkt wird
+ * @param string $link Kompletter Linkwrapper der Via Drupal erzeugt wird.
+ * @param array $items Liste mit Buttons die hinzugefügt werden soll.
+ * @param string $dropdownbutton_title Titel für den Toogler des Dropdowns
  *
  * @example
  * {% set button_items = { 
@@ -18,7 +20,7 @@
 #}
 
 <div class="drop-button">
-<a class="button filled"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown Example <span class="icon"></span></a>
+<a class="button filled"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{dropdownbutton_title}}<span class="icon"></span></a>
 <ul class="dropdown-menu" x-placement="bottom-start">
     {%- for item in items -%}
     <li>

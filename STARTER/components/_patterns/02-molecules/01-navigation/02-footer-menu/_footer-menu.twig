@@ -1,0 +1,50 @@
+{#
+/**
+ * Footer Menu
+ *
+ * @param array $items Array mit allen Menü Items
+ * @param array $url Link vom Menüpunkt
+ * @param array $title Title vom Menüpunkt
+ *
+ * @example
+ * <div style="background-color: #002e51; padding: 20px;">
+ *   {% include "@molecules/01-navigation/02-footer-menu/footer-menu.twig" with {
+ *      menu_title: "Footer Menü 1",
+ *      items: mainmenu.items,
+ *      url: mainmenu.item.url,
+ *      title: mainmenu.item.title
+ *   } %}
+ * </div>
+ */
+#}
+
+{% import _self as menus %}
+<nav class="footer-nav" role="navigation" aria-labelledby="footer_navigation">
+  <div class="menu-title">{{menu_title}}</div>
+  {{ menus.menu_links(items, attributes, 0) }}
+  {% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {%- if items -%}
+      {%- if menu_level == 0 -%}
+        <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav">
+      {%- else -%}
+        <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class="nav submenu sub-{{menu_level}}">
+      {%- endif -%}
+      {%- for item in items -%}
+        {%
+          set classes = [
+            'menu-item',
+            item.in_active_trail ? 'menu-item-active-trail',
+          ]
+        %}
+        <li itemprop="name" {{ item.attributes.addClass(classes) }}>
+          <a itemprop="url" href="{{ item.url }}" >{{ item.title }}</a>
+          {%- if item.below -%}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {% endmacro %}
+</nav>

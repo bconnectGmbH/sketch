@@ -5,16 +5,10 @@
  * Headlines H1 - H6
  * Alle Schriftgrößen werden ab dem Breakpoint "medium" = 640px und darunter mit skaliert in der Größe
  *
- * Available variables:
- * - heading_level - the header level 1-6 (produces h1, h2, etc.)
- * - heading - the content of the heading (typically text)
- * - link_url - (optional) the url the heading should poing to
- * - link_attributes - key/value attributes to pass to link like target _blank
+ * Wenn die Headline verlinkt sein soll muss der Link nicht um die <h1></h1> gebaut werden sondern ist Bestandteil des Textes innerhalb.
  *
  * @param int heading_level Es ist eine Zahl von 1 bis 6 um die h1-h6 zu steuern.
- * @param string heading Das ist der Titel (string) der anzeigt wird.
- * @param string link_url Das ist die URL, wenn die Variable leer ist, ist die Headline nicht verlinkt
- * @param array link_attributes array e.g "link_attributes": { 'target': '_blank'}
+ * @param string heading Das ist der Titel der anzeigt wird, kann auch einen Link enthalten.
  *
  * @example
  * {% set headline_link = '<a>' ~ faker('text', 200) ~ '</a>' %}

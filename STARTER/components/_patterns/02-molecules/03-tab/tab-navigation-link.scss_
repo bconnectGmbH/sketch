@@ -1,0 +1,27 @@
+.tabs {
+  border-bottom: 1px solid $tab-navigation-border;
+
+  .item {
+    margin-bottom: -1px;
+    padding-left: 0;
+  }
+
+  .link {
+    display: block;
+    padding: $tab-link-padding;
+    border: 1px solid transparent;
+    border-top-left-radius: $tab-link-border-radius;
+    border-top-right-radius: $tab-link-border-radius;
+
+    &:focus,
+    &:hover {
+      border-color: $tab-hover-link-border-color;
+    }
+
+    &.active {
+      color: $tab-active-link-color;
+      background-color: $tab-active-link-background;
+      border-color: $tab-active-link-border-color;
+    }
+  }
+}

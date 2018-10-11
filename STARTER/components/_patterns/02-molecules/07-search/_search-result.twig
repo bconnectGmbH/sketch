@@ -1,0 +1,42 @@
+{#
+/**
+ * Search Result
+ *
+ * This template renders a single search result. The list of results is
+ * rendered using '#theme' => 'item_list', with suggestions of:
+ * - item_list__search_results__(plugin_id)
+ * - item_list__search_results
+ *
+ * @param string $search_result_title_prefix Additional output populated by modules, intended to be displayed in front of the main title tag that appears in the template.
+ * @param array $search_result_title_attributes
+ * @param string $search_result_url URL of the result.
+ * @param string $search_result_title Title of the result.
+ * @param string $search_result_title_suffix Additional output populated by modules, intended to be displayed after the main title tag that appears in the template.
+ * @param array $search_result_content_attributes
+ * @param string $search_result_snippet  A small preview of the result. Does not apply to user searches.
+ * @param string $search_result_info String of all the meta information ready for print. Does not apply to user searches.
+ * @param array $info_split Contains same data as info, but split into separate parts. (type, user, date, comment)
+ *
+ * @example
+ * {% include "@molecules/07-search/search-result.twig" with {
+ *   search_result_url: '#',
+ *   search_result_title: faker('text', 50),
+ *   search_result_snippet: faker('text', 400),
+ *   search_result_info: faker('text', 100)
+ * } %}
+ */
+#}
+
+<div class="search-result-snippet">
+  {{ search_result_title_prefix }}
+  <h3{{ search_result_title_attributes }}>
+    <a href="{{ search_result_url }}">{{ search_result_title }}</a>
+  </h3>
+  {{ search_result_title_suffix }}
+  {%- if search_result_snippet -%}
+    <p{{ search_result_content_attributes }}>{{ search_result_snippet }}</p>
+  {%- endif -%}
+  {%- if search_result_info -%}
+    <p><strong>{{ search_result_info }}</strong></p>
+  {%- endif -%}
+</div>

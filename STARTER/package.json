@@ -24,8 +24,7 @@
       "bootstrap",
       "stylelint",
       "livereload",
-      "scrollmagic",
-      "hyphinator"
+      "scrollmagic"
     ],
     "livereload": {
       "protocol": "http",
@@ -41,7 +40,6 @@
     "foundation-sites": "^6.4.4-rc1",
     "gsap": "^1.20.4",
     "highlight.js": "^9.12.0",
-    "hypher-for-jquery": "^1.0.3",
     "imagesloaded": "^4.1.4",
     "jquery": "^3.3.1",
     "jquery-bridget": "^2.0.1",
