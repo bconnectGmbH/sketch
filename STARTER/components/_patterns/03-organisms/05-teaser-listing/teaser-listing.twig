@@ -6,9 +6,7 @@
  *
  * @param string $teaser_header_content Inhalt des Headers
  * @param string $teaser_img_position Bildposition (left/right/overlay)
- * @param string $teaser_img_src Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
- * @param string $teaser_img_alt Bild Alternativ Text
- * @param string $teaser_img_title Bildtitel
+ * @param string $teaserimagetag Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
  * @param string $teaser_heading Titel für Teaser im Body
  * @param string $teaser_heading_level Header Level 1-6
  * @param string $teaser_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
@@ -17,9 +15,7 @@
  * @param string $teaser_subheading_level Subheadline Level 1-6
  * @param string $teaser_text Teaser Body Inhalt im <p> - Tag
  * @param string $teaser_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $teaser_button_url Link wohin der Button verlinkt wird
- * @param string $teaser_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $teaser_button_text Buttontext
+ * @param string $teaser_link Link wohin der Button verlinkt wird
  * @param string $teaser_footer_content
  * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
  * @param bool $teaser_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
@@ -27,12 +23,12 @@
  *
  * @example
  * {% set teasers = {
- *   0: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'left', 'teaser_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'teaser_img_title': faker('text', 50), 'teaser_img_alt': faker('text', 50)},
- *   1: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaser_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'teaser_img_title': faker('text', 50), 'teaser_img_alt': faker('text', 50)},
- *   2: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'left', 'teaser_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'teaser_img_title': faker('text', 50), 'teaser_img_alt': faker('text', 50)},
- *   3: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaser_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'teaser_img_title': faker('text', 50), 'teaser_img_alt': faker('text', 50)},
+ *   0: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'left', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/360x16:9/c7c7c7/fff.png">'},
+ *   1: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/360x16:9/c7c7c7/fff.png">'},
+ *   2: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'left', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/360x16:9/c7c7c7/fff.png">'},
+ *   3: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/360x16:9/c7c7c7/fff.png">'},
  *   4: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400)},
- *   5: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaser_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'teaser_img_title': faker('text', 50), 'teaser_img_alt': faker('text', 50), 'teaser_button_url': '#', 'teaser_button_class': 'filled', 'teaser_button_text': faker('text', 50)},
+ *   5: {'teaser_heading': faker('text', 50), 'teaser_heading_level': 3, 'teaser_subheading_level': 4, 'teaser_subheading': faker('text', 50), 'teaser_text': faker('text', 400), 'teaser_img_position': 'right', 'teaserimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/360x16:9/c7c7c7/fff.png">', 'teaser_link': '<a href="#" class="button filled">Button filled Link Text</a>'},
  * } %}
  * <h6>Image Left</h6>
  * <br />
@@ -42,24 +38,21 @@
  */
 #}
 <div class="teaser-list">
-  {%- for teaser in teasers -%}
-    {% include "@molecules/06-teaser/teaser.twig" with {
-      "teaser_img_position": teaser.teaser_img_position,
-      "title_section_above": teaser.title_section_above,
-      "teaser_heading_level": teaser.teaser_heading_level,
-      "teaser_heading": teaser.teaser_heading,
-      "teaser_heading_link_url": teaser.teaser_heading_link_url,
-      "teaser_heading_link_attributes": teaser.teaser_heading_link_attributes,
-      "teaser_small": true,
-      "teaser_subheading_level": teaser.teaser_subheading_level,
-      "teaser_subheading": teaser.teaser_subheading,
-      "teaser_img_src": teaser.teaser_img_src,
-      "teaser_img_title": teaser.teaser_img_title,
-      "teaser_img_alt": teaser.teaser_img_alt,
-      "teaser_text": teaser.teaser_text,
-      "teaser_button_url": teaser.teaser_button_url,
-      "teaser_button_class": teaser.teaser_button_class,
-      "teaser_button_text": teaser.teaser_button_text
-    } %}
-  {%- endfor -%}
-</div>
+    {%- for teaser in teasers -%}
+      {% include "@molecules/06-teaser/teaser.twig" with {
+        "teaser_img_position": teaser.teaser_img_position,
+        "title_section_above": teaser.title_section_above,
+        "teaser_heading_level": teaser.teaser_heading_level,
+        "teaser_heading": teaser.teaser_heading,
+        "teaser_heading_link_url": teaser.teaser_heading_link_url,
+        "teaser_heading_link_attributes": teaser.teaser_heading_link_attributes,
+        "teaser_small": true,
+        "teaser_subheading_level": teaser.teaser_subheading_level,
+        "teaser_subheading": teaser.teaser_subheading,
+        "teaserimagetag": teaser.teaserimagetag,
+        "teaser_text": teaser.teaser_text,
+        "teaser_link": teaser.teaser_link
+      } %}
+    {%- endfor -%}
+  </div>
+  

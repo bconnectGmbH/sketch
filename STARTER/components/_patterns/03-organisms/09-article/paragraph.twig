@@ -6,10 +6,7 @@
  * {% embed "@organisms/09-article/paragraph.twig" %}
  *   {% block paragraph_content %}
  *     {% include "@atoms/06-images/00-image.twig" with {
- *       img_srcset: '../../../../images/b-connect/Development_Slide_Image640.png 640w, ../../../../images/b-connect/Development_Slide_Image1024.png 1024w, ../../../../images/b-connect/Development_Slide_Image1200.png 1200w',
- *       img_src: '../../../../images/b-connect/Development_Slide_Image.png',
- *       img_alt: faker('text', 30),
- *       img_title: faker('text', 30)
+ *       imagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png" srcset="https://dummyimage.com/640x16:9/c7c7c7/fff.png 640w, https://dummyimage.com/1024x16:9/c7c7c7/fff.png 1024w, https://dummyimage.com/1200x16:9/c7c7c7/fff.png 1200w">',
  *     } %}
  *   {% endblock %}
  * {% endembed %}

@@ -14,7 +14,7 @@
  * @param string $hero_heading_level Headline Level
  * @param string $hero_heading Headline Text
  * @param string $hero_text Hero Text
- * @param string $hero_hero_link Button URL
+ * @param string $hero_link Button URL
  *
  * @example
  * <h6>Default Style</h6>
@@ -76,7 +76,7 @@
 #}
 
 <div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if background_overlay %} background{% endif %}"{% if background_overlay and background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
-    {%- if hero_style != "img-right" -%}
+    {%- if hero_style != "img-right" and background_imagesrc -%}
       <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
         {% include "@atoms/06-images/00-image.twig" with {
           imagetag: teaserimagetag

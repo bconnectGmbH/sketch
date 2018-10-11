@@ -6,9 +6,7 @@
  *
  * @param string $card_header_content Inhalt des Headers
  * @param string $card_img_position Bildposition (top/bottom/overlay)
- * @param string $card_img_src Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
- * @param string $card_img_alt Bild Alternativ Text
- * @param string $card_img_title Bildtitel
+ * @param string $cardimagetag Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
  * @param string $card_heading Titel für Card im Body
  * @param string $card_heading_level Header Level 1-6
  * @param string $card_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
@@ -17,9 +15,7 @@
  * @param string $card_subheading_level Subheadline Level 1-6
  * @param string $card_text Card Body Inhalt im <p> - Tag
  * @param string $card_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $card_button_url Link wohin der Button verlinkt wird
- * @param string $card_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $card_button_text Buttontext
+ * @param string $card_link Link wohin der Button verlinkt wird
  * @param string $card_footer_content
  * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
  * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
@@ -28,12 +24,12 @@
  *
  * @example
  * {% set cards = {
- *   0: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
- *   1: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
- *   2: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
- *   3: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
- *   4: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
- *   5: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'card_img_src': '../../../../images/b-connect/consulting_Slide_Image.png', 'card_img_title': faker('text', 50), 'card_img_alt': faker('text', 50)},
+ *   0: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   1: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   2: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   3: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   4: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
+ *   5: {'card_heading': faker('text', 50), 'card_heading_level': 3, 'card_text': faker('text', 200), 'card_img_position': 'top', 'cardimagetag': '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">'},
  * } %}
  * <h6>Vier Card mit Image Top </h6>
  * {% include "@organisms/04-card-grid/card-grid.twig" with {
@@ -58,31 +54,27 @@
  */
 #}
 
+
 <div class="card-grid grid-{{card_grid_key}}">
-  {%- for card in cards -%}
-    <div class="item">
-      {% include "@molecules/00-card/card.twig" with {
-        "card_header_content": card.card_header_content,
-        "card_footer_content": card.card_footer_content,
-        "card_heading": card.card_heading,
-        "card_heading_level": card.card_heading_level,
-        "card_heading_link_url": card.card_heading_link_url,
-        "card_heading_link_attributes": card.card_heading_link_attributes,
-        "card_small": card.card_small,
-        "card_subheading_level": card.card_subheading_level,
-        "card_subheading": card.card_subheading,
-        "card_text": card.card_text,
-        "card_button_url": card.card_button_url,
-        "button_extra_class": card.button_extra_class,
-        "button_text": card.button_text,
-        "card_img_position": card.card_img_position,
-        "title_section_above": card.title_section_above,
-        "card_img_src": card.card_img_src,
-        "card_img_title":card.card_img_title,
-        "card_img_alt": card.card_img_alt,
-        "card_button_class": card.card_button_class,
-        "card_button_text": card.card_button_text
-      } %}
-    </div>
-  {%- endfor -%}
-</div>
+    {%- for card in cards -%}
+      <div class="item">
+        {% include "@molecules/00-card/card.twig" with {
+          "card_header_content": card.card_header_content,
+          "card_footer_content": card.card_footer_content,
+          "card_heading": card.card_heading,
+          "card_heading_level": card.card_heading_level,
+          "card_heading_link_url": card.card_heading_link_url,
+          "card_heading_link_attributes": card.card_heading_link_attributes,
+          "card_small": card.card_small,
+          "card_subheading_level": card.card_subheading_level,
+          "card_subheading": card.card_subheading,
+          "card_text": card.card_text,
+          "card_link": card.card_link,
+          "card_img_position": card.card_img_position,
+          "title_section_above": card.title_section_above,
+          "cardimagetag": card.cardimagetag,
+        } %}
+      </div>
+    {%- endfor -%}
+  </div>
+  
