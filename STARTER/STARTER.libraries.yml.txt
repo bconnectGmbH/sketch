@@ -1,9 +1,9 @@
 global-styling:
   css:
     theme:
-      vendor/css/styles.css: {}
+      components/vendor/css/styles.css: {}
   js:
-    vendor/js/scripts.js: {}
+    components/vendor/js/scripts.js: {}
   dependencies:
     - core/jquery
     - core/drupalSettings
