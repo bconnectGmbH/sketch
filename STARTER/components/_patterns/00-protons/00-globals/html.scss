@@ -8,6 +8,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   direction: $global-text-direction;
+  hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 body {
@@ -30,11 +34,4 @@ body, html {
 
 a {
   -webkit-text-decoration-skip: objects;
-}
-
-.hyphen {
-  hyphens: auto;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
 }

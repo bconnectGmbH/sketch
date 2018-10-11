@@ -1,34 +1,22 @@
-{% include "@organisms/03-header/header.twig" with {
-  menuitems: mainmenu.items,
-  menu_id: 'menu_id_new',
-  logo_img_alt: logo_img_alt,
-  logo_img_title: logo_img_title,
-  logo_img_src_mobile: logo_img_src_mobile,
-  logo_img_src: logo_img_src,
-  logo_img_href: logo_img_href,
-  search_submit_value: "Suche starten",
-  search_submit_id: 'search-view',
-  search_svg: '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <circle fill="none" stroke="#000" stroke-width="1.1" cx="9" cy="9" r="7"></circle> <path fill="none" stroke="#000" stroke-width="1.1" d="M14,14 L18,18 L14,14 Z"></path></svg>',
-  search_text_placeholder: 'Suche',
-  search_text_input_id: 'automplete-search',
-  search_data_drupal_selector_input: 'automplete-search',
-  search_label_for: 'search-for',
-  content_class: 'test',
-  search_form_id: "search-form-id"
-} %}
+{% set main_base_class = main_base_class|default('main') %}
+{% set main_content_base_class = main_content_base_class|default('main-content') %}
 
-<main class="main-content" class="{{content_class}}">
-  {% block site_content %}
-    {{content}}
+<div class="layout-container">
+  {% block page_header %}
   {% endblock %}
-</main>
 
-{% include "@organisms/07-footer/footer.twig" with {
-  items: footermenu.items,
-  company_name: 'b-connect',
-  company_data: 'TEL.: +49 30 217 363-0<br>FAX: +49 30 217 363-99<br><a href="mailto:mail@b-connect.de">mail@b-connect.de</a>',
-  copyright_company: '© b-connect GmbH',
-  socialmedia_urls: socialmedia.items,
-  slogan: 'b-connect. Made in Berlin. Since 1998!',
-  slogan_paragraph_class: 'slogan',
-} %}
+  {% block page_system %}
+  {% endblock %}
+
+  <main role="main" class="{{main_base_class}}">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+    <div class="{{ main_content_base_class }}">
+      {% block page_content %}
+      {% endblock %}
+    </div>
+
+  </main>
+
+  {% block page_footer %}
+  {% endblock %}
+</div>
