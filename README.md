@@ -7,6 +7,9 @@
  |_____/|_|\_\___|\__\___|_| |_|
 
 ```
+# Requirement
+- https://www.drupal.org/project/sketch_tools
+- https://www.drupal.org/project/sketch
 
 # Generate a subtheme
 
