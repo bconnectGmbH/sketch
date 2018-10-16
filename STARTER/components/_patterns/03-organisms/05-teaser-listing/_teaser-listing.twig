@@ -1,25 +1,23 @@
 {#
 /**
- * Teaser
+ * Teaser Liste
  *
- * Teaser mit unterschiedlichen Varianten der Darstellung
+ * Liste mit Teaser. Diese Teaser werden untereinader ausgegeben.
+ * Der Inhalt kann auch überschrieben werden und die komplett gerenderte Liste enthalten.
  *
- * @param string $teaser_header_content Inhalt des Headers
- * @param string $teaser_img_position Bildposition (left/right/overlay)
- * @param string $teaserimagetag Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
- * @param string $teaser_heading Titel für Teaser im Body
+ * @param string $teaser_img_position Position des Bildes links oder rechts (left/right)
+ * @param string $teaser_heading Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
  * @param string $teaser_heading_level Header Level 1-6
- * @param string $teaser_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
- * @param array $teaser_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $teaser_subheading Subheadline Inhalt
+ * @param string $teaser_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $teaser_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param string $teaser_subheading Sub-Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
  * @param string $teaser_subheading_level Subheadline Level 1-6
- * @param string $teaser_text Teaser Body Inhalt im <p> - Tag
- * @param string $teaser_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $teaser_link Link wohin der Button verlinkt wird
- * @param string $teaser_footer_content
+ * @param string $teaser_subheading_class Spezielle Klasse wenn diese benötigt wird
  * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
- * @param bool $teaser_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
- * @param bool $subtitle true/false
+ * @param string $teaser_backgroundimg Wird benötigt um das Teaserbild als Background-Image einzufügen um die CSS Eigenschaften nutzen zu können.
+ * @param string $teaserimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
+ * @param string $teaser_text Teaser Body Inhalt benötigt vollständiges P-Tag
+ * @param string $teaser_link Vollständiges A-Tag mit allen Optionen.
  *
  * @example
  * {% set teasers = {
@@ -38,6 +36,7 @@
  */
 #}
 <div class="teaser-list">
+  {% block teaser_list_inner %}
     {%- for teaser in teasers -%}
       {% include "@molecules/06-teaser/teaser.twig" with {
         "teaser_img_position": teaser.teaser_img_position,
@@ -54,5 +53,5 @@
         "teaser_link": teaser.teaser_link
       } %}
     {%- endfor -%}
-  </div>
-  
+  {% endblock %}
+</div>

@@ -2,7 +2,16 @@
 /**
  * Searchblock
  *
- * Suchleiste
+ * Suchleiste mit Drupal Wrappern und Klassen.
+ *
+ * @param string $search_svg SVG oder IMG als vollständiges Element, wenn ein Icon angezeigt werden soll
+ * @param string $search_text_label_for ID für Text Label FOR
+ * @param string $search_text_placeholder Inhalt vom Placeholder
+ * @param string $search_text_input_id ID vom Element
+ * @param string $search_text_icon_position Position (left/right) trage eines der Werte ein.
+ * @param string $search_form_id Eindeutige ID für das Form Element
+ * @param string $search_submit_value Text auf dem Button
+ * @param strin $search_submit_id Eindeutige ID des Elements
  *
  * @example
  * {% include "@molecules/10-block/search-block.twig" with {
@@ -11,7 +20,6 @@
  *   search_svg: '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <circle fill="none" stroke="#000" stroke-width="1.1" cx="9" cy="9" r="7"></circle> <path fill="none" stroke="#000" stroke-width="1.1" d="M14,14 L18,18 L14,14 Z"></path></svg>',
  *   search_text_placeholder: 'Suche',
  *   search_text_input_id: 'automplete-search1',
- *   search_data_drupal_selector_input: 'automplete-search1',
  *   search_text_icon_position: 'right',
  *   search_form_id: 'search_form_id1',
  *   search_text_label_for: 'search_label_for',
@@ -28,9 +36,9 @@
           text_label_for: search_text_label_for,
           text_placeholder: search_text_placeholder,
           text_input_id: search_text_input_id,
-          data_drupal_selector_input: search_data_drupal_selector_input,
+          data_drupal_selector_input: search_text_input_id,
           text_icon_position: search_text_icon_position,
-          type_input: 'search'
+          type_input: 'search',
         } %}
       </div>
       <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions">

@@ -1,3 +1,23 @@
+{#
+/**
+ * Default Drupal Site Container
+ *
+ * Beispiel für einen Site Container in Drupal
+ *
+ * @example
+ * <div class="preview masonry-layout">
+ *   <div class="masonry-grid grid-four">
+ *     {%- for i in 1..20 -%}
+ *       <div class="grid-item">
+ *         Grid {{i}}
+ *       </div>
+ *     {%- endfor -%}
+ *   </div>
+ * </div>
+ *
+ */
+#}
+
 {% set main_base_class = main_base_class|default('main') %}
 {% set main_content_base_class = main_content_base_class|default('main-content') %}
 

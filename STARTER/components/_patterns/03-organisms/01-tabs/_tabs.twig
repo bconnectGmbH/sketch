@@ -2,12 +2,17 @@
 /**
  * Tabs
  *
- * @param string $tab_url URL für Tab Link
- * @param string $tab_title Titel für Tab
- * @param array $tab_items Array mit Tab Items
- * @param int $tab_heading_level Level der Headline
- * @param array $tab_heading Inhalt der Headline
- * @param string $tab_text Inhalt der Tabs
+ * Vollständiges Tabs Element mit Navigation Links molecules/03-tab/tab-navigation-link und
+ * der Inhalt der Tabs molecules/03-tab/tab-pane. Beide Parts können inhaltlich ausgetauscht werden
+ * ohne es beispielsweise mit der FOR-Schleife zu durchlaufen.
+ *
+ * @param int $key Key vom Array der Tab Elemente (muss im Array bestückt werden)
+ * @param string $tab_url Link für den Tab (ID)
+ * @param string $tab_title Titel für den Tab (Link)
+ * @param int $tab_heading_level Es ist eine Zahl von 1 bis 6 um die h1-h6 zu steuern.
+ * @param string $tab_heading Das ist der Titel (string) der anzeigt wird.
+ * @param string $tab_heading_class Extra Klasse für Headlines
+ * @param string $tab_text Content für den Tab (Vollständiges P-Tag)
  *
  * @example
  * {% set tab_items = {
@@ -24,24 +29,28 @@
 
 <div class="tab-wrapper">
   <ul class="nav tabs" role="tablist">
-    {%- for key, tab_link in tab_items -%}
-      {% include "@molecules/03-tab/tab-navigation-link.twig" with {
-        "tab_url": tab_link.tab_url,
-        "tab_title": tab_link.tab_title,
-        "key": key,
-      } %}
-    {%- endfor -%}
+    {% block tabnavigation %}
+      {%- for key, tab_link in tab_items -%}
+        {% include "@molecules/03-tab/tab-navigation-link.twig" with {
+          "tab_url": tab_link.tab_url,
+          "tab_title": tab_link.tab_title,
+          "key": key,
+        } %}
+      {%- endfor -%}
+    {% endblock %}
   </ul>
 
   <div class="tab-content">
-    {%- for key, tab_item in tab_items -%}
-      {% include "@molecules/03-tab/tab-pane.twig" with {
-        "tab_url": tab_item.tab_url,
-        "tab_heading_level": tab_item.tab_heading_level,
-        "tab_heading": tab_item.tab_heading,
-        "tab_text": tab_item.tab_text,
-        "key": key,
-      } %}
-    {%- endfor -%}
+    {% block tabcontent %}
+      {%- for key, tab_item in tab_items -%}
+        {% include "@molecules/03-tab/tab-pane.twig" with {
+          "tab_url": tab_item.tab_url,
+          "tab_heading_level": tab_item.tab_heading_level,
+          "tab_heading": tab_item.tab_heading,
+          "tab_text": tab_item.tab_text,
+          "key": key,
+        } %}
+      {%- endfor -%}
+    {% endblock %}
   </div>
 </div>

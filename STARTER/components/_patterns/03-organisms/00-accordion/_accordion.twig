@@ -2,21 +2,21 @@
 /**
  * Accordion
  *
- * @param string $accordion_heading Titel für accordion im Body
- * @param string $accordion_heading_level Header Level 1-6
- * @param string $accordion_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
- * @param array $accordion_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $accordion_subheading Subheadline Inhalt
- * @param string $accordion_subheading_level Subheadline Level 1-6
- * @param string $accordion_text accordion Body Inhalt im <p> - Tag
- * @param string $accordion_button_url Link wohin der Button verlinkt wird
- * @param string $accordion_button_class Klasse die den Style steuert (leere Klassenangabe, filled, filled2, round, text, link, group, dropdown)
- * @param string $accordion_button_text Buttontext
- * @param bool $accordion_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
- * @param bool $subtitle true/false
+ * Vollständiges Accordion, das aus Accordion Items besteht.
+ * Der Inhalt kann überschrieben z.B. Wenn man bereits die gerenderte Liste übergeben möchte
+ * statt es mit einer FOR-Schleife zu durchlaufen. siehe molecules/02-accordion-item
+ *
+ * @param int $key Key vom Array der Accordion Elemente (muss im Array bestückt werden)
  * @param string $accordion_title Titel vom Accordion
  * @param string $accordion_parent Parent Element für das Accordion "collapsible elements under the specified parent will be closed when one of the collapsible item is shown"
- * @param array $accordion_items Array mit Accordion Items
+ * @param string $card_heading Titel für Card im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $card_heading_level Header Level 1-6
+ * @param string $card_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $card_subheading Sub-Titel für Card im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $card_subheading_level Subheadline Level 1-6
+ * @param string $card_subheading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $card_text Card Body Inhalt benötigt vollständiges P-Tag
+ * @param string $card_link Vollständiges A-Tag mit allen Optionen.
  *
  * @example
  * {% set accordion_items = {
@@ -33,22 +33,24 @@
 #}
 
 <div class="accordion-wrapper" id="{{accordion_parent}}">
-  {% for key, accordion_item in accordion_items %}
-    {% include "@molecules/02-accordion-item/accordion-item.twig" with {
-      "accordion_parent": accordion_item.accordion_parent,
-      "accordion_title": accordion_item.accordion_title,
-      "card_heading": accordion_item.accordion_heading,
-      "card_heading_level": accordion_item.accordion_heading_level,
-      "card_heading_link_url": accordion_item.accordion_heading_link_url,
-      "card_heading_link_attributes": accordion_item.accordion_heading_link_attributes,
-      "card_small": accordion_item.accordion_small,
-      "card_subheading_level": accordion_item.accordion_subheading_level,
-      "card_subheading": accordion_item.accordion_subheading,
-      "card_text": accordion_item.accordion_text,
-      "card_button_url": accordion_item.accordion_button_url,
-      "button_extra_class": accordion_item.accordion_button_extra_class,
-      "button_text": accordion_item.accordion_button_text,
-      "key": key,
-    } %}
-  {% endfor %}
+  {% block accordion_inner %}
+    {% for key, accordion_item in accordion_items %}
+      {% include "@molecules/02-accordion-item/accordion-item.twig" with {
+        "accordion_parent": accordion_item.accordion_parent,
+        "accordion_title": accordion_item.accordion_title,
+        "card_heading": accordion_item.accordion_heading,
+        "card_heading_level": accordion_item.accordion_heading_level,
+        "card_heading_link_url": accordion_item.accordion_heading_link_url,
+        "card_heading_link_attributes": accordion_item.accordion_heading_link_attributes,
+        "card_small": accordion_item.accordion_small,
+        "card_subheading_level": accordion_item.accordion_subheading_level,
+        "card_subheading": accordion_item.accordion_subheading,
+        "card_text": accordion_item.accordion_text,
+        "card_button_url": accordion_item.accordion_button_url,
+        "button_extra_class": accordion_item.accordion_button_extra_class,
+        "button_text": accordion_item.accordion_button_text,
+        "key": key,
+      } %}
+    {% endfor %}
+  {% endblock %}
 </div>

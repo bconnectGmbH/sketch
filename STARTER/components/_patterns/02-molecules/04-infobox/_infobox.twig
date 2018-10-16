@@ -2,11 +2,18 @@
 /**
  * Infobox
  *
+ * Modal Implementation von Bootstrap, standard Darstellung ist Card von Bootstrap.
+ * Der Inhalt des Modals kann verändert werden via Embed.
+ * https://getbootstrap.com/docs/4.1/components/modal/
+ *
  * @param string $trigger_type Link oder Button
  * @param int $infobox_id Eindeutige ID
- * @param int $trigger_button_text Text auf dem Button
- * @param int $infobox_heading_level Level für Headlines 1-6
- * @param int $infobox_heading Inhalt des Titels
+ * @param string $trigger_button_text Text der im Button/Link stehen soll
+ * @param int $infobox_heading_level Es ist eine Zahl von 1 bis 6 um die h1-h6 zu steuern.
+ * @param string $infobox_heading Das ist der Titel (string) der anzeigt wird.
+ * @param string $infobox_heading_class Extra Klasse für Headlines
+ * @param string $infobox_text Content für den Tab (Vollständiges P-Tag)
+ * @param string $infobox_footer Inhalt für den Footer kann auch HTML enthalten
  *
  * @example
  * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
@@ -50,36 +57,36 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="{{infobox_id}}">
     <div class="modal-dialog" role="document">
         <div class="infobox-content">
+        {%- block infobox_content -%}
+          {%- if infobox_heading -%}
+            <div class="infobox-header">
+              {% include "@atoms/00-text/01-headings.twig" with {
+                heading_level: infobox_heading_level,
+                heading: infobox_heading,
+                heading_class: infobox_heading_class
+              } %}
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {%- endif -%}
 
-        {%- if infobox_heading -%}
-          <div class="infobox-header">
-            {% include "@atoms/00-text/01-headings.twig" with {
-              heading_level: infobox_heading_level,
-              heading: infobox_heading,
-            } %}
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        {%- endif -%}
-
-        {%- if infobox_text -%}
-          <div class="infobox-body">
-            {% block infobox_body %}
+          {%- if infobox_text -%}
+            <div class="infobox-body">
               {% include "@atoms/00-text/00-paragraph.twig" with {
                 paragraph_content: infobox_text
               } %}
-            {% endblock %}
-          </div>
-        {%- endif -%}
+            </div>
+          {%- endif -%}
 
-        {%- if infobox_footer -%}
-          <div class="infobox-footer">
-            {% block infobox_footer %}
-              {{infobox_footer}}
-            {% endblock %}
-          </div>
-        {%- endif -%}
+          {%- if infobox_footer -%}
+            <div class="infobox-footer">
+              {% block infobox_footer %}
+                {{infobox_footer}}
+              {% endblock %}
+            </div>
+          {%- endif -%}
+        {% endblock %}
       </div>
     </div>
   </div>

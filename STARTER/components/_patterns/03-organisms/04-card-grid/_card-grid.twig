@@ -1,26 +1,28 @@
 {#
 /**
- * Card
+ * Card Grid
  *
- * Card mit unterschiedlichen Varianten der Darstellung
+ * Card Grid, die Anzahl der Elemente nebeneinander können bestimmt werden.
+ * Der Inhalt kann auch überschrieben werden und die komplett gerenderte Liste enthalten. Wichtig ist hier aber das HTML identisch ist.
+ * wie in diesem Beispiel.
  *
- * @param string $card_header_content Inhalt des Headers
- * @param string $card_img_position Bildposition (top/bottom/overlay)
- * @param string $cardimagetag Bildquelle - Pfad zum Bild, wenn nicht gesetzt wird auch kein Bild ausgegeben
- * @param string $card_heading Titel für Card im Body
- * @param string $card_heading_level Header Level 1-6
- * @param string $card_heading_link_url Link URL, wenn leer ist der Titel nicht verlinkt
- * @param array $card_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $card_subheading Subheadline Inhalt
- * @param string $card_subheading_level Subheadline Level 1-6
- * @param string $card_text Card Body Inhalt im <p> - Tag
- * @param string $card_heading_link_attributes key/value attributes to pass to link like target _blank
- * @param string $card_link Link wohin der Button verlinkt wird
- * @param string $card_footer_content
- * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
- * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
- * @param bool $subtitle true/false
  * @param string $card_grid_key Anzahl der Cotntainer nebeneinander
+ * @param string $card_img_position Bildposition (top/bottom/overlay)
+ * @param string $cardbackgroundimage wird verwendet um das Bild als overlay darzustellen (benötigt dennoch cardimagetag (für Title + Alt Text))
+ * @param string $card_header_content Inhalt des Headers (siehe https://getbootstrap.com/docs/4.1/components/card/#header-and-footer)
+ * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
+ * @param string $card_heading Titel für Card im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $card_heading_level Header Level 1-6
+ * @param string $card_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $cardimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
+ * @param string $card_subheading Sub-Titel für Card im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $card_subheading_level Subheadline Level 1-6
+ * @param string $card_subheading_class Spezielle Klasse wenn diese benötigt wird
+ * @param bool $card_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param string $card_text Card Body Inhalt benötigt vollständiges P-Tag
+ * @param string $card_link Vollständiges A-Tag mit allen Optionen.
+ * @param string $card_footer_content Inhalt des Footers (siehe https://getbootstrap.com/docs/4.1/components/card/#header-and-footer)
+
  *
  * @example
  * {% set cards = {
@@ -54,8 +56,8 @@
  */
 #}
 
-
 <div class="card-grid grid-{{card_grid_key}}">
+  {% block card_grid_inner %}
     {%- for card in cards -%}
       <div class="item">
         {% include "@molecules/00-card/card.twig" with {
@@ -76,5 +78,6 @@
         } %}
       </div>
     {%- endfor -%}
+  {% endblock %}
   </div>
   

@@ -3,15 +3,12 @@
  * Image
  *
  * Dieses Pattern erlaubt die neue Responsive Image Funktion.
+ * Zur einfacheren Drupalintegration wird nur das vollständige IMG-Tag eingesetzt.
  * Es beginnt mit dem handelüblichen <img src="" alt="" title=""/>
  * Zusätzlich können nun srcset="" und sizes="" eingetragen werden.
  * Dokumention hier zu: https://blog.kulturbanause.de/2014/09/responsive-images-srcset-sizes-adaptive
  *
- * @param string $img_srcset Liste an Bildquellen
- * @param string $img_sizes Darstellungsgröße der Bilder in Viewports
- * @param string $img_src Pfad zum Bild
- * @param string $img_alt Alttext
- * @param string $img_title Titletext
+ * @param string $imagetag Vollständiges IMG Tag wird hier übermittelt
  *
  * @example
  * <h6> Ohne Sourceset</h6>

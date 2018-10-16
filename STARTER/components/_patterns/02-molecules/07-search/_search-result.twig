@@ -2,20 +2,20 @@
 /**
  * Search Result
  *
- * This template renders a single search result. The list of results is
- * rendered using '#theme' => 'item_list', with suggestions of:
+ * Dieses Template stellt nur ein einzelnes Suchergebnis dar. Die Liste von Ergebnissen
+ * wird durch #theme' => 'item_list' mit
  * - item_list__search_results__(plugin_id)
  * - item_list__search_results
+ * gerendet.
  *
- * @param string $search_result_title_prefix Additional output populated by modules, intended to be displayed in front of the main title tag that appears in the template.
- * @param array $search_result_title_attributes
- * @param string $search_result_url URL of the result.
- * @param string $search_result_title Title of the result.
- * @param string $search_result_title_suffix Additional output populated by modules, intended to be displayed after the main title tag that appears in the template.
- * @param array $search_result_content_attributes
- * @param string $search_result_snippet  A small preview of the result. Does not apply to user searches.
- * @param string $search_result_info String of all the meta information ready for print. Does not apply to user searches.
- * @param array $info_split Contains same data as info, but split into separate parts. (type, user, date, comment)
+ * @param string $search_result_title_prefix Zusätzliche Ausgabe durch Modulen oder Elementen die vor dem Titel ausgegeben werden sollen.
+ * @param array $search_result_title_attributes Attribute die der Titel bekommen soll
+ * @param string $search_result_url URL vom Ergebnisses
+ * @param string $search_result_title Titel des Ergebnisses
+ * @param string $search_result_title_suffix Zusätzliche Ausgabe durch Modulen oder Elementen die nach dem Titel ausgegeben werden sollen.
+ * @param array $search_result_content_attributes Attribute die der Inhalt bekommen soll
+ * @param string $search_result_snippet Kurzer Ausschnitt des Ergebnisses
+ * @param string $search_result_info Alle Meta-Informationen
  *
  * @example
  * {% include "@molecules/07-search/search-result.twig" with {

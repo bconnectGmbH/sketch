@@ -2,9 +2,13 @@
 /**
  * Select
  *
- * @param string $form_label Label für die Formelemente
- * @param string $form_help_text Hilfstext für die Formelemente
- * @param array $items Array mit allen Elementen
+ * Einfache Select Feld mit seinen Optionen zu Auswahl
+ *
+ * @param string $form_label Label für das Formelement
+ * @param string $form_help_text Hilfstext für das Formelement
+ * @param array $items Array mit allen Select Optionen
+ * @param string $select_id Eindeutige ID für das Formelement
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt
  *
  * @example
  * {% set items = {0: faker('text', 50), 1: faker('text', 50), 2: faker('text', 50), 3: faker('text', 50), 4: faker('text', 50)} %}

@@ -2,10 +2,24 @@
 /**
  * Header
  *
- * @param array $items Array mit allen Menü Items
- * @param string $menu_id eindeutige ID
- * @param string $logo_img_alt Alt Title vom Logo
- * @param string $logo_img_title Title vom Logo
+ * Vollständiger Header mit Logo, Hauptmenü und Suchleiste
+ *
+ * @param string $img_href Link zur Startseite muss hier eingetragen werden
+ * @param string $img_alt Alternative Text für das Bild
+ * @param string $img_title Titel für das Bild
+ * @param string $img_src Pfad zum Bild
+ * @param array $menuitems Array mit allen Menü Items
+ * @param array $url Link vom Menüpunkt
+ * @param array $title Title vom Menüpunkt
+ * @param array $menu_id Eindeutige ID des Menüs
+ * @param string $search_svg SVG oder IMG als vollständiges Element, wenn ein Icon angezeigt werden soll
+ * @param string $search_text_label_for ID für Text Label FOR
+ * @param string $search_text_placeholder Inhalt vom Placeholder
+ * @param string $search_text_input_id ID vom Element
+ * @param string $search_text_icon_position Position (left/right) trage eines der Werte ein.
+ * @param string $search_form_id Eindeutige ID für das Form Element
+ * @param string $search_submit_value Text auf dem Button
+ * @param strin $search_submit_id Eindeutige ID des Elements
  *
  * @example
  * {% include "@organisms/03-header/header.twig" with {
@@ -32,30 +46,14 @@
  */
 #}
 
-
 <header class="header">
-  <div class="site-info">
-    <div class="logo-wrapper">
-      {% include "@protons/02-logos/00-logo.twig" with {
-        img_src: logo_img_src,
-        img_alt: logo_img_alt,
-        img_title: logo_img_title,
-        img_href: logo_img_href,
-      } %}
-    </div>
-    <div class="search-wrapper">
-      {% include "@molecules/10-block/search-block.twig" with {
-        search_submit_value: search_submit_value,
-        search_submit_id: search_submit_id,
-        search_svg: search_svg,
-        search_text_placeholder: search_text_placeholder,
-        search_text_input_id: search_text_input_id,
-        search_data_drupal_selector_input: search_data_drupal_selector_input,
-        search_text_icon_position: 'right',
-        search_label_for: search_label_for,
-        search_form_id: search_form_id
-      } %}
-    </div>
+  <div class="logo-wrapper">
+    {% include "@protons/02-logos/00-logo.twig" with {
+      img_src: logo_img_src,
+      img_alt: logo_img_alt,
+      img_title: logo_img_title,
+      img_href: logo_img_href,
+    } %}
   </div>
   <div class="navigation">
     {% include "@molecules/01-navigation/00-main-menu/main-menu.twig" with {
@@ -63,10 +61,21 @@
       items: menuitems,
       url: item.url,
       title: item.title,
-      mobile_search_text_input_id: mobile_search_text_input_id,
-      mobile_search_submit_id: mobile_search_submit_id,
     } %}
   </div>
+  <div class="search-wrapper">
+      {% include "@molecules/10-block/search-block.twig" with {
+        search_submit_value: search_submit_value,
+        search_submit_id: search_submit_id,
+        search_svg: search_svg,
+        search_text_placeholder: search_text_placeholder,
+        search_text_input_id: search_text_input_id,
+        search_data_drupal_selector_input: search_data_drupal_selector_input,
+        search_text_icon_position: search_text_icon_position,
+        search_label_for: search_label_for,
+        search_form_id: search_form_id
+      } %}
+    </div>
 </header>
 
 

@@ -2,6 +2,9 @@
 /**
  * Node
  *
+ * Drupal default Node Template.
+ * @see template_preprocess_node()
+ *
  * @example
  * {% set paragraph_concat = '<p>' ~ faker('text', 1500) ~ '</p>'%}
  * {% set paragraph_concat500 = '<p>' ~ faker('text', 500) ~ '</p>'%}
@@ -103,9 +106,6 @@
  *
  * @see template_preprocess_node()
  *
- * @todo Remove the id attribute (or make it a class), because if that gets
- *   rendered twice on a page this is invalid CSS for example: two lists
- *   in different view modes.
  */
 #}
 <article class="node">

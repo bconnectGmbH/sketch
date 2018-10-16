@@ -2,17 +2,22 @@
 /**
  * Slider Hero
  *
+ * Hier wird der Slick Slider verwendet. Via Embed kann der Inhalt überschrieben werden, wenn z.B.
+ * die vollständig gerenderte Liste verwendet werden muss, oder kein Hero oder Image durchsliden soll.
  * http://kenwheeler.github.io/slick/
  *
- * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
- * @param string $hero_img_src Hero Bild Quelle
- * @param int $hero_img_height Height ohne Unit Angabe.
- * @param string $hero_heading_level Headline Level
- * @param string $hero_heading Headline Text
- * @param string $hero_text Hero Text
- * @param string $hero_link Button URL
- * @param array $sliderItems Liste aller Heros die als Slider ausgegeben werden sollen
- * @param string $slider_extra_class Extra Class falls mehre Slider auf einer Seite existieren
+ * @param string $slider_id Eindeutige Slider ID
+ * @param string $slider_extra_class Slider Class um den Slider zu stylen
+ * @param string $hero_style Stil vom Hero Teaser (img-left, img-right, text-center, leer lassen für default)
+ * @param string $hero_heading Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $hero_heading_level Header Level 1-6
+ * @param string $hero_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $heroimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
+ * @param string $hero_background_image Background Image muss immer befüllt sein, wenn ein Bild genutzt wird.
+ * @param bool $background_overlay Wenn der Hero ein Bild als Overlay bekommen soll.
+ * @param string $hero_text Teaser Body Inhalt benötigt vollständiges P-Tag
+ * @param string $hero_teasertext_animation Klasse "animated" ist Pflicht zusätzlich kann man den Typ des Effekts hinzufügen.
+ * @param string $hero_link Vollständiges A-Tag mit allen Optionen.
  *
  * @example
  * {% set sliderItems = {
@@ -31,7 +36,8 @@
  */
 #}
 
-<div id="{{slider_id}}" class="slider {{slider_extra_class}}">
+<div id="{{slider_id}}" class="slider{% if slider_extra_class  %} {{slider_extra_class}}{% endif %}">
+  {% block slider_inner %}
     {%- for slide in sliderItems -%}
       {% include "@molecules/09-hero/hero.twig" with {
         hero_heading: slide.hero_heading,
@@ -44,5 +50,6 @@
         background_overlay: slide.background_overlay,
       } %}
     {%- endfor -%}
-  </div>
+  {% endblock %}
+</div>
   

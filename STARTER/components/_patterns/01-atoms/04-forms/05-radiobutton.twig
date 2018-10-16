@@ -2,9 +2,14 @@
  /**
  * Radiobutton
  *
+ * Radiobuttons sind immer gruppiert. Innerhalb einer Gruppe ist immer nur eine Auswahl möglich.
+ * Die Auswahl kann man nicht ein und ausschalten wie bei Checkboxen.
+ *
  * @param string $radio_label Label für die Radiobox
  * @param string $form_label Title für Formelement
  * @param string $form_help_text Hilfstext für die Formelemente
+ * @param array $items Alle einzelnen Optionen gelistet (kann eins oder mehrere enthalten)
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt
  *
  * @example
  * {% set items = {

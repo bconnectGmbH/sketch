@@ -2,9 +2,10 @@
  /**
  * Picture
  *
+ * Zur einfacheren Drupalintegration wird nur das vollständige Picture-Tag eingesetzt.
  * Internet Explorer 9 doesn't recognise source elements that are wrapped in picture tags. See http://scottjehl.github.io/picturefill/#ie9
  *
- * @param array $sources Liste an Bildquellen
+ * @param array $picturetag Vollständiges Picture Element
  *
  * @example
  * {% include "@atoms/06-images/01-pictures.twig" with {

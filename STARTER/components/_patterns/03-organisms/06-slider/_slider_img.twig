@@ -1,14 +1,14 @@
 {#
 /**
- * Slider IMG
+ * Slider Image
  *
+ * Hier wird der Slick Slider verwendet. Via Embed kann der Inhalt überschrieben werden, wenn z.B.
+ * die vollständig gerenderte Liste verwendet werden muss, oder kein Hero oder Image durchsliden soll.
  * http://kenwheeler.github.io/slick/
  *
- * @param string $style Hero Style -> img-left, img-right, text-center, leave empty for default
- * @param string $img_src Hero Bild Quelle
- * @param int $img_height Height ohne Unit Angabe.
- * @param array $sliderItems Liste aller Heros die als Slider ausgegeben werden sollen
- * @param string $slider_extra_class Extra Class falls mehre Slider auf einer Seite existieren
+ * @param string $slider_id Eindeutige Slider ID
+ * @param string $slider_extra_class Slider Class um den Slider zu stylen
+ * @param string $teaserimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
  *
  * @example
  * {% set sliderItems = {

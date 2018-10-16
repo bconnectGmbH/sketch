@@ -2,6 +2,9 @@
 /**
  * Paragraph
  *
+ * Drupal default Paragraph Template.
+ * @see template_preprocess_paragraph()
+ *
  * @example
  * {% embed "@organisms/09-article/paragraph.twig" %}
  *   {% block paragraph_content %}
@@ -51,6 +54,7 @@
  * @ingroup themeable
  */
 #}
+
 {%
   set classes = [
   paragraph.bundle|clean_class

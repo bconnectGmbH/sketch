@@ -2,19 +2,24 @@
 /**
  * Hero
  *
- * Hero mit unterschiedlichen Varianten der Darstellung
+ * Der Hero wird für Große Slider oder eben als Banner Bild/Teaser verwendet.
+ * Mit unterschiedlichen Varianten der Darstellung.
+ * - Bild Links (Text Links)
+ * - Bild Rechts (Text Links)
+ * - Bild als Overlay
+ * - Text Zentriert
+ * - Default: Text Links
  *
- * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
- * @param string $background_imagesrc Hero Bild Quelle
- * @param bool $background_overlay 
- * @param string $teaserimagetag Hero Bild Quelle
- * @param string $hero_img_alt Hero Bild Alternativ Text
- * @param string $hero_img_title Hero Bild Titel
- * @param int $hero_img_height Height ohne Unit Angabe.
- * @param string $hero_heading_level Headline Level
- * @param string $hero_heading Headline Text
- * @param string $hero_text Hero Text
- * @param string $hero_link Button URL
+ * @param string $hero_style Stil vom Hero Teaser (img-left, img-right, text-center, leer lassen für default)
+ * @param string $hero_heading Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $hero_heading_level Header Level 1-6
+ * @param string $hero_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $heroimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
+ * @param string $hero_background_image Background Image muss immer befüllt sein, wenn ein Bild genutzt wird.
+ * @param bool $background_overlay Wenn der Hero ein Bild als Overlay bekommen soll.
+ * @param string $hero_text Teaser Body Inhalt benötigt vollständiges P-Tag
+ * @param string $hero_teasertext_animation Klasse "animated" ist Pflicht zusätzlich kann man den Typ des Effekts hinzufügen.
+ * @param string $hero_link Vollständiges A-Tag mit allen Optionen.
  *
  * @example
  * <h6>Default Style</h6>
@@ -39,7 +44,7 @@
  *   hero_heading_level: 2,
  *   hero_text: paragraph_concat,
  *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   hero_background_image: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
  *   background_overlay: true,
  * } %}
  * <h6>Hintergrundbild + Mittigen Text</h6>
@@ -49,7 +54,7 @@
  *   hero_text: paragraph_concat,
  *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
  *   hero_style: 'text-center',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   hero_background_image: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
  *   background_overlay: true,
  * } %}
  * <h6>Bild Links Style</h6>
@@ -59,8 +64,8 @@
  *   hero_text: paragraph_concat,
  *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
  *   hero_style: 'img-left',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
- *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   hero_background_image: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   heroimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  * } %}
  * <h6>Bild Rechts Style</h6>
  * {% include "@molecules/09-hero/hero.twig" with {
@@ -69,17 +74,17 @@
  *   hero_text: paragraph_concat,
  *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
  *   hero_style: 'img-right',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
- *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ *   hero_background_image: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   heroimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  * } %}
  */
 #}
 
-<div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if background_overlay %} background{% endif %}"{% if background_overlay and background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
-    {%- if hero_style != "img-right" and background_imagesrc -%}
-      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
+<div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if background_overlay %} background{% endif %}"{% if background_overlay and hero_background_image %}data-background="{{hero_background_image}}"{% endif %}>
+    {%- if hero_style != "img-right" and hero_background_image -%}
+      <div class="image" {% if hero_background_image %}data-background="{{hero_background_image}}"{% endif %}>
         {% include "@atoms/06-images/00-image.twig" with {
-          imagetag: teaserimagetag
+          imagetag: heroimagetag
         } %}
       </div>
     {%- endif -%}
@@ -89,18 +94,19 @@
         {% include "@atoms/00-text/01-headings.twig" with {
           heading_level: hero_heading_level,
           heading: hero_heading,
-          heading_class: 'hero-headline animated'
+          heading_class: hero_heading_class
         } %}
       {%- endif -%}
       {%- if hero_text -%}
         {% block teaser_text %}
-          {% include "@atoms/00-text/00-paragraph.twig" with {
-            paragraph_content: hero_text,
-            paragraph_class: 'animated'
-          } -%}
+          <div class="tease-text{%- if hero_teasertext_animation -%} {{hero_teasertext_animation}}{%- endif -%}">
+            {% include "@atoms/00-text/00-paragraph.twig" with {
+              paragraph_content: hero_text
+            } -%}
+          </div>
         {% endblock %}
       {%- endif -%}
-      {%- if hero_button_url -%}
+      {%- if hero_link -%}
         {% include "@atoms/03-buttons/00-button.twig" with {
           link: hero_link
         } %}
@@ -108,9 +114,9 @@
     {%- endif -%}
     </div>
     {%- if hero_style == "img-right" -%}
-      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
+      <div class="image" {% if hero_background_image %}data-background="{{hero_background_image}}"{% endif %}>
         {% include "@atoms/06-images/00-image.twig" with {
-          imagetag: teaserimagetag
+          imagetag: heroimagetag
         } %}
       </div>
     {%- endif -%}

@@ -2,11 +2,16 @@
  /**
  * Managed File
  *
- * @param string $upload_label Text über Upload Button
- * @param int $upload_button_size Größe des Button
+ * Upload Feld mit einem Durchsuchen Feld welches nach Auswahl den Wert des Filenamen trägt mit einem Absenden Button zum Hochladen der Datei.
+ *
+ * @param string $upload_label Text oberhalb des Upload Buttons
+ * @param int $upload_button_size Größe des Buttons
  * @param string $upload_placeholder Text auf Button, wird nach Auswahl ersetzt durch den Dateinamen
- * @param string $upload_button_value Text auf dem Absenden Button
  * @param string $form_help_text Der Beschreibungstext / Hilfstext
+ * @param string $manage_file_field_id Eindeutige ID für das Inputfeld
+ * @param string $manage_textfield_id Eindeutige ID für das Textfeld
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt
+ * @param string $upload_button_value Text auf dem Submit Button
  *
  * @example
  * {% include "@atoms/04-forms/09-managed-file.twig" with {

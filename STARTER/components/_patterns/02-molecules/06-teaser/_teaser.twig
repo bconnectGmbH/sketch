@@ -1,118 +1,143 @@
 {#
 /**
- * Hero
+ * Teaser
  *
- * Hero mit unterschiedlichen Varianten der Darstellung
+ * Teaser mit unterschiedlichen Varianten der Darstellung
+ * Ähnlich wie das Card Element, sind eher für Listen Teaser geeignet.
+ * TODO: SCSS muss ggf. noch angepasst werden, da dieses Element als Hero angelegt wurde und das war nicht angedacht.
  *
- * @param string $hero_style Hero Style -> img-left, img-right, text-center, leave empty for default
- * @param string $background_imagesrc Hero Bild Quelle
- * @param bool $background_overlay 
- * @param string $teaserimagetag Hero Bild Quelle
- * @param string $hero_img_alt Hero Bild Alternativ Text
- * @param string $hero_img_title Hero Bild Titel
- * @param int $hero_img_height Height ohne Unit Angabe.
- * @param string $hero_heading_level Headline Level
- * @param string $hero_heading Headline Text
- * @param string $hero_text Hero Text
- * @param string $hero_hero_link Button URL
+ * @param string $teaser_img_position Position des Bildes links oder rechts (left/right)
+ * @param string $teaser_heading Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $teaser_heading_level Header Level 1-6
+ * @param string $teaser_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $teaser_small Bestimmt ob es der <small></small> Tag hinzugefügt wird, wenn zb die Headline für Teaser kleiner aussieht
+ * @param string $teaser_subheading Sub-Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $teaser_subheading_level Subheadline Level 1-6
+ * @param string $teaser_subheading_class Spezielle Klasse wenn diese benötigt wird
+ * @param bool $title_section_above true/false Zeigt an ob der Titel und/oder Subtitel oberhalb des Bildes angezeigt wird oder nicht
+ * @param string $teaser_backgroundimg Wird benötigt um das Teaserbild als Background-Image einzufügen um die CSS Eigenschaften nutzen zu können.
+ * @param string $teaserimagetag Vollstängies IMG-Tag mit Alt + Title + Pfad zum Bild
+ * @param string $teaser_text Teaser Body Inhalt benötigt vollständiges P-Tag
+ * @param string $teaser_link Vollständiges A-Tag mit allen Optionen.
  *
  * @example
- * <h6>Default Style</h6>
+ * <h6>Teaser Left Image</h6>
  * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>'
- * } %}
- * <h6>Text Center Style</h6>
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   hero_style: 'text-center'
- * } %}
- * <h6>Default Style mit Hintergrundbild</h6>
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
- *   background_overlay: true,
- * } %}
- * <h6>Hintergrundbild + Mittigen Text</h6>
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   hero_style: 'text-center',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
- *   background_overlay: true,
- * } %}
- * <h6>Bild Links Style</h6>
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   hero_style: 'img-left',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ * {% include "@molecules/06-teaser/teaser.twig" with {
+ *   teaser_heading: faker('text', 50),
+ *   teaser_heading_level: 2,
+ *   teaser_text: paragraph_concat,
+ *   teaser_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   teaser_img_position: 'left',
+ *   teaser_backgroundimg: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
  *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  * } %}
- * <h6>Bild Rechts Style</h6>
- * {% include "@molecules/09-hero/hero.twig" with {
- *   hero_heading: faker('text', 50),
- *   hero_heading_level: 2,
- *   hero_text: paragraph_concat,
- *   hero_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
- *   hero_style: 'img-right',
- *   background_imagesrc: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ * <h6>Teaser Right Image</h6>
+ * {% include "@molecules/06-teaser/teaser.twig" with {
+ *   teaser_heading: faker('text', 50),
+ *   teaser_heading_level: 2,
+ *   teaser_text: paragraph_concat,
+ *   teaser_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   teaser_img_position: 'right',
+ *   teaser_backgroundimg: 'https://dummyimage.com/1200x16:9/c7c7c7/fff.png',
+ *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ * } %}
+ * <h6>Title Top Left Image</h6>
+ * {% include "@molecules/06-teaser/teaser.twig" with {
+ *   title_section_above: true,
+ *   teaser_heading: faker('text', 50),
+ *   teaser_heading_level: 2,
+ *   teaser_text: paragraph_concat,
+ *   teaser_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
+ *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
+ * } %}
+ * <h6>Title Top Right Image</h6>
+ * {% include "@molecules/06-teaser/teaser.twig" with {
+ *   title_section_above: true,
+ *   teaser_heading: faker('text', 50),
+ *   teaser_heading_level: 2,
+ *   teaser_text: paragraph_concat,
+ *   teaser_link: '<a href="#" class="button filled animated">Button filled Link Text</a>',
  *   teaserimagetag: '<img alt="Alternativ Text für dieses Bild" title="Title Text für dieses Bild" src="https://dummyimage.com/1200x16:9/c7c7c7/fff.png">',
  * } %}
  */
 #}
 
-<div class="hero{% if hero_style %} {{hero_style}}{% endif %}{% if background_overlay %} background{% endif %}"{% if background_overlay and background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
-    {%- if hero_style != "img-right" -%}
-      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
-        {% include "@atoms/06-images/00-image.twig" with {
-          imagetag: teaserimagetag
-        } %}
-      </div>
-    {%- endif -%}
-    {%- if hero_heading or hero_text or hero_button_url -%}
-    <div class="content">
-      {%- if hero_heading -%}
+<div class="teaser-row {%- if teaser_img_position -%}{{teaser_img_position}}{%- endif -%}">
+  {%- if title_section_above == true -%}
+    <div class="teaser-title-top">
+      {%- if teaser_heading %}
         {% include "@atoms/00-text/01-headings.twig" with {
-          heading_level: hero_heading_level,
-          heading: hero_heading,
-          heading_class: 'hero-headline animated'
+          heading_level: teaser_heading_level,
+          heading: teaser_heading,
+          small: teaser_small,
+          heading_class: teaser_heading_class
         } %}
       {%- endif -%}
-      {%- if hero_text -%}
-        {% block teaser_text %}
-          {% include "@atoms/00-text/00-paragraph.twig" with {
-            paragraph_content: hero_text,
-            paragraph_class: 'animated'
-          } -%}
-        {% endblock %}
-      {%- endif -%}
-      {%- if hero_button_url -%}
-        {% include "@atoms/03-buttons/00-button.twig" with {
-          link: hero_link
+      {%- if teaser_subheading -%}
+        {% include "@atoms/00-text/01-headings.twig" with {
+          heading_level: teaser_subheading_level,
+          heading: teaser_subheading,
+          subheading_class: teaser_subheading_class,
+          subtitle: true
         } %}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  <div class="teaser-content">
+    {%- if teaser_img_position == 'left' -%}
+      {%- if teaserimagetag -%}
+        <div class="teaser-image"{% if teaser_backgroundimg %} style="background-image: url('{{teaser_backgroundimg}}');"{% endif %}>
+          {% include "@atoms/06-images/00-image.twig" with {
+            imagetag: teaserimagetag
+          } %}
+        </div>
       {%- endif -%}
     {%- endif -%}
-    </div>
-    {%- if hero_style == "img-right" -%}
-      <div class="image" {% if background_imagesrc %}data-background="{{background_imagesrc}}"{% endif %}>
-        {% include "@atoms/06-images/00-image.twig" with {
-          imagetag: teaserimagetag
+    <div class="teaser-body">
+      <div class="teaser-content-inner">
+        {%- if title_section_above == false -%}
+          {%- if teaser_heading -%}
+            {% include "@atoms/00-text/01-headings.twig" with {
+              heading_level: teaser_heading_level,
+              heading: teaser_heading,
+              small: teaser_small,
+              heading_class: teaser_heading_class
+            } %}
+          {%- endif -%}
+          {%- if teaser_subheading -%}
+            <small>
+              {% include "@atoms/00-text/01-headings.twig" with {
+                heading_level: teaser_subheading_level,
+                heading: teaser_subheading,
+                subtitle: true,
+                subheading_class: teaser_subheading_class
+              } %}
+            </small>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if teaser_text -%}
+          <div class="teaser-text">
+            {% include "@atoms/00-text/00-paragraph.twig" with {
+              paragraph_content: teaser_text
+            } %}
+          </div>
+        {%- endif -%}
+        {%- if teaser_link -%}
+        {% include "@atoms/03-buttons/00-button.twig" with {
+          link: teaser_link
         } %}
+        {%- endif -%}
       </div>
+    </div>
+    {%- if teaser_img_position == 'right' -%}
+      {%- if teaserimagetag -%}
+        <div class="teaser-image"{% if teaser_backgroundimg %} style="background-image: url('{{teaser_backgroundimg}}');"{% endif %}>
+          {% include "@atoms/06-images/00-image.twig" with {
+            imagetag: teaserimagetag
+          } %}
+        </div>
+      {%- endif -%}
     {%- endif -%}
   </div>
-  
+</div>

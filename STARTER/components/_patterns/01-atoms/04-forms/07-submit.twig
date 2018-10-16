@@ -2,9 +2,11 @@
  /**
  * Submit
  *
+ * Der <input type = "submit"> definiert eine Übergabeschaltfläche, die alle Formularwerte auf ihre ursprünglichen Werte zurücksetzt.
+ *
  * @param string $submit_value Text auf dem Button
- * @param string $form_help_text Hilfstext
- * @param strin $submit_id ID
+ * @param strin $submit_id Eindeutige ID des Elements
+ * @param string $form_help_text Hilfstext des Elements
  *
  * @example
  * {% include "@atoms/04-forms/07-submit.twig" with {
@@ -15,9 +17,9 @@
 #}
 
 <div class="form-item form-type-submit form-item-submit">
-    <input type="submit" data-drupal-selector="{{submit_id}}" id="{{submit_id}}" name="op" value="{{submit_value}}" class="js-form-submit form-submit" {% if form_required %} required aria-required="true" {% endif %}>
-    {%- if form_help_text -%}
-      <div class="description">{{form_help_text}}</div>
-    {%- endif -%}
-  </div>
+  <input type="submit" data-drupal-selector="{{submit_id}}" id="{{submit_id}}" name="op" value="{{submit_value}}" class="js-form-submit form-submit">
+  {%- if form_help_text -%}
+    <div class="description">{{form_help_text}}</div>
+  {%- endif -%}
+</div>
   

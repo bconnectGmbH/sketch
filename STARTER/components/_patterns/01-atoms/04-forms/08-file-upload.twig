@@ -2,10 +2,15 @@
  /**
  * File Upload
  *
- * @param string $upload_label Text über Upload Button
- * @param int $upload_button_size Größe des Button
+ * Einfaches Uploadfeld wo bei Auswahl einer Datei sich der Buttontext ändert und den Dateinamen (geschnitten) anzeigt.
+ *
+ * @param string $upload_label Text oberhalb des Upload Buttons
+ * @param int $upload_button_size Größe des Buttons
  * @param string $upload_placeholder Text auf Button, wird nach Auswahl ersetzt durch den Dateinamen
  * @param string $form_help_text Der Beschreibungstext / Hilfstext
+ * @param string $upload_file_field_id Eindeutige ID für das Inputfeld
+ * @param string $upload_textfield_id Eindeutige ID für das Textfeld
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt
  *
  * @example
  * {% include "@atoms/04-forms/08-file-upload.twig" with {

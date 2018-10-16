@@ -12,7 +12,9 @@
   }
 
   img {
-    width: 100%;
+    visibility: hidden;
+    height: 0;
+    width: 0;
   }
 
   .teaser-title-top {
@@ -42,6 +44,10 @@
       order: 0;
       padding: 0;
       margin-bottom: 1rem;
+      background-position: 50% 50%;
+      background-size: cover;
+      position: relative;
+      background-repeat: no-repeat;
     }
 
     .teaser-body {

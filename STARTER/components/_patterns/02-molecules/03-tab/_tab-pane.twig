@@ -2,10 +2,17 @@
 /**
  * Tab Pane
  *
- * @param string $tab_url Link für den
- * @param int $tab_heading_level Heading Level
- * @param int $tab_heading Titel für den Content
- * @param int $tab_text Content für den Tab
+ * Implementation Bootstrap Tabs, das hier sind nur der Inhalt (Tabs) der ein und ausgeblendet wird.
+ * Standard ist Headline und Text, kann aber via Embed überschrieben werden.
+ * https://getbootstrap.com/docs/4.1/components/navs/#javascript-behavior
+ *
+ * @param int $key Key vom Array der Tab Elemente (muss im Array bestückt werden)
+ * @param string $tab_url Link für den Tab (ID)
+ * @param string $tab_title Titel für den Tab (Link)
+ * @param int $tab_heading_level Es ist eine Zahl von 1 bis 6 um die h1-h6 zu steuern.
+ * @param string $tab_heading Das ist der Titel (string) der anzeigt wird.
+ * @param string $tab_heading_class Extra Klasse für Headlines
+ * @param string $tab_text Content für den Tab (Vollständiges P-Tag)
  *
  * @example
  * {% set paragraph_concat = '<p>' ~ faker('text', 400) ~ '</p>'%}
@@ -30,17 +37,20 @@
 #}
 
 <div id="{{tab_url}}" class="tab-pane{% if key == 0 %} active{% else %} fade{% endif %}"><br>
-  {%- if tab_heading -%}
-    {% include "@atoms/00-text/01-headings.twig" with {
-      heading_level: tab_heading_level,
-      heading: tab_heading,
-    } %}
-  {%- endif -%}
-  {%- if tab_text -%}
-    {% block tab_text %} 
-      {% include "@atoms/00-text/00-paragraph.twig" with {
-        paragraph_content: tab_text
+  {% block tab_pane_content %}
+    {%- if tab_heading -%}
+      {% include "@atoms/00-text/01-headings.twig" with {
+        heading_level: tab_heading_level,
+        heading: tab_heading,
+        heading_class: tab_heading_class
       } %}
-    {% endblock %}
-  {%- endif -%}
+    {%- endif -%}
+    {%- if tab_text -%}
+      {% block tab_text %} 
+        {% include "@atoms/00-text/00-paragraph.twig" with {
+          paragraph_content: tab_text
+        } %}
+      {% endblock %}
+    {%- endif -%}
+  {% endblock %}
 </div>

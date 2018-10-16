@@ -2,74 +2,97 @@
 /**
  * Contact
  *
+ * Vollständiges Kontaktformular, mit Beispiel Feldern (Name, Email, Betreff, Nachricht) mit Weiterleitung zu einer Dankesseite
+ * Der Inhalt bzw die Felder kann man überschreiben wenn man Embed verwendet.
+ *
+ * @param string $contact_heading Titel für Teaser im Body (mit Link wenn es verlinkt werden soll)
+ * @param string $contact_heading_level Header Level 1-6
+ * @param string $contact_heading_class Spezielle Klasse wenn diese benötigt wird
+ * @param string $contact_name_text_placeholder Inhalt vom Placeholder
+ * @param string $contact_name_text_input_id ID vom Element
+ * @param string $contact_name_text_label_for ID für Text Label FOR
+ * @param string $contact_mail_text_placeholder Inhalt vom Placeholder
+ * @param string $contact_mail_text_input_id ID vom Element
+ * @param string $contact_mail_text_label_for ID für Text Label FOR
+ * @param string $contact_subject_text_placeholder Inhalt vom Placeholder
+ * @param string $contact_subject_text_input_id ID vom Element
+ * @param string $contact_subject_text_label_for ID für Text Label FOR
+ * @param string $message_placeholder setze einen Placeholder
+ * @param string $contact_submit_value Text auf dem Button
+ * @param strin $contact_submit_id Eindeutige ID des Elements
+ *
  * @example
  * {% include "@organisms/08-forms/00-contact.twig" with {
- *   name_label_for: faker('text', 15),
- *   name_input_id: 'textfield-name',
- *   name_placeholder: 'Name',
- *   email_label_for: faker('text', 15),
- *   email_input_id: 'textfield-email1',
- *   email_placeholder: 'E-Mail',
- *   subject_label_for: faker('text', 15),
- *   subject_input_id: 'textfield-subject',
- *   subject_placeholder: 'Betreff',
- *   message_placeholder: 'Nachricht',
+ *   contact_name_text_label_for: faker('text', 15),
+ *   contact_name_text_input_id: 'textfield-name',
+ *   contact_name_text_placeholder: 'Name',
+ *   contact_mail_text_label_for: faker('text', 15),
+ *   contact_mail_text_input_id: 'textfield-email1',
+ *   contact_mail_text_placeholder: 'E-Mail',
+ *   contact_subject_text_label_for: faker('text', 15),
+ *   contact_subject_text_input_id: 'textfield-subject',
+ *   contact_subject_text_placeholder: 'Betreff',
+ *   contact_message_placeholder: 'Nachricht',
  *   contact_submit_id: 'user-login-form3',
  *   contact_submit_value: 'send',
- *   contact_heading: 'Kontakt Formular'
+ *   contact_heading: 'Kontakt Formular',
+ *   contact_heading_level: 2
  * } %}
  */
 #}
 
 <section>
   {% include "@atoms/00-text/01-headings.twig" with {
-    "heading_level": 1,
+    "heading_level": contact_heading_level,
     "heading": contact_heading
+    "heading_class": contact_heading_class
   } %}
   <form class="contact-form" data-drupal-selector="contact-form" action="/thank-you-page" method="post" id="contact-form" accept-charset="UTF-8" novalidate="novalidate">
-    {% include "@atoms/04-forms/01-textfield.twig" with {
-      text_label_for: name_label_for,
-      text_input_id: name_input_id,
-      text_placeholder: name_placeholder,
-      autocorrect: 'off',
-      spellcheck: false,
-      autocomplete: 'on',
-      type_input: 'text'
-    } %}
+    {% block contact_form_inner %}
+      {% include "@atoms/04-forms/01-textfield.twig" with {
+        text_label_for: contact_name_text_label_for,
+        text_input_id: contact_name_text_input_id,
+        text_placeholder: contact_name_text_placeholder,
+        autocorrect: 'off',
+        spellcheck: false,
+        autocomplete: 'on',
+        type_input: 'text'
+      } %}
 
-    {% include "@atoms/04-forms/01-textfield.twig" with {
-      text_label_for: email_label_for,
-      text_input_id: email_input_id,
-      text_placeholder: email_placeholder,
-      form_required: true,
-      autocorrect: 'off',
-      spellcheck: false,
-      autocomplete: 'on',
-      type_input: 'email'
-    } %}
+      {% include "@atoms/04-forms/01-textfield.twig" with {
+        text_label_for: contact_mail_text_label_for,
+        text_input_id: contact_mail_text_input_id,
+        text_placeholder: contact_mail_text_placeholder,
+        form_required: true,
+        autocorrect: 'off',
+        spellcheck: false,
+        autocomplete: 'on',
+        type_input: 'email'
+      } %}
 
-    {% include "@atoms/04-forms/01-textfield.twig" with {
-      text_label_for: subject_label_for,
-      text_input_id: subject_input_id,
-      text_placeholder: subject_placeholder,
-      form_required: true,
-      autocorrect: 'on',
-      spellcheck: true,
-      autocomplete: 'off',
-      type_input: 'text'
-    } %}
+      {% include "@atoms/04-forms/01-textfield.twig" with {
+        text_label_for: contact_subject_text_label_for,
+        text_input_id: contact_subject_text_input_id,
+        text_placeholder: contact_subject_text_placeholder,
+        form_required: true,
+        autocorrect: 'on',
+        spellcheck: true,
+        autocomplete: 'off',
+        type_input: 'text'
+      } %}
 
-    {% include "@atoms/04-forms/00-textarea.twig" with {
-      placeholder: message_placeholder,
-      autocorrect: 'on',
-      form_required: true,
-      spellcheck: true,
-      autocomplete: 'off'
-    } %}
+      {% include "@atoms/04-forms/00-textarea.twig" with {
+        placeholder: contact_message_placeholder,
+        autocorrect: 'on',
+        form_required: true,
+        spellcheck: true,
+        autocomplete: 'off'
+      } %}
 
-    {% include "@atoms/04-forms/07-submit.twig" with {
-      submit_id: contact_submit_id,
-      submit_value: contact_submit_value
-    } %}
+      {% include "@atoms/04-forms/07-submit.twig" with {
+        submit_id: contact_submit_id,
+        submit_value: contact_submit_value
+      } %}
+    {% endblock %}
   </form>
 </section>

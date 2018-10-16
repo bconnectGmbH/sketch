@@ -4,13 +4,14 @@
  *
  * Typisches Textarea Element um Text Nachrichten zu schreiben.
  *
- * @param string $form_help_text Hilfstext für die Formelemente
- * @param string $autocorrect ON/OFF
- * @param string $spellcheck true/false
- * @param string $autofocus true/false
- * @param string $autocomplete ON/OFF
- * @param string $placeholder
- * @param bool $form_required
+ * @param string $form_help_text Hilfstext für das Formelement
+ * @param string $autocorrect ON/OFF schalte Autokorrektur vom Browser für das Feld an oder aus
+ * @param string $spellcheck true/false schalte Rechtschreibcheck vom Browser für das Feld an oder aus
+ * @param string $autofocus true/false schalte Autofocus fürs Element um direkt ein Feld beim laden der Seite fokussiert
+ * @param string $autocomplete ON/OFF schalte Autovervollständigung vom Browser für das Feld an oder aus
+ * @param string $placeholder setze eine Placeholder
+ * @param bool $form_required setze true wenn dieses Feld ein Plichtfeld ist
+ * @param bool $autocapitalize setzte off/on/words/characters um die Großschreibung (besonders mobil) zu steuern (https://developer.mozilla.org/de/docs/Web/HTML/Globale_Attribute/autocapitalize)
  *
  * @example
  * {% include "@atoms/04-forms/00-textarea.twig" with {

@@ -2,17 +2,24 @@
 /**
  * Textfield
  *
- * @param string $text_placeholder Text für den Placeholder
- * @param string $form_help_text Hilfstext für die Formelemente
- * @param string $svg SVG oder IMG als vollständiges ELEMENT, wenn ein Icon angezeigt werden soll
+ * Einfache Textfelder in verschiedenen Darstellungen
+ * - Standard
+ * - Mit Icon
+ * - Mit Icon + Icon verlinkt
+ *
+ * @param string $text_placeholder Inhalt vom Placeholder
+ * @param string $form_help_text Hilfstext für das Formelement
+ * @param string $svg SVG oder IMG als vollständiges Element, wenn ein Icon angezeigt werden soll
  * @param string $icon_link Link, wenn das Icon verlinkt werden soll
- * @param string $text_input_id ID form element
- * @param string $text_icon_position Position (left/right)
- * @param string $autocorrect ON/OFF
- * @param string $spellcheck true/false
- * @param string $autofocus true/false
- * @param string $autocomplete ON/OFF
- * @param string type_input hidden, text, search, password, email
+ * @param string $text_input_id ID vom Element
+ * @param string $text_icon_position Position (left/right) trage eines der Werte ein.
+ * @param string $autocorrect ON/OFF schalte Autokorrektur vom Browser für das Feld an oder aus
+ * @param string $spellcheck true/false schalte Rechtschreibcheck vom Browser für das Feld an oder aus
+ * @param string $autofocus true/false schalte Autofocus fürs Element um direkt ein Feld beim laden der Seite fokussiert
+ * @param string $autocomplete ON/OFF schalte Autovervollständigung vom Browser für das Feld an oder aus
+ * @param string $type_input Trage eines dieser Typen ein: hidden, text, search, password, email
+ * @param string $text_label_for ID für Text Label FOR
+ * @param bool $form_required setze true wenn dieses Feld ein Plichtfeld ist
  *
  * @example
  * <h6>TextField Standard</h6>

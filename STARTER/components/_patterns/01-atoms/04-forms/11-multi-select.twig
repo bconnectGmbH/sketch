@@ -2,9 +2,14 @@
  /**
  * Multi Select
  *
- * @param string $select_label Text über Upload Button
- * @param array $items Array mit Options
+ * Multi Select ist ein Select Feld im Form einer Liste und nicht wie üblich in einem Dropdown, dieses Feld wird genutzt um mehrere Optionen selektieren zu können.
+ *
+ * @param string $select_label Label oberhalb des Selectfeldes
+ * @param array $items Array mit den möglichen Optionen im diesem Selectfeld
  * @param string $form_help_text Der Beschreibungstext / Hilfstext
+ * @param string $select_name Definiert einen Namen für die Liste
+ * @param string $select_id Eindeutige ID für das Formelement
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt
  *
  * @example
  * {% set items = {0: 'None', 1: faker('text', 25), 2: faker('text', 25), 3: faker('text', 25), 4: faker('text', 25)} %}

@@ -9,10 +9,10 @@
  * @example
  * {% set items1 = {0: faker('text', 50), 1: faker('text', 50), 2: faker('text', 50), 3: faker('text', 50), 4: faker('text', 50)} %}
  * {% set items2 = {
- *   0: {'form_id': 'checkbox1', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   1: {'form_id': 'checkbox2', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   2: {'form_id': 'checkbox3', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   3: {'form_id': 'checkbox4', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)}
+ *   0: {'form_id': 'checkbox1', 'checkbox_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   1: {'form_id': 'checkbox2', 'checkbox_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   2: {'form_id': 'checkbox3', 'checkbox_name': 'fruits', 'checkbox_label': faker('text', 25)},
+ *   3: {'form_id': 'checkbox4', 'checkbox_name': 'fruits', 'checkbox_label': faker('text', 25)}
  * } %}
  * {% embed '@atoms/04-forms/10-fieldset.twig' with {'fieldset_legend': 'FieldSet Legende'} %}
  *   {% block fieldset_content %}

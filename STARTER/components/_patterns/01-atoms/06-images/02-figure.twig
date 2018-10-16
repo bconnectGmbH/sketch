@@ -2,13 +2,11 @@
  /**
  * Figure
  *
- * Dieses Pattern erlaubt die neue Responsive Image Funktion.
- * Es beginnt mit dem handelüblichen <img src="" alt="" title=""/>
- * Zusätzlich können nun srcset="" und sizes="" eingetragen werden.
- * Dokumention hier zu: https://blog.kulturbanause.de/2014/09/responsive-images-srcset-sizes-adaptive
+ * Dieses Pattern erlaubt das Figure Element inkl. der Bildunterschrift (Figcaption)
+ * Zur einfacheren Drupalintegration wird nur das vollständige Figure-Tag inkl. Images eingesetzt.
  *
- * @param string $img_url Link fürs Bild
- * @param array $link_attributes array e.g "link_attributes": { 'target': '_blank'}
+ * @param string $figurepicturetag Vollständiges Picture Element inkl. Images
+ * @param array $figure_output_image_tag Wenn es sich im IMG handelt dann true, wenn es ein Picture sein soll dann leer lassen.
  * @param string $img_caption Bildunterschrift
  *
  * @example

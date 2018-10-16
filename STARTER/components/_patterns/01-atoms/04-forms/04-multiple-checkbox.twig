@@ -2,16 +2,23 @@
 /**
  * Multiple Checkbox
  *
+ * Multiple Checkbox anhand des checkbox_name können diese gruppiert werden zur besseren Auswertung
+ *
  * @param string $items Array mit Checkboxen
- * @param string $form_label Title für Formelement
+ * @param string $form_label Label für die Checkboxen (gruppiert)
+ * @param string $checkbox_label Value für die checkbox
  * @param string $form_help_text Hilfstext für die Formelemente
+ * @param bool $form_checked Ob die Checkbox standardmässig angehakt ist
+ * @param string $form_id Eindeutige ID des Formelements
+ * @param bool $form_required Trage true ein, wenn es sich um ein Pflichtfeld handelt 
+ * @param string $checkbox_name der Checkboxname sollte bestenfalls "[]" das am Ende des Names enthalten damit man weiß das mehrere Antworten gegeben werden können und diese zusammengehören.
  *
  * @example
  * {% set items = {
- *   0: {'form_id': 'checkbox11', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   1: {'form_id': 'checkbox21', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   2: {'form_id': 'checkbox31', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)},
- *   3: {'form_id': 'checkbox41', 'checkbox_group_name': 'fruits', 'checkbox_label': faker('text', 25)}
+ *   0: {'form_id': 'checkbox11', 'checkbox_name': 'fruits[]', 'checkbox_label': faker('text', 25)},
+ *   1: {'form_id': 'checkbox21', 'checkbox_name': 'fruits[]', 'checkbox_label': faker('text', 25)},
+ *   2: {'form_id': 'checkbox31', 'checkbox_name': 'fruits[]', 'checkbox_label': faker('text', 25)},
+ *   3: {'form_id': 'checkbox41', 'checkbox_name': 'fruits[]', 'checkbox_label': faker('text', 25)}
  * } %}
  * {% include "@atoms/04-forms/04-multiple-checkbox.twig" with {
  *   items: items,
@@ -27,8 +34,9 @@
       {%- for item in items -%}
         {% include "@atoms/04-forms/03-checkbox.twig" with {
           form_id: item.form_id,
-          checkbox_group_name: item.checkbox_group_name,
+          checkbox_name: item.checkbox_name,
           checkbox_label: item.checkbox_label
+          form_checked: item.form_checked
         } %}
       {%- endfor -%}
     </form>
